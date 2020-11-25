@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Environments/Office_space_rough.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=3]
+[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interfaces/menu/TriggerDialogue.gd" type="Script" id=6]
+[ext_resource path="res://interfaces/dialogue/Dialogue.gd" type="Script" id=7]
+[ext_resource path="res://interfaces/dialogue/Triggers.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2508.12, 35.3273 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.5732, 546.497 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 111.803, 156.511 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Environment" type="Node2D" parent="World"]
+
+[node name="Office_space_rough" type="Sprite" parent="World/Environment"]
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 5.33936, 544.072 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 2500.31, -0.962585 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( -2473.91, 14.1393 )
+shape = SubResource( 2 )
+
+[node name="Triggers" type="Node2D" parent="World/Environment"]
+script = ExtResource( 8 )
+
+[node name="DialogueTrigger01" type="Area2D" parent="World/Environment/Triggers"]
+position = Vector2( 1520.53, 188.585 )
+script = ExtResource( 6 )
+DialogueKey = "poster_comment"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/DialogueTrigger01"]
+shape = SubResource( 3 )
+
+[node name="Props" type="Node2D" parent="World"]
+
+[node name="Enemies" type="Node2D" parent="World"]
+
+[node name="Player" parent="World" instance=ExtResource( 1 )]
+position = Vector2( 964.625, 124.276 )
+
+[node name="Camera2D" type="Camera2D" parent="World/Player"]
+current = true
+zoom = Vector2( 2, 2 )
+
+[node name="FadePanel" parent="World/Player/Camera2D" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -1280.0
+margin_top = -720.0
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="HUD" type="Control" parent="World/Player"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialogue" parent="World/Player" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+margin_left = -0.0395508
+margin_top = -1.92242
+margin_right = -0.0395508
+margin_bottom = -1.92242
+script = ExtResource( 7 )

@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=1]
+[ext_resource path="res://Assets/Audio/Music/mm_v3.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.117647, 0.117647, 0.121569, 1 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SideMenu" type="VBoxContainer" parent="."]
+anchor_right = 0.296
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.104
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameButton" type="ToolButton" parent="SideMenu"]
+margin_top = 222.0
+margin_right = 378.0
+margin_bottom = 288.0
+theme = ExtResource( 1 )
+text = "New Game"
+
+[node name="ContinueButton" type="ToolButton" parent="SideMenu"]
+margin_top = 292.0
+margin_right = 378.0
+margin_bottom = 358.0
+theme = ExtResource( 1 )
+disabled = true
+text = "Continue"
+
+[node name="OptionsButton" type="ToolButton" parent="SideMenu"]
+margin_top = 362.0
+margin_right = 378.0
+margin_bottom = 428.0
+theme = ExtResource( 1 )
+text = "Options"
+
+[node name="QuitButton" type="ToolButton" parent="SideMenu"]
+margin_top = 432.0
+margin_right = 378.0
+margin_bottom = 498.0
+theme = ExtResource( 1 )
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="FadePanel" parent="." instance=ExtResource( 4 )]

@@ -1,0 +1,92 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Characters/Player/states/motion/in-air/fall.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Player/states/motion/on-ground/move.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Player/states/motion/in-air/jump.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Player/gui/CooldownBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/Player/Player.gd" type="Script" id=5]
+[ext_resource path="res://Characters/Player/states/motion/on-ground/idle.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Sprites/PLAYER/Hidden/Player_Hidden_3.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_0.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/PLAYER/Hidden/Player_Hidden_0.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/PLAYER/Hidden/Player_Hidden_1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/PLAYER/Hidden/Player_Hidden_2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/PLAYER/Hidden/Player_Hidden_5.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/PLAYER/Hidden/Player_Hidden_4.png" type="Texture" id=13]
+[ext_resource path="res://engine/Physics2D.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_3.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_4.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_5.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_6.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/PLAYER/Idle/Player_Idle_2.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/PLAYER/Idle/Player_Idle_3.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/PLAYER/Idle/Player_Idle_4.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/PLAYER/Idle/Player_Idle_0.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_2.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/PLAYER/Walk/Player_Walk_7.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/PLAYER/Idle/Player_Idle_1.png" type="Texture" id=26]
+[ext_resource path="res://Characters/Player/states/interactions/wait_for_dialogue.gd" type="Script" id=27]
+[ext_resource path="res://Characters/Player/states/interactions/hide.gd" type="Script" id=28]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 163.598
+height = 341.161
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 26 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Hide",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 15 ), ExtResource( 24 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "Move",
+"speed": 10.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 5 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "Hide"
+
+[node name="Physics2D" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="CooldownBar" parent="." instance=ExtResource( 4 )]
+
+[node name="States" type="Node2D" parent="."]
+
+[node name="Idle" type="Node2D" parent="States"]
+script = ExtResource( 6 )
+
+[node name="Move" type="Node2D" parent="States"]
+script = ExtResource( 2 )
+SPEED = 500.0
+
+[node name="Hide" type="Node2D" parent="States"]
+script = ExtResource( 28 )
+
+[node name="Jump" type="Node2D" parent="States"]
+script = ExtResource( 3 )
+
+[node name="Fall" type="Node2D" parent="States"]
+script = ExtResource( 1 )
+
+[node name="Wait" type="Node2D" parent="States"]
+script = ExtResource( 27 )
