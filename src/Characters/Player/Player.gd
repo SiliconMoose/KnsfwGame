@@ -17,11 +17,6 @@ func _ready() -> void:
 	# Signals
 	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
 	$CooldownBar.set_duration($CooldownTimer.wait_time)
-	$Dialogue.visible = false
-	var triggers = $"../Environment/Triggers".get_children()
-	
-	for trigger in triggers:
-		trigger.connect('body_entered', self, "_onPlayerEntered", [trigger])
 	
 	._initialize_state()
 
@@ -47,13 +42,7 @@ func start_cooldown():
 func _on_position_changed():
 	previous_position = position
 	emit_signal('player_position_changed', position)
-	
-	
-func _onPlayerEntered(body: Node, trigger: Node):
-	if(body.name == "Player"):
-		var key = trigger.DialogueKey as String
-		
-		var diagDict = $"../Environment/Triggers".dict as Dictionary
-		if(diagDict.has(key)):
-			$Dialogue/DialogBox/Label.text = diagDict[key][0]["text"]
-		$Dialogue.visible = true
+
+
+func _on_Game_interaction(type: String):
+	_change_state(type)

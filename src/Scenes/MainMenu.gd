@@ -6,9 +6,14 @@ func _ready() -> void:
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
 	$SideMenu/OptionsButton.connect('pressed', self, '_onOptionPressed')
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
-	$FadePanel/AnimationPlayer.play("FadeIn")
 	$FadePanel/AnimationPlayer.connect("animation_finished", self, '_fadeComplete')
+
+
+func _enter_tree(): 
+	$FadePanel.visible = true;
+	$FadePanel/AnimationPlayer.play("FadeIn")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
 
 
 # disables the cursor and begins fade out to load next level

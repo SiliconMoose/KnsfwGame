@@ -75,3 +75,4 @@ stream = ExtResource( 2 )
 autoplay = true
 
 [node name="FadePanel" parent="." instance=ExtResource( 4 )]
+visible = false
