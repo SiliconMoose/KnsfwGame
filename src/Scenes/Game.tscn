@@ -91,14 +91,14 @@ height = 898.286
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ ExtResource( 44 ) ],
-"loop": true,
-"name": "Off",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 41 ) ],
 "loop": true,
 "name": "On",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ) ],
+"loop": true,
+"name": "Off",
 "speed": 5.0
 } ]
 
@@ -196,7 +196,6 @@ texture = ExtResource( 40 )
 
 [node name="Chair" type="Sprite" parent="World/Environment/Props"]
 position = Vector2( 12.6992, 444.472 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World/Environment"]
@@ -235,7 +234,7 @@ shape = SubResource( 5 )
 [node name="Hazards" type="Node2D" parent="World"]
 
 [node name="Lazer" type="Node2D" parent="World/Hazards"]
-position = Vector2( 92.0693, -12.6992 )
+position = Vector2( -641.205, 17.539 )
 __meta__ = {
 "_edit_group_": true
 }

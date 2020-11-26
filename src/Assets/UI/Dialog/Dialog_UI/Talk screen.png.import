@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Boss_Idle_1.png-d22a8219ce12d00c2d900379d8923c2f.stex"
+path="res://.import/Talk screen.png-ced7bc80fc54576bbefa02bf7afeca1b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/BOSS/Human/Boss_Idle_1.png"
-dest_files=[ "res://.import/Boss_Idle_1.png-d22a8219ce12d00c2d900379d8923c2f.stex" ]
+source_file="res://Assets/UI/Dialog/Dialog_UI/Talk screen.png"
+dest_files=[ "res://.import/Talk screen.png-ced7bc80fc54576bbefa02bf7afeca1b.stex" ]
 
 [params]
 

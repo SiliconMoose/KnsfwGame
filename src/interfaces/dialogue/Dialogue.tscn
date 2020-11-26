@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_Question.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_2.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/Custom Fonts/PoetsenOne-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
