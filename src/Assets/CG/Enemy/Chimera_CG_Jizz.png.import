@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NPC.png-7fd04467d32d9fb5274f495856ceff06.stex"
+path="res://.import/Chimera_CG_Jizz.png-f81bfe41a01d76fc9c72cf82a6d9d093.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CG/NPC.png"
-dest_files=[ "res://.import/NPC.png-7fd04467d32d9fb5274f495856ceff06.stex" ]
+source_file="res://Assets/CG/Enemy/Chimera_CG_Jizz.png"
+dest_files=[ "res://.import/Chimera_CG_Jizz.png-f81bfe41a01d76fc9c72cf82a6d9d093.stex" ]
 
 [params]
 

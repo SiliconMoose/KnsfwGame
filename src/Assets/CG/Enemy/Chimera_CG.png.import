@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Boss_Win_1.png-6a888a0a1f7edc60bc732f383e0ec351.stex"
+path="res://.import/Chimera_CG.png-9580aac4fabb25dd179962c5992d38b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CG/Boss_Win_1.png"
-dest_files=[ "res://.import/Boss_Win_1.png-6a888a0a1f7edc60bc732f383e0ec351.stex" ]
+source_file="res://Assets/CG/Enemy/Chimera_CG.png"
+dest_files=[ "res://.import/Chimera_CG.png-9580aac4fabb25dd179962c5992d38b7.stex" ]
 
 [params]
 

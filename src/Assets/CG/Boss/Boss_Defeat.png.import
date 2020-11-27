@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Boss_loss.png-ff087a5c73536a9178c0032d71a28ea0.stex"
+path="res://.import/Boss_Defeat.png-c707392df0fa79e4f8dd57bcc18476e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CG/Boss_loss.png"
-dest_files=[ "res://.import/Boss_loss.png-ff087a5c73536a9178c0032d71a28ea0.stex" ]
+source_file="res://Assets/CG/Boss/Boss_Defeat.png"
+dest_files=[ "res://.import/Boss_Defeat.png-c707392df0fa79e4f8dd57bcc18476e1.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Chimera.png-a1ef56157bed8d1d2d9d67b02037980e.stex"
+path="res://.import/2.png-887607bed05c480f764cc00c4c18f39a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CG/Chimera.png"
-dest_files=[ "res://.import/Chimera.png-a1ef56157bed8d1d2d9d67b02037980e.stex" ]
+source_file="res://Assets/CG/Boss/Halfling/2.png"
+dest_files=[ "res://.import/2.png-887607bed05c480f764cc00c4c18f39a.stex" ]
 
 [params]
 
