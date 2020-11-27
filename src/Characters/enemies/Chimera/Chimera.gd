@@ -21,6 +21,7 @@ func _ready() -> void:
 	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
 	$CooldownBar.set_duration($CooldownTimer.wait_time)
 	$States/Catch.connect("player_caught", self, "_on_player_caught")
+	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
 	if get_tree().get_root().has_node('Game/World/Player'):
 		get_tree().get_root().get_node('Game/World/Player').connect('player_position_changed', self, '_on_player_position_changed')
@@ -46,3 +47,6 @@ func _on_player_position_changed(new_position: Vector2) -> void:
 
 func _on_player_caught():
 	emit_signal("player_caught", "chimera")
+	
+func _on_footstep():
+	$Footsteps/FootstepPlayer.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Characters/Player/states/motion/fall.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/states/motion/move.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Assets/Sprites/PLAYER/Idle/Player_Idle_1.png" type="Texture" id=26]
 [ext_resource path="res://Characters/Player/states/interactions/wait_for_dialogue.gd" type="Script" id=27]
 [ext_resource path="res://Characters/Player/states/interactions/hide.gd" type="Script" id=28]
+[ext_resource path="res://Assets/Audio/Effects/Footsteps/Player/player_footstep.tres" type="AudioStream" id=29]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 163.598
@@ -53,8 +54,6 @@ animations = [ {
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 5 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
@@ -68,6 +67,16 @@ script = ExtResource( 14 )
 [node name="CooldownTimer" type="Timer" parent="."]
 
 [node name="CooldownBar" parent="." instance=ExtResource( 4 )]
+duration = 0.5
+
+[node name="Footsteps" type="Node2D" parent="."]
+
+[node name="FootstepPlayer" type="AudioStreamPlayer" parent="Footsteps"]
+stream = ExtResource( 29 )
+volume_db = -15.0
+
+[node name="FootstepTimer" type="Timer" parent="Footsteps"]
+wait_time = 0.35
 
 [node name="States" type="Node2D" parent="."]
 

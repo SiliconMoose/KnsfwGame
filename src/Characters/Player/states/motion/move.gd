@@ -4,14 +4,16 @@ extends OnGround
 export (float) var SPEED:= 125
 export (float) var ACCELERATION:= 1
 
-
 func enter(host: Character) -> void:
 	host.get_node('AnimatedSprite').play('Move')
 	host.snap_enable = true
 
+	host.get_node('Footsteps/FootstepPlayer').play()
+	host.get_node('Footsteps/FootstepTimer').start()
 
 func exit(host: Character) -> void:
 	host.snap_enable = false
+	host.get_node('Footsteps/FootstepTimer').stop()
 
 
 #warning-ignore:unused_argument

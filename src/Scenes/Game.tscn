@@ -187,9 +187,6 @@ __meta__ = {
 
 [node name="Lazer" type="Node2D" parent="World/Hazards"]
 position = Vector2( -641.205, 17.539 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="World/Hazards/Lazer"]
 

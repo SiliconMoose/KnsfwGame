@@ -7,7 +7,11 @@ export (float) var ACCELERATION:= 1
 
 func enter(host: Chimera) -> void:
 	host.get_node('AnimatedSprite').play('Move')
-
+	host.get_node('Footsteps/FootstepPlayer').play()
+	host.get_node('Footsteps/FootstepTimer').start()
+	
+func exit(host: Chimera): 
+	host.get_node('Footsteps/FootstepTimer').stop()
 
 #warning-ignore:unused_argument
 func update(host: Chimera, delta: float) -> void:

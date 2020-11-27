@@ -17,6 +17,7 @@ func _ready() -> void:
 	# Signals
 	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
 	$CooldownBar.set_duration($CooldownTimer.wait_time)
+	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
 	if get_tree().get_root().has_node('Game'):
 		get_tree().get_root().get_node('Game').connect('interaction', self, '_on_interaction')
@@ -49,3 +50,7 @@ func _on_position_changed():
 
 func _on_interaction(type: String):
 	_change_state(type)
+
+
+func _on_footstep():
+	$Footsteps/FootstepPlayer.play()
