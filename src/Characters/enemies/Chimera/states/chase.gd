@@ -24,6 +24,6 @@ func follow(host: Chimera) -> void:
 	if host.position.distance_to(host.target_position) > host.TARGET_MIN_DISTANCE:
 		move(host, target_direction, SPEED, ACCELERATION)
 	elif host.position.distance_to(host.target_position) <= host.ATTACK_RANGE and host.can_attack:
-		emit_signal('finished', 'Attack')
+		emit_signal('finished', 'Catch')
 	else:
 		emit_signal('finished', 'Idle')
