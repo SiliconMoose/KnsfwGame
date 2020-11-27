@@ -78,7 +78,9 @@ script = ExtResource( 19 )
 script = ExtResource( 15 )
 
 [node name="Chase" type="Node2D" parent="States"]
+position = Vector2( 0, 1.4142 )
 script = ExtResource( 16 )
+SPEED = 750.0
 
 [node name="Search" type="Node2D" parent="States"]
 script = ExtResource( 17 )

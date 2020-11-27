@@ -15,6 +15,7 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="FadePanel" parent="CanvasLayer" instance=ExtResource( 1 )]
+visible = false
 
 [node name="Boss_loss" type="Sprite" parent="."]
 texture = ExtResource( 3 )
