@@ -22,6 +22,8 @@ func _input(event: InputEvent) -> void:
 func startDialogue(dialogueSet: Array):
 	currentDialogue = dialogueSet
 	index = 0;
+	$DialogueBox/Instructions.visible = true
+	$DialogueBox/Instructions.modulate = Color.white
 	
 	showNext()
 
@@ -31,6 +33,9 @@ func endDialogue():
 
 
 func showNext():
+	if(index == 1):
+		$DialogueBox/AnimationPlayer.play("FadeInstruction")
+	
 	var dialogue = currentDialogue[index]
 	showDialogue(dialogue["text"], index < currentDialogue.size() - 1)
 	showPortrait(dialogue["portrait"])

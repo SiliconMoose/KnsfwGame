@@ -1,22 +1,15 @@
-extends InAir
+extends Motion
 
 export (float) var BASE_MAX_AIR_SPEED:= 75.0
 export (float) var ACCELERATION:= 0.25
 var max_air_speed: float = 0
 
 
-func enter(host: Player) -> void:
+func enter(host: Character) -> void:
 	host.gravity_enable = true
 	host.get_node('AnimatedSprite').play('Fall')
 	var current_velocity_x: float = abs(host.velocity.x)
 	max_air_speed = current_velocity_x if current_velocity_x > 0 else BASE_MAX_AIR_SPEED
-
-
-func handle_input(host: Player, event: InputEvent) -> InputEvent:
-	if event.is_action_pressed('jump') and host.can_double_jump:
-		emit_signal('finished', 'DoubleJump')
-		
-	return .handle_input(host, event)
 
 
 func exit(host: Player) -> void:
@@ -33,4 +26,3 @@ func update(host: Player, delta: float) -> void:
 
 	if host.is_grounded:
 		emit_signal('finished', 'Idle')
-		host.can_double_jump = true

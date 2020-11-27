@@ -26,8 +26,6 @@ var states_stack: Array = []
 var is_alive: bool = true
 var can_attack: bool = true
 var gravity_enable: bool = true
-var can_double_jump: bool = true
-var is_invincible: bool = false
 var has_set_next_attack: bool = false
 
 # velocity

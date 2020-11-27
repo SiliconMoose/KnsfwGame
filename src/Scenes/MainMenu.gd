@@ -1,26 +1,27 @@
 extends Control
 
+var actionAfterFade: String = "enableMenu"
 
 func _ready() -> void:
 	$SideMenu/NewGameButton.connect('pressed', self, '_onNewPressed')
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
 	$SideMenu/OptionsButton.connect('pressed', self, '_onOptionPressed')
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
-	$FadePanel/AnimationPlayer.connect("animation_finished", self, '_fadeComplete')
-
-
-func _enter_tree(): 
-	$FadePanel.visible = true;
-	$FadePanel/AnimationPlayer.play("FadeIn")
+	$FadePanel.connect("fade_complete", self, '_fadeComplete')
+	$FadePanel.visible = true
+	
+	actionAfterFade = "enableMenu"
+	$FadePanel.fadeIn()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
 
 
 # disables the cursor and begins fade out to load next level
 func _onNewPressed() -> void:
+	actionAfterFade = "startNew"
 	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$FadePanel/AnimationPlayer.play("FadeOut");
+	$FadePanel.fadeOut()
 
 
 func _onContinuePressed() -> void:
@@ -28,7 +29,7 @@ func _onContinuePressed() -> void:
 	
 	
 func _onOptionPressed() -> void:
-	$FadePanel/AnimationPlayer.play("FadeOut")
+	get_tree().reload_current_scene()
 	
 	
 func _onQuitPressed() -> void:
@@ -36,9 +37,9 @@ func _onQuitPressed() -> void:
 	
 	
 # Enables input after the initial fade in and loads the next scene after fade out
-func _fadeComplete(anim_name: String) -> void: 
-	if (anim_name == "FadeOut"):
+func _fadeComplete() -> void: 
+	if (actionAfterFade == "startNew"):
 		get_tree().change_scene("res://Scenes/Game.tscn")
-	elif (anim_name == "FadeIn"):
+	elif (actionAfterFade == "enableMenu"):
 		$FadePanel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

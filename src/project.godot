@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Common/Character.gd"
 }, {
+"base": "Character",
+"class": "Chimera",
+"language": "GDScript",
+"path": "res://Characters/enemies/Chimera/Chimera.gd"
+}, {
 "base": "Area2D",
 "class": "DamageZone",
 "language": "GDScript",
@@ -29,11 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://tools/draw.gd"
 }, {
-"base": "ColorRect",
-"class": "FadePanel",
-"language": "GDScript",
-"path": "res://interfaces/menu/FadePanel.gd"
-}, {
 "base": "State",
 "class": "GettingHit",
 "language": "GDScript",
@@ -43,11 +43,6 @@ _global_script_classes=[ {
 "class": "Health",
 "language": "GDScript",
 "path": "res://Characters/Common/Health.gd"
-}, {
-"base": "Motion",
-"class": "InAir",
-"language": "GDScript",
-"path": "res://Characters/Player/states/motion/in-air/in-air.gd"
 }, {
 "base": "State",
 "class": "Motion",
@@ -81,13 +76,12 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Character": "",
+"Chimera": "",
 "DamageZone": "",
 "Death": "",
 "Draw": "",
-"FadePanel": "",
 "GettingHit": "",
 "Health": "",
-"InAir": "",
 "Motion": "",
 "OnGround": "",
 "Physics2D": "",

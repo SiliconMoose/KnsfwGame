@@ -4,6 +4,7 @@ extends Control
 func _ready() -> void:
 	$Panel/VBoxContainer/ResumeButton.connect('pressed', self, '_on_Resume_pressed')
 	$Panel/VBoxContainer/QuitButton.connect('pressed', self, '_on_Quit_pressed')
+	visible = false
 
 
 func _input(event: InputEvent) -> void:
@@ -24,4 +25,5 @@ func _on_Resume_pressed() -> void:
 
 
 func _on_Quit_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene("res://Scenes/MainMenu.tscn")

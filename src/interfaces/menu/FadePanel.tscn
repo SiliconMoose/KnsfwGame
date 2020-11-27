@@ -42,5 +42,6 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
 anims/FadeIn = SubResource( 1 )
 anims/FadeOut = SubResource( 2 )

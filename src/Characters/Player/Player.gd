@@ -18,6 +18,9 @@ func _ready() -> void:
 	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
 	$CooldownBar.set_duration($CooldownTimer.wait_time)
 	
+	if get_tree().get_root().has_node('Game'):
+		get_tree().get_root().get_node('Game').connect('interaction', self, '_on_interaction')
+	
 	._initialize_state()
 
 
@@ -44,5 +47,5 @@ func _on_position_changed():
 	emit_signal('player_position_changed', position)
 
 
-func _on_Game_interaction(type: String):
+func _on_interaction(type: String):
 	_change_state(type)
