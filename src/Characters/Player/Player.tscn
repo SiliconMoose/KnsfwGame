@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Characters/Player/states/motion/fall.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/states/motion/move.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/PLAYER/Detected/Detected_3.png" type="Texture" id=3]
 [ext_resource path="res://Characters/Player/gui/CooldownBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=5]
 [ext_resource path="res://Characters/Player/states/motion/idle.gd" type="Script" id=6]
@@ -28,10 +29,12 @@
 [ext_resource path="res://Characters/Player/states/interactions/wait_for_dialogue.gd" type="Script" id=27]
 [ext_resource path="res://Characters/Player/states/interactions/hide.gd" type="Script" id=28]
 [ext_resource path="res://Assets/Audio/Effects/Footsteps/Player/player_footstep.tres" type="AudioStream" id=29]
+[ext_resource path="res://Assets/Sprites/PLAYER/Detected/Detected_2.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/PLAYER/Detected/Detected_1.png" type="Texture" id=31]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 163.598
-height = 341.161
+radius = 122.01
+height = 451.034
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -59,7 +62,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-animation = "Hide"
+animation = "Idle"
 
 [node name="Physics2D" type="Node2D" parent="."]
 script = ExtResource( 14 )
@@ -68,6 +71,22 @@ script = ExtResource( 14 )
 
 [node name="CooldownBar" parent="." instance=ExtResource( 4 )]
 duration = 0.5
+
+[node name="Icons" type="Node2D" parent="."]
+
+[node name="Hidden" type="Sprite" parent="Icons"]
+position = Vector2( 0, -430 )
+texture = ExtResource( 31 )
+
+[node name="Found" type="Sprite" parent="Icons"]
+visible = false
+position = Vector2( 0, -430 )
+texture = ExtResource( 30 )
+
+[node name="Search" type="Sprite" parent="Icons"]
+visible = false
+position = Vector2( 0, -430 )
+texture = ExtResource( 3 )
 
 [node name="Footsteps" type="Node2D" parent="."]
 
@@ -85,7 +104,7 @@ script = ExtResource( 6 )
 
 [node name="Move" type="Node2D" parent="States"]
 script = ExtResource( 2 )
-SPEED = 500.0
+SPEED = 800.0
 
 [node name="Hide" type="Node2D" parent="States"]
 script = ExtResource( 28 )

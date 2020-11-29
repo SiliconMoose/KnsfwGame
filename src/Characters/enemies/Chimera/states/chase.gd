@@ -16,7 +16,7 @@ func exit(host: Chimera):
 #warning-ignore:unused_argument
 func update(host: Chimera, delta: float) -> void:
 	if not host.has_target:
-		emit_signal('finished', 'Idle')
+		emit_signal('finished', 'Search')
 	else:
 		follow(host)
 

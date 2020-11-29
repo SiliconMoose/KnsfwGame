@@ -9,12 +9,18 @@ signal player_caught(type)
 onready var Physics2D: Node2D = $Physics2D
 
 var has_target: bool = false
+var player_hidden: bool = false
 var target_position: Vector2 = Vector2()
+var start_position: Vector2 = position
 
 const TARGET_MIN_DISTANCE: float = 600.0
 const FOLLOW_RANGE: float = 2000.0
 const ATTACK_RANGE: float = 700.0
+const BACK_DETECT_RANGE: float = 1000.0
 
+export var patrol_name: String
+
+var patrol_path: Curve2D
 
 func _ready() -> void:
 	# Signals
@@ -23,10 +29,16 @@ func _ready() -> void:
 	$States/Catch.connect("player_caught", self, "_on_player_caught")
 	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
-	if get_tree().get_root().has_node('Game/World/Player'):
-		get_tree().get_root().get_node('Game/World/Player').connect('player_position_changed', self, '_on_player_position_changed')
+	var player = get_tree().get_root().get_node('Game/World/Player')
+	if player != null:
+		player.connect('player_position_changed', self, '_on_player_position_changed')
+		player.connect('state_changed', self, '_on_player_state_changed')
 	
-	._initialize_state()
+	var path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+patrol_name)
+	patrol_path = path.curve
+	
+	var startState = "Patrol" if path != null else "Idle"
+	._initialize_state(startState)
 
 
 # Delegate the call to theer
@@ -40,13 +52,20 @@ func start_cooldown():
 	$CooldownBar.start()
 
 
-var i = 0;
 func _on_player_position_changed(new_position: Vector2) -> void:
 	target_position = new_position
-	has_target = position.distance_to(target_position) <= FOLLOW_RANGE
+	var target_direction = (target_position - position).normalized()
+	var isFacingTarget = look_direction.x * target_direction.x > 0
+	var detectRange = FOLLOW_RANGE if isFacingTarget else BACK_DETECT_RANGE
+	has_target = position.distance_to(target_position) <= FOLLOW_RANGE && !player_hidden
+	
+func _on_player_state_changed(state: String) -> void:
+	player_hidden = state == "Hide"
+
 
 func _on_player_caught():
 	emit_signal("player_caught", "chimera")
+	
 	
 func _on_footstep():
 	$Footsteps/FootstepPlayer.play()

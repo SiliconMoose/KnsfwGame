@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Assets/Environments/Props/Fallen_Book.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Environments/Props/Poster_1.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Environments/Props/Drawer_plain.png" type="Texture" id=15]
+[ext_resource path="res://environment/HidingPlaces/Watercooler.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Assets/Environments/Props/Bookshelf_1.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Environments/Props/Bookshelf_0.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Environments/Props/Trash.png" type="Texture" id=31]
@@ -32,7 +33,7 @@
 [ext_resource path="res://Assets/Environments/Objects/Door_Office.png" type="Texture" id=45]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3427.8, 35.3273 )
+extents = Vector2( 3843.07, 35.3273 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.5732, 546.497 )
@@ -40,7 +41,7 @@ extents = Vector2( 25.5732, 546.497 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 111.803, 156.511 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 35 ) ],
 "loop": true,
@@ -53,9 +54,14 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 112.298
 height = 898.286
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -116.522, 6.81177, 0, 0, 0, 0, -3037.17, 46.9559 )
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -77,22 +83,39 @@ visible = false
 [node name="Pause" parent="Interfaces" instance=ExtResource( 2 )]
 visible = false
 
+[node name="CGTimer" type="Timer" parent="Interfaces"]
+
 [node name="World" type="Node2D" parent="."]
 
 [node name="Environment" type="Node2D" parent="World"]
 
+[node name="Background" type="CanvasLayer" parent="World/Environment"]
+layer = -1
+follow_viewport_enable = true
+
+[node name="Wall" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 77.351 )
+scale = Vector2( 1.66823, 1.19715 )
+texture = ExtResource( 9 )
+
+[node name="Floor" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 580.557 )
+scale = Vector2( 1.66823, 0.28966 )
+texture = ExtResource( 9 )
+
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 5.33936, 544.072 )
+position = Vector2( 432.432, 552.557 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 3351.16, -20.0114 )
+position = Vector2( 4145.95, -31.3251 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( -2473.91, 14.1393 )
+position = Vector2( -3401.63, 31.1099 )
 shape = SubResource( 2 )
 
 [node name="Triggers" type="Node2D" parent="World/Environment"]
@@ -167,22 +190,6 @@ texture = ExtResource( 40 )
 position = Vector2( 12.6992, 444.472 )
 texture = ExtResource( 12 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="World/Environment"]
-layer = -1
-
-[node name="Background2" type="Sprite" parent="World/Environment/CanvasLayer"]
-position = Vector2( 287.262, 77.351 )
-scale = Vector2( 1.66823, 1.19715 )
-texture = ExtResource( 9 )
-
-[node name="Background" type="Sprite" parent="World/Environment/CanvasLayer"]
-position = Vector2( 287.262, 580.557 )
-scale = Vector2( 1.66823, 0.28966 )
-texture = ExtResource( 9 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Hazards" type="Node2D" parent="World"]
 
 [node name="Lazer" type="Node2D" parent="World/Hazards"]
@@ -191,11 +198,11 @@ position = Vector2( -641.205, 17.539 )
 [node name="KinematicBody2D" type="KinematicBody2D" parent="World/Hazards/Lazer"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="World/Hazards/Lazer/KinematicBody2D"]
-frames = SubResource( 6 )
+frames = SubResource( 4 )
 animation = "off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hazards/Lazer/KinematicBody2D"]
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 disabled = true
 
 [node name="Interactables" type="Node2D" parent="World"]
@@ -220,14 +227,28 @@ texture = ExtResource( 42 )
 position = Vector2( 3104.96, 92.0693 )
 texture = ExtResource( 43 )
 
-[node name="Enemies" type="Node2D" parent="World"]
+[node name="HidingPlaces" type="Node2D" parent="World"]
+z_index = 10
 
-[node name="Chimera" parent="World/Enemies" instance=ExtResource( 7 )]
-position = Vector2( -1627.26, 36.2877 )
+[node name="Watercooler" parent="World/HidingPlaces" instance=ExtResource( 16 )]
+position = Vector2( 2076.52, 135.918 )
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
 position = Vector2( 948.911, 164.685 )
+z_index = 15
 
 [node name="Camera2D" type="Camera2D" parent="World/Player"]
 current = true
 zoom = Vector2( 3, 3 )
+
+[node name="Enemies" type="Node2D" parent="World"]
+z_index = 20
+
+[node name="Chimera" parent="World/Enemies" instance=ExtResource( 7 )]
+position = Vector2( -1627.26, -3.3102 )
+patrol_name = "Path01"
+
+[node name="PatrolPaths" type="Node2D" parent="World"]
+
+[node name="Path01" type="Path2D" parent="World/PatrolPaths"]
+curve = SubResource( 6 )

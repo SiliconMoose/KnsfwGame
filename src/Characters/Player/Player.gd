@@ -4,13 +4,13 @@ extends Character
 class_name Player
 
 signal player_position_changed(new_position)
-#warning-ignore:unused_signal
-signal player_death
 
 # cache
 onready var Physics2D: Node2D = $Physics2D
 
 var previous_position: Vector2 = Vector2()
+
+var can_hide: bool = false
 
 
 func _ready() -> void:
@@ -19,13 +19,16 @@ func _ready() -> void:
 	$CooldownBar.set_duration($CooldownTimer.wait_time)
 	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
-	if get_tree().get_root().has_node('Game'):
-		get_tree().get_root().get_node('Game').connect('interaction', self, '_on_interaction')
+	var game = get_tree().get_root().get_node('Game')
+	if game != null:
+		game.connect('interaction', self, '_on_interaction')
+		game.connect('action_available', self, '_on_action_available')
+	
+	_show_icon("Detected_1")
 	
 	._initialize_state()
 
 
-# Delegate the call to theer
 func _physics_process(delta: float) -> void:
 	current_state.update(self, delta)
 	Physics2D.compute_gravity(self, delta)
@@ -33,7 +36,6 @@ func _physics_process(delta: float) -> void:
 		_on_position_changed()
 
 
-# Catch input
 func _input(event: InputEvent) -> void:
 	current_state.handle_input(self, event)
 
@@ -52,5 +54,20 @@ func _on_interaction(type: String):
 	_change_state(type)
 
 
+func _on_action_available(type: String):
+	match type:
+		"CanHide":
+			can_hide = true
+		"CannotHide":
+			can_hide = false
+
+
 func _on_footstep():
 	$Footsteps/FootstepPlayer.play()
+
+
+func _show_icon(name: String):
+	var icons = $Icons.get_children()
+	for icon in icons:
+		icon.visible = icon.name == name
+	
