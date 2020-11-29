@@ -11,6 +11,12 @@ var activeHidingPlace: HidingPlace
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var global_l = $Bounds/Left.global_position
+	var global_r = $Bounds/Right.global_position
+	$World/Player/Camera.limit_left = global_l.x
+	$World/Player/Camera.limit_right = global_r.x
+	
+	
 	$Interfaces/Dialogue.connect("dialogue_done", self, "_on_dialogue_done")
 	$Interfaces/Dialogue.visible = false
 	
@@ -18,7 +24,7 @@ func _ready():
 	
 	var triggers = $World/Environment/Triggers.get_children()
 	for trigger in triggers:
-		trigger.connect('body_entered', self, "_on_player_trip_dialogue", [trigger])
+		trigger.connect('body_entered', self, "_on_player_trip_trigger", [trigger])
 
 	enemiesList = $World/Enemies.get_children()
 	for enemy in enemiesList:
@@ -51,18 +57,21 @@ func _process(delta: float):
 		total += delta
 
 
-func _on_player_trip_dialogue(body: Node, trigger: Node):
-	if(body.name == "Player" && !trigger.isTripped):
-		var key = trigger.DialogueKey as String
-		trigger.isTripped = true
-		
-		var diagDict = $World/Environment/Triggers.dict as Dictionary
-		if(diagDict.has(key)):
-			var dialogueList = diagDict[key] as Array
-			$Interfaces/Dialogue.startDialogue(dialogueList)
+func _on_player_trip_trigger(body: Node, trigger: Node):
+	if body.name == "Player":
+		if(trigger is DialogueTrigger && !trigger.isTripped):
+			var key = trigger.DialogueKey as String
+			trigger.isTripped = true
 			
-			if(trigger.haltPlayer):
-				emit_signal('interaction', 'Wait')
+			var diagDict = $Interfaces/Dialogue.dict as Dictionary
+			if(diagDict.has(key)):
+				var dialogueList = diagDict[key] as Array
+				$Interfaces/Dialogue.startDialogue(dialogueList)
+				
+				if(trigger.haltPlayer):
+					emit_signal('interaction', 'Wait')
+		elif trigger is ChangeLevelTrigger:
+			LevelManager.goto_scene("res://Levels/%s.tscn" % trigger.levelName)
 
 
 func _on_dialogue_done():

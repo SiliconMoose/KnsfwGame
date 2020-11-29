@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=3]
+[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3843.07, 35.3273 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.5732, 546.497 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Interfaces" type="CanvasLayer" parent="."]
+
+[node name="FadePanel" parent="Interfaces" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -315.375
+margin_top = -595.724
+margin_right = 2244.63
+margin_bottom = 844.276
+
+[node name="Dialogue" parent="Interfaces" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Pause" parent="Interfaces" instance=ExtResource( 2 )]
+visible = false
+
+[node name="CGTimer" type="Timer" parent="Interfaces"]
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Left" type="Position2D" parent="Bounds"]
+position = Vector2( -3403.93, -19.1697 )
+
+[node name="Right" type="Position2D" parent="Bounds"]
+position = Vector2( 4177.25, 28.6163 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Environment" type="Node2D" parent="World"]
+
+[node name="Background" type="CanvasLayer" parent="World/Environment"]
+layer = -1
+follow_viewport_enable = true
+
+[node name="Wall" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 77.351 )
+scale = Vector2( 1.66823, 1.19715 )
+texture = ExtResource( 9 )
+
+[node name="Floor" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 580.557 )
+scale = Vector2( 1.66823, 0.28966 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 432.432, 552.557 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 4145.95, -31.3251 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( -3401.63, 31.1099 )
+shape = SubResource( 2 )
+
+[node name="Triggers" type="Node2D" parent="World/Environment"]
+
+[node name="Props" type="Node2D" parent="World/Environment"]
+position = Vector2( 1515.97, -192.076 )
+
+[node name="Hazards" type="Node2D" parent="World"]
+
+[node name="Interactables" type="Node2D" parent="World"]
+
+[node name="HidingPlaces" type="Node2D" parent="World"]
+z_index = 10
+
+[node name="Player" parent="World" instance=ExtResource( 1 )]
+position = Vector2( 948.911, 164.685 )
+z_index = 15
+
+[node name="Camera" type="Camera2D" parent="World/Player"]
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="Enemies" type="Node2D" parent="World"]
+z_index = 20
+
+[node name="PatrolPaths" type="Node2D" parent="World"]
+
+[node name="Foreground" type="Node2D" parent="World"]
+z_index = 30

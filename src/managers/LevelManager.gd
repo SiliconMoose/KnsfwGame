@@ -56,26 +56,21 @@ func _process(time: float) -> void:
 	while OS.get_ticks_msec() < t + time_max: # use "time_max" to control for how long we block this thread
 
 		# poll your loader
-		var err = loader.poll()
+		var poll = loader.poll()
 
-		if err == ERR_FILE_EOF: # Finished loading.
-			update_progress(1)
+		if poll == ERR_FILE_EOF: # Finished loading.
 			current_resource = loader.get_resource()
 			loader = null
 			loading_screen.set_resource(current_resource)
 			break
-		elif err == OK:
-			update_progress(float(loader.get_stage()) / loader.get_stage_count())
+		elif poll == OK:
+			break
 		else: # error during loading
 			show_error()
 			loader = null
 			break
 
-
-func update_progress(value: float) -> void:
-	loading_screen.set_progress(round(value * 100))
-
-
 func set_new_scene(scene_resource: Resource) -> void:
 	var scene = scene_resource.instance()
+	GameManager.currentLevel = scene
 	get_node('/root').add_child(scene)

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "ChangeLevelTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/ChangeLevelTrigger.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
@@ -20,14 +25,9 @@ _global_script_classes=[ {
 "path": "res://Characters/enemies/Chimera/Chimera.gd"
 }, {
 "base": "Area2D",
-"class": "DamageZone",
+"class": "DialogueTrigger",
 "language": "GDScript",
-"path": "res://Characters/Common/DamageZone.gd"
-}, {
-"base": "State",
-"class": "Death",
-"language": "GDScript",
-"path": "res://Characters/Common/states/motion/combat/death.gd"
+"path": "res://Data/Triggers/DialogueTrigger.gd"
 }, {
 "base": "Node2D",
 "class": "Draw",
@@ -64,21 +64,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Player/Player.gd"
 }, {
-"base": "DamageZone",
-"class": "SlashDamageZone",
-"language": "GDScript",
-"path": "res://Characters/Player/PlayerDamageZone.gd"
-}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://Characters/Common/states/state.gd"
 } ]
 _global_script_class_icons={
+"ChangeLevelTrigger": "",
 "Character": "",
 "Chimera": "",
-"DamageZone": "",
-"Death": "",
+"DialogueTrigger": "",
 "Draw": "",
 "Health": "",
 "HidingPlace": "",
@@ -86,15 +81,19 @@ _global_script_class_icons={
 "OnGround": "",
 "Physics2D": "",
 "Player": "",
-"SlashDamageZone": "",
 "State": ""
 }
 
 [application]
 
-config/name="KNSFW Game"
+config/name="Corporate Hellfare"
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+LevelManager="*res://managers/LevelManager.gd"
+GameManager="*res://managers/GameManager.gd"
 
 [display]
 
@@ -137,5 +136,5 @@ hide={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.176471, 0.176471, 0.176471, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

@@ -25,7 +25,7 @@ func _onNewPressed() -> void:
 
 
 func _onContinuePressed() -> void:
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	LevelManager.goto_scene("res://Scenes/Game.tscn")
 	
 	
 func _onOptionPressed() -> void:
@@ -39,7 +39,7 @@ func _onQuitPressed() -> void:
 # Enables input after the initial fade in and loads the next scene after fade out
 func _fadeComplete() -> void: 
 	if (actionAfterFade == "startNew"):
-		get_tree().change_scene("res://Scenes/Game.tscn")
+		LevelManager.goto_scene("res://Levels/IntroLevel.tscn")
 	elif (actionAfterFade == "enableMenu"):
 		$FadePanel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

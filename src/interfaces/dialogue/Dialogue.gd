@@ -2,17 +2,25 @@ extends Panel
 
 var currentDialogue: Array
 var index: int
+var dict = {}
 
 signal dialogue_done()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var file = File.new()
+	file.open("res://Data/dialogue.json", file.READ)
+	var text = file.get_as_text()
+	dict = JSON.parse(text).result
+	file.close()
 	showPortrait("default")
 	
-	
+	$DialogueBox/NextArrow.connect("pressed", self, "_on_next_clicked")
+
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('interact'):
+	if event.is_action_pressed('interact') && visible:
 		if(index < currentDialogue.size()):
 			showNext()
 		else:
@@ -25,10 +33,12 @@ func startDialogue(dialogueSet: Array):
 	$DialogueBox/Instructions.visible = true
 	$DialogueBox/Instructions.modulate = Color.white
 	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	showNext()
 
 func endDialogue():
 	visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	emit_signal("dialogue_done")
 
 
@@ -57,10 +67,18 @@ func showPortrait(name: String):
 			$PortraitBox/PortraitGrin.visible = true
 		"question":
 			$PortraitBox/PortraitQuestion.visible = true
+		"npc":
+			$PortraitBox/PortraitNPC.visible = true
 		_:
 			$PortraitBox/PortraitNeutral.visible = true
 
 
 func showDialogue(text: String, hasNext: bool):
 	$DialogueBox/Label.text = text
-	$DialogueBox/NextArrow.visible = hasNext
+
+
+func _on_next_clicked():
+	if(index < currentDialogue.size()):
+		showNext()
+	else:
+		endDialogue()

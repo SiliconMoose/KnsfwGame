@@ -11,20 +11,20 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "default",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Dead",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
 } ]
 
 [node name="NPC_Extra" type="Node2D"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 12
+frame = 15
 playing = true

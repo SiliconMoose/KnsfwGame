@@ -1,13 +1,12 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=3]
 [ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=5]
-[ext_resource path="res://interfaces/menu/TriggerDialogue.gd" type="Script" id=6]
+[ext_resource path="res://Data/Triggers/DialogueTrigger.gd" type="Script" id=6]
 [ext_resource path="res://Characters/enemies/Chimera/Chimera.tscn" type="PackedScene" id=7]
-[ext_resource path="res://interfaces/dialogue/Triggers.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Environments/Props/Red_Light.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Environments/Props/Poster_0.png" type="Texture" id=11]
@@ -43,15 +42,15 @@ extents = Vector2( 111.803, 156.511 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 35 ) ],
-"loop": true,
-"name": "on",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 34 ) ],
 "loop": true,
 "name": "off",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "on",
+"speed": 8.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=5]
@@ -119,13 +118,11 @@ position = Vector2( -3401.63, 31.1099 )
 shape = SubResource( 2 )
 
 [node name="Triggers" type="Node2D" parent="World/Environment"]
-script = ExtResource( 8 )
 
 [node name="DialogueTrigger01" type="Area2D" parent="World/Environment/Triggers"]
 position = Vector2( 1520.53, 188.585 )
 script = ExtResource( 6 )
 DialogueKey = "poster_comment"
-isTripped = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/DialogueTrigger01"]
 shape = SubResource( 3 )

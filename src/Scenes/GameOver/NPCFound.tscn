@@ -2,8 +2,8 @@
 
 [ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/GameOver/CGCutscene.gd" type="Script" id=2]
-[ext_resource path="res://Assets/CG/Enemy/Chimera_CG_Jizz.png" type="Texture" id=3]
-[ext_resource path="res://Assets/CG/Enemy/Chimera_CG.png" type="Texture" id=4]
+[ext_resource path="res://Assets/CG/NPC/NPC_CG_cum.png" type="Texture" id=3]
+[ext_resource path="res://Assets/CG/NPC/NPC_CG.png" type="Texture" id=4]
 [ext_resource path="res://interfaces/menu/CumButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/UI/Next.png" type="Texture" id=6]
 [ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=7]
@@ -11,7 +11,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Show_01"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Images/Chimera_CG_Jizz:modulate")
+tracks/0/path = NodePath("Images/NPC_CG_Jizz:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -51,7 +51,7 @@ margin_right = 258.589
 margin_bottom = 136.699
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.996078, 1, 0.909804, 1 )
-text = "Restart"
+text = "Continue"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,12 +75,12 @@ mouse_filter = 2
 
 [node name="Images" type="Node2D" parent="."]
 
-[node name="Chimera_CG" type="Sprite" parent="Images"]
+[node name="NPC_CG" type="Sprite" parent="Images"]
 scale = Vector2( 0.333333, 0.333333 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Chimera_CG_Jizz" type="Sprite" parent="Images"]
+[node name="NPC_CG_Jizz" type="Sprite" parent="Images"]
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.333333, 0.333333 )
 texture = ExtResource( 3 )
