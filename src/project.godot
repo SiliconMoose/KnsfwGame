@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Data/Triggers/DialogueTrigger.gd"
 }, {
+"base": "Area2D",
+"class": "Door",
+"language": "GDScript",
+"path": "res://environment/Doors/Door.gd"
+}, {
 "base": "Node2D",
 "class": "Draw",
 "language": "GDScript",
@@ -39,10 +44,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Common/Health.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "HidingPlace",
 "language": "GDScript",
 "path": "res://environment/HidingPlaces/HidingPlace.gd"
+}, {
+"base": "Area2D",
+"class": "InstructionTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/InstructionTrigger.gd"
 }, {
 "base": "State",
 "class": "Motion",
@@ -74,9 +84,11 @@ _global_script_class_icons={
 "Character": "",
 "Chimera": "",
 "DialogueTrigger": "",
+"Door": "",
 "Draw": "",
 "Health": "",
 "HidingPlace": "",
+"InstructionTrigger": "",
 "Motion": "",
 "OnGround": "",
 "Physics2D": "",
@@ -94,6 +106,7 @@ config/icon="res://icon.png"
 
 LevelManager="*res://managers/LevelManager.gd"
 GameManager="*res://managers/GameManager.gd"
+UserDataManager="*res://managers/UserDataManager.gd"
 
 [display]
 

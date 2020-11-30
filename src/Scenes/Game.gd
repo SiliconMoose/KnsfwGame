@@ -4,10 +4,13 @@ signal interaction(type)
 
 signal action_available(type)
 
+export var levelId: String
+
 var enemiesList: Array
 var targetCG: String
 
 var activeHidingPlace: HidingPlace
+var activeDoor: Door
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +24,7 @@ func _ready():
 	$Interfaces/Dialogue.visible = false
 	
 	$World/Player.connect("state_changed", self, "_on_player_state_change")
+	$World/Player.connect("interact", self, "_on_player_interact")
 	
 	var triggers = $World/Environment/Triggers.get_children()
 	for trigger in triggers:
@@ -30,15 +34,18 @@ func _ready():
 	for enemy in enemiesList:
 		enemy.connect('player_caught', self, "_on_player_caught")
 		
-	var hidingPlaces = $World/HidingPlaces.get_children()
-	for place in hidingPlaces:
-		place.connect('body_entered', self, "_on_player_can_hide", [place, true])
-		place.connect('body_exited', self, "_on_player_can_hide", [place, false])
+	var interacts = $World/Interactables.get_children()
+	for place in interacts:
+		place.connect('body_entered', self, "_on_player_can_interact", [place, true])
+		place.connect('body_exited', self, "_on_player_can_interact", [place, false])
 	
 	$Interfaces/CGTimer.connect("timeout", self, "_transition_to_CG")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Interfaces/FadePanel.visible = true
 	$Interfaces/FadePanel/AnimationPlayer.play("FadeIn")
+	
+	UserDataManager.set_data("save-file", { level = levelId })
+	UserDataManager.save_data()
 
 
 var total = 0.0
@@ -59,7 +66,7 @@ func _process(delta: float):
 
 func _on_player_trip_trigger(body: Node, trigger: Node):
 	if body.name == "Player":
-		if(trigger is DialogueTrigger && !trigger.isTripped):
+		if (trigger is DialogueTrigger && !trigger.isTripped):
 			var key = trigger.DialogueKey as String
 			trigger.isTripped = true
 			
@@ -70,8 +77,11 @@ func _on_player_trip_trigger(body: Node, trigger: Node):
 				
 				if(trigger.haltPlayer):
 					emit_signal('interaction', 'Wait')
+		elif (trigger is InstructionTrigger && !trigger.isTripped):
+			trigger.isTripped = true
+			$Interfaces/Instruction.show_instruction(trigger.Instruction)
 		elif trigger is ChangeLevelTrigger:
-			LevelManager.goto_scene("res://Levels/%s.tscn" % trigger.levelName)
+			LevelManager.start_level(trigger.levelName)
 
 
 func _on_dialogue_done():
@@ -85,16 +95,26 @@ func _on_player_caught(type: String):
 	$Interfaces/CGTimer.start() 
 
 
-func _on_player_can_hide(body: Node, place: Node, isIn: bool):
+func _on_player_can_interact(body: Node, place: Node, isIn: bool):
 	if(body.name == "Player"):
-		if(isIn):
-			activeHidingPlace = place
-			place.highlight(true)
-			emit_signal("action_available", "CanHide")
-		else:
-			activeHidingPlace = null
-			place.highlight(false)
-			emit_signal("action_available", "CannotHide")
+		if place is HidingPlace:
+			if(isIn):
+				activeHidingPlace = place
+				place.highlight(true)
+				emit_signal("action_available", "CanHide")
+			else:
+				activeHidingPlace = null
+				place.highlight(false)
+				emit_signal("action_available", "CannotHide")
+		elif place is Door:
+			if(isIn):
+				activeDoor = place
+				place.show_icon(true)
+				emit_signal("action_available", "CanUseDoor")
+			else:
+				activeDoor = null
+				place.show_icon(false)
+				emit_signal("action_available", "CannotUseDoor")
 
 
 enum { Found, Hidden, Search }
@@ -124,6 +144,14 @@ func _on_player_state_change(state: String):
 			activeHidingPlace.modulate = Color.white
 
 
+func _on_player_interact(type: String):
+	if type == "Door":
+		var level = activeDoor.ConnectedLevel
+		LevelManager.start_level(level)
+
+
 func _transition_to_CG():
 	if(targetCG == "chimera"):
-		get_tree().change_scene("res://Scenes/GameOver/ChimeraEnd.tscn")
+		LevelManager.goto_scene("res://Scenes/GameOver/ChimeraEnd.tscn")
+	elif(targetCG == "boss"):
+		LevelManager.goto_scene("res://Scenes/GameOver/BossEnd.tscn")

@@ -5,12 +5,15 @@ class_name Player
 
 signal player_position_changed(new_position)
 
+signal interact(type)
+
 # cache
 onready var Physics2D: Node2D = $Physics2D
 
 var previous_position: Vector2 = Vector2()
 
 var can_hide: bool = false
+var can_use_door: bool = false
 
 
 func _ready() -> void:
@@ -37,6 +40,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed('interact'):
+		if can_use_door:
+			emit_signal("interact", "Door")
+	
 	current_state.handle_input(self, event)
 
 
@@ -60,6 +67,10 @@ func _on_action_available(type: String):
 			can_hide = true
 		"CannotHide":
 			can_hide = false
+		"CanUseDoor":
+			can_use_door = true
+		"CannotUseDoor":
+			can_use_door = false
 
 
 func _on_footstep():
@@ -70,4 +81,3 @@ func _show_icon(name: String):
 	var icons = $Icons.get_children()
 	for icon in icons:
 		icon.visible = icon.name == name
-	

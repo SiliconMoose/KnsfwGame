@@ -1,0 +1,151 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Data/Triggers/InstructionTrigger.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Environments/Objects/Door_Office.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interfaces/menu/Instruction.tscn" type="PackedScene" id=6]
+[ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=9]
+[ext_resource path="res://environment/HidingPlaces/Watercooler.tscn" type="PackedScene" id=10]
+[ext_resource path="res://environment/Doors/DoorDown.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3843.07, 35.3273 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.5732, 546.497 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 42.4827, 101.643 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+levelId = "TutorialHallway"
+
+[node name="Interfaces" type="CanvasLayer" parent="."]
+
+[node name="FadePanel" parent="Interfaces" instance=ExtResource( 8 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -315.375
+margin_top = -595.724
+margin_right = 2244.63
+margin_bottom = 844.276
+
+[node name="Dialogue" parent="Interfaces" instance=ExtResource( 9 )]
+visible = false
+
+[node name="Instruction" parent="Interfaces" instance=ExtResource( 6 )]
+
+[node name="Pause" parent="Interfaces" instance=ExtResource( 7 )]
+visible = false
+
+[node name="CGTimer" type="Timer" parent="Interfaces"]
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Left" type="Position2D" parent="Bounds"]
+position = Vector2( -3396.32, 14.7786 )
+
+[node name="Right" type="Position2D" parent="Bounds"]
+position = Vector2( 2361.25, 24.6163 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Environment" type="Node2D" parent="World"]
+
+[node name="Background" type="CanvasLayer" parent="World/Environment"]
+layer = -1
+follow_viewport_enable = true
+
+[node name="Wall" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 77.351 )
+scale = Vector2( 1.66823, 1.19715 )
+texture = ExtResource( 3 )
+
+[node name="Floor" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 580.557 )
+scale = Vector2( 1.66823, 0.28966 )
+texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 432.432, 552.557 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 2365.95, 20.6749 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( -3401.63, 31.1099 )
+shape = SubResource( 2 )
+
+[node name="Triggers" type="Node2D" parent="World/Environment"]
+
+[node name="MoveInstruction" type="Area2D" parent="World/Environment/Triggers"]
+position = Vector2( -2263.69, 124.453 )
+script = ExtResource( 1 )
+Instruction = "Move with A and D or Left and Right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/MoveInstruction"]
+position = Vector2( -632.48, -7.55951 )
+shape = SubResource( 3 )
+
+[node name="HideInstruction" type="Area2D" parent="World/Environment/Triggers"]
+position = Vector2( -1169.93, 166.405 )
+script = ExtResource( 1 )
+Instruction = "Hold Shift or Ctrl to hide behind highlighted objects"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/HideInstruction"]
+position = Vector2( -9.18469, 1.43024 )
+shape = SubResource( 3 )
+
+[node name="InteractInstruction" type="Area2D" parent="World/Environment/Triggers"]
+position = Vector2( 1024.97, 166.287 )
+script = ExtResource( 1 )
+Instruction = "Press Enter or E to interact with indicated objects"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/InteractInstruction"]
+position = Vector2( -9.18469, 1.43024 )
+shape = SubResource( 3 )
+
+[node name="Props" type="Node2D" parent="World/Environment"]
+position = Vector2( 1515.97, -192.076 )
+
+[node name="Door_Office" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -4398.22, 290.302 )
+texture = ExtResource( 4 )
+
+[node name="Hazards" type="Node2D" parent="World"]
+
+[node name="Interactables" type="Node2D" parent="World"]
+
+[node name="DoorDown" parent="World/Interactables" instance=ExtResource( 11 )]
+position = Vector2( 1869.95, 97.7014 )
+ConnectedLevel = "Floor1"
+
+[node name="Watercooler" parent="World/Interactables" instance=ExtResource( 10 )]
+position = Vector2( -614.306, 137.844 )
+
+[node name="Player" parent="World" instance=ExtResource( 5 )]
+position = Vector2( -2894.94, 164.402 )
+z_index = 15
+
+[node name="Camera" type="Camera2D" parent="World/Player"]
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="Enemies" type="Node2D" parent="World"]
+z_index = 20
+
+[node name="PatrolPaths" type="Node2D" parent="World"]
+
+[node name="Foreground" type="Node2D" parent="World"]
+z_index = 30

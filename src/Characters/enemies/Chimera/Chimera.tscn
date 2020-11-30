@@ -31,20 +31,20 @@ height = 342.446
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "Run",
-"speed": 5.0
+"name": "Move",
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 13 ) ],
+"frames": [  ],
 "loop": true,
-"name": "Move",
-"speed": 12.0
+"name": "Run",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]

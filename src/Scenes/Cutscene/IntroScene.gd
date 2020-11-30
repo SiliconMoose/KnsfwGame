@@ -40,7 +40,12 @@ func _ready():
 func _on_player_trip_trigger(body: Node, trigger: Node):
 	if body.name == "Player":
 		if trigger is ChangeLevelTrigger:
-			LevelManager.goto_scene("res://Levels/%s.tscn" % trigger.levelName)
+			LevelManager.start_level(trigger.levelName)
+			# stop the simulated keypress
+			var a = InputEventKey.new()
+			a.scancode = KEY_RIGHT
+			a.pressed = false 
+			Input.parse_input_event(a)
 
 
 func _on_dialogue_done():
@@ -49,6 +54,11 @@ func _on_dialogue_done():
 		$Interfaces/FadePanel.fadeOut()
 	else:
 		emit_signal('interaction', 'Idle')
+		# simulate a keypress to the right
+		var a = InputEventKey.new()
+		a.scancode = KEY_RIGHT
+		a.pressed = true 
+		Input.parse_input_event(a)
 
 
 func _show_imp():

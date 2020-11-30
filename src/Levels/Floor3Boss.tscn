@@ -1,47 +1,24 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Cutscene/IntroScene.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=3]
 [ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Backgrounds/DoorEnd.png" type="Texture" id=6]
-[ext_resource path="res://Data/Triggers/ChangeLevelTrigger.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Cutscene/Pentagram_Sharpie.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interfaces/menu/Instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Cutscene/NPC_Extra.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Cutscene/IMP_MC.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Assets/Audio/Effects/Foley/Fire Burst 4.wav" type="AudioStream" id=12]
-[ext_resource path="res://Scenes/GameOver/BonusNPC.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4249.98, 35.3273 )
+extents = Vector2( 3843.07, 35.3273 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.5732, 546.497 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 57.8567, 655.416 )
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
-levelId = "IntroLevel"
+levelId = "Floor3Boss"
 
 [node name="Interfaces" type="CanvasLayer" parent="."]
-
-[node name="Dialogue" parent="Interfaces" instance=ExtResource( 5 )]
-visible = false
-
-[node name="Pause" parent="Interfaces" instance=ExtResource( 2 )]
-visible = false
-
-[node name="CGTimer" type="Timer" parent="Interfaces"]
-
-[node name="FireSound" type="AudioStreamPlayer" parent="Interfaces"]
-stream = ExtResource( 12 )
-
-[node name="CG" parent="Interfaces" instance=ExtResource( 13 )]
-visible = false
 
 [node name="FadePanel" parent="Interfaces" instance=ExtResource( 4 )]
 visible = false
@@ -52,13 +29,23 @@ margin_top = -595.724
 margin_right = 2244.63
 margin_bottom = 844.276
 
+[node name="Dialogue" parent="Interfaces" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Instruction" parent="Interfaces" instance=ExtResource( 6 )]
+
+[node name="Pause" parent="Interfaces" instance=ExtResource( 2 )]
+visible = false
+
+[node name="CGTimer" type="Timer" parent="Interfaces"]
+
 [node name="Bounds" type="Node2D" parent="."]
 
 [node name="Left" type="Position2D" parent="Bounds"]
-position = Vector2( -3.94995, 122.079 )
+position = Vector2( -3403.93, -19.1697 )
 
 [node name="Right" type="Position2D" parent="Bounds"]
-position = Vector2( 2673.15, 78.0046 )
+position = Vector2( 4177.25, 28.6163 )
 
 [node name="World" type="Node2D" parent="."]
 
@@ -86,46 +73,24 @@ position = Vector2( 432.432, 552.557 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 3181.95, 20.6749 )
+position = Vector2( 4145.95, -31.3251 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( -1197.49, 31.0016 )
+position = Vector2( -3401.63, 31.1099 )
 shape = SubResource( 2 )
 
 [node name="Triggers" type="Node2D" parent="World/Environment"]
 
-[node name="LeftDoor" type="Area2D" parent="World/Environment/Triggers"]
-position = Vector2( 2159.18, 157.502 )
-script = ExtResource( 7 )
-levelName = "TutorialHallway"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/LeftDoor"]
-position = Vector2( 383.213, -41.5305 )
-shape = SubResource( 3 )
-
 [node name="Props" type="Node2D" parent="World/Environment"]
 position = Vector2( 1515.97, -192.076 )
-
-[node name="Pentagram_Sharpie" parent="World/Environment/Props" instance=ExtResource( 8 )]
-position = Vector2( -1244.32, 724.871 )
-
-[node name="NPC_Extra" parent="World/Environment/Props" instance=ExtResource( 10 )]
-position = Vector2( -682.818, 505.307 )
-
-[node name="IMP_MC" parent="World/Environment/Props" instance=ExtResource( 11 )]
-visible = false
-position = Vector2( -1229, 481.147 )
 
 [node name="Hazards" type="Node2D" parent="World"]
 
 [node name="Interactables" type="Node2D" parent="World"]
 
-[node name="HidingPlaces" type="Node2D" parent="World"]
-z_index = 10
-
 [node name="Player" parent="World" instance=ExtResource( 1 )]
-position = Vector2( 1173.54, 163.413 )
+position = Vector2( 948.911, 164.685 )
 z_index = 15
 
 [node name="Camera" type="Camera2D" parent="World/Player"]
@@ -139,21 +104,3 @@ z_index = 20
 
 [node name="Foreground" type="Node2D" parent="World"]
 z_index = 30
-
-[node name="DoorEnd" type="Sprite" parent="World/Foreground"]
-position = Vector2( 2457.64, 110.35 )
-rotation = 3.14159
-scale = Vector2( 1, 1.1862 )
-texture = ExtResource( 6 )
-
-[node name="Timers" type="Node2D" parent="."]
-
-[node name="StartDialogTimer" type="Timer" parent="Timers"]
-one_shot = true
-
-[node name="ShowImpTimer" type="Timer" parent="Timers"]
-wait_time = 2.0
-one_shot = true
-
-[node name="StartWalkingTimer" type="Timer" parent="Timers"]
-wait_time = 0.5

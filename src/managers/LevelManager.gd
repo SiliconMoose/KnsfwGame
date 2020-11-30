@@ -72,5 +72,9 @@ func _process(time: float) -> void:
 
 func set_new_scene(scene_resource: Resource) -> void:
 	var scene = scene_resource.instance()
-	GameManager.currentLevel = scene
 	get_node('/root').add_child(scene)
+
+
+func start_level(level: String):
+	GameManager.currentLevel = level
+	LevelManager.goto_scene("res://Levels/%s.tscn" % level)

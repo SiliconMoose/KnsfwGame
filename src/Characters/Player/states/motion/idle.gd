@@ -17,7 +17,7 @@ func update(host: Player, delta: float) -> void:
 	if isHiding && host.can_hide:
 		emit_signal('finished', 'Hide')
 		return
-	
+		
 	var input_direction: Vector2 = get_input_direction()
 	if input_direction.x:
 		emit_signal('finished', 'Move')
