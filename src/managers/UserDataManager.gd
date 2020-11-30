@@ -57,4 +57,5 @@ func set_data(key,value):
 
 
 func get_data(key):
-	return _user_data["data"][key]
+	var has = _user_data["data"].has(key)
+	return _user_data["data"][key] if has else null

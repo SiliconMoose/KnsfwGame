@@ -11,6 +11,7 @@ var targetCG: String
 
 var activeHidingPlace: HidingPlace
 var activeDoor: Door
+var activeStatue: Statue
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -115,6 +116,15 @@ func _on_player_can_interact(body: Node, place: Node, isIn: bool):
 				activeDoor = null
 				place.show_icon(false)
 				emit_signal("action_available", "CannotUseDoor")
+		elif place is Statue:
+			if(isIn):
+				activeStatue = place
+				place.show_icon(true)
+				emit_signal("action_available", "CanUseStatue")
+			else:
+				activeStatue = null
+				place.show_icon(false)
+				emit_signal("action_available", "CannotUseStatue")
 
 
 enum { Found, Hidden, Search }
@@ -148,10 +158,12 @@ func _on_player_interact(type: String):
 	if type == "Door":
 		var level = activeDoor.ConnectedLevel
 		LevelManager.start_level(level)
+	if type == "Statue":
+		activeStatue.highlight(true)
 
 
 func _transition_to_CG():
 	if(targetCG == "chimera"):
-		LevelManager.goto_scene("res://Scenes/GameOver/ChimeraEnd.tscn")
+		LevelManager.goto_scene("res://Scenes/GameOver/ChimeraEnd.tscn", true)
 	elif(targetCG == "boss"):
-		LevelManager.goto_scene("res://Scenes/GameOver/BossLoss.tscn")
+		LevelManager.goto_scene("res://Scenes/GameOver/BossLoss.tscn", true)

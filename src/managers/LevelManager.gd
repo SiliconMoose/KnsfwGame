@@ -26,7 +26,7 @@ func get_scene_path() -> String:
 	return scene_path
 
 
-func goto_scene(path: String) -> void: # game requests to switch to this scene
+func goto_scene(path: String, hideSpinner: bool = false) -> void: # game requests to switch to this scene
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # check for errors
 		show_error()
@@ -37,6 +37,7 @@ func goto_scene(path: String) -> void: # game requests to switch to this scene
 	
 	# start your "loading..." animation
 	loading_screen = loading_screen_scene.instance()	
+	loading_screen.get_child(2).visible = !hideSpinner
 	root.add_child(loading_screen)
 	wait_frames = 1
 

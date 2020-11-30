@@ -101,7 +101,7 @@ shape = SubResource( 3 )
 [node name="HideInstruction" type="Area2D" parent="World/Environment/Triggers"]
 position = Vector2( -1169.93, 166.405 )
 script = ExtResource( 1 )
-Instruction = "Hold Shift or Ctrl to hide behind highlighted objects"
+Instruction = "Hold W or Up to hide behind highlighted objects"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/HideInstruction"]
 position = Vector2( -9.18469, 1.43024 )

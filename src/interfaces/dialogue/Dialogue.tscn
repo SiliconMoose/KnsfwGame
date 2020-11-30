@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://interfaces/dialogue/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/Custom Fonts/PoetsenOne-Regular.ttf" type="DynamicFontData" id=2]
@@ -8,9 +8,10 @@
 [ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_Question.png" type="Texture" id=6]
 [ext_resource path="res://Assets/UI/Dialog/arrow.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=8]
-[ext_resource path="res://Assets/UI/Dialog/Portraits/NPC_Talksprite_0.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/NPC_frown.png" type="Texture" id=9]
 [ext_resource path="res://Assets/UI/Dialog/arrow_hover.png" type="Texture" id=10]
 [ext_resource path="res://Assets/UI/Dialog/arrow_press.png" type="Texture" id=11]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/NPC_smile.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.501961 )
@@ -29,7 +30,7 @@ outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = 5
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=4]
 resource_name = "Poetsen0ne 48"
 size = 20
 outline_size = 1
@@ -119,7 +120,7 @@ margin_top = 189.375
 margin_right = 874.58
 margin_bottom = 214.375
 theme = ExtResource( 8 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 0.517647 )
 text = "Press E or Enter..."
 align = 1
@@ -202,14 +203,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PortraitNPC" type="TextureRect" parent="PortraitBox"]
+[node name="PortraitNPCSmile" type="TextureRect" parent="PortraitBox"]
 anchor_left = 0.058
 anchor_top = 0.945
 anchor_right = 0.058
 anchor_bottom = 0.945
-margin_left = -40.776
+margin_left = 1.29013
 margin_top = -419.7
-margin_right = 309.224
+margin_right = 351.29
+margin_bottom = 0.300018
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitNPCFrown" type="TextureRect" parent="PortraitBox"]
+anchor_left = 0.058
+anchor_top = 0.945
+anchor_right = 0.058
+anchor_bottom = 0.945
+margin_left = 2.08382
+margin_top = -419.7
+margin_right = 352.084
 margin_bottom = 0.300018
 grow_horizontal = 0
 grow_vertical = 0

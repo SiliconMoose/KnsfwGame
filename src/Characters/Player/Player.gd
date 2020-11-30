@@ -14,6 +14,7 @@ var previous_position: Vector2 = Vector2()
 
 var can_hide: bool = false
 var can_use_door: bool = false
+var can_use_statue: bool = false
 
 
 func _ready() -> void:
@@ -43,6 +44,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('interact'):
 		if can_use_door:
 			emit_signal("interact", "Door")
+		elif can_use_statue:
+			emit_signal("interact", "Statue")
+			
 	
 	current_state.handle_input(self, event)
 
@@ -71,6 +75,10 @@ func _on_action_available(type: String):
 			can_use_door = true
 		"CannotUseDoor":
 			can_use_door = false
+		"CanUseStatue":
+			can_use_statue = true
+		"CannotUseStatue":
+			can_use_statue = false
 
 
 func _on_footstep():

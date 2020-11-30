@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -11,16 +11,24 @@
 [ext_resource path="res://Assets/Environments/Props/Devil_Props/Background_Demon.png" type="Texture" id=9]
 [ext_resource path="res://environment/HidingPlaces/Watercooler.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Environments/Objects/Door_Stairs_Up.png" type="Texture" id=11]
+[ext_resource path="res://Levels/Floor3Boss_Extra.gd" type="Script" id=12]
+[ext_resource path="res://environment/Statues/Statue2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://environment/Statues/Statue3.tscn" type="PackedScene" id=14]
+[ext_resource path="res://environment/Statues/Statue1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Data/Triggers/DialogueTrigger.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6623.46, 35.3273 )
+extents = Vector2( 8970.67, 35.3273 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.5732, 546.497 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 76.7229, 138.542 )
+
 [sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array(  )
+"points": PoolVector2Array( 0, 0, 0, 0, 12030, -93.7112, 0, 0, 0, 0, 9135.01, 99.8135 )
 }
 
 [sub_resource type="Curve2D" id=7]
@@ -64,9 +72,10 @@ visible = false
 position = Vector2( -3403.93, -19.1697 )
 
 [node name="Right" type="Position2D" parent="Bounds"]
-position = Vector2( 4177.25, 28.6163 )
+position = Vector2( 12376.8, -26.8202 )
 
 [node name="World" type="Node2D" parent="."]
+script = ExtResource( 12 )
 
 [node name="Environment" type="Node2D" parent="World"]
 
@@ -75,24 +84,24 @@ layer = -1
 follow_viewport_enable = true
 
 [node name="Wall" type="Sprite" parent="World/Environment/Background"]
-position = Vector2( 2690.19, 77.351 )
-scale = Vector2( 2.69272, 1.19715 )
+position = Vector2( 4235.07, 77.351 )
+scale = Vector2( 3.31066, 1.19715 )
 texture = ExtResource( 9 )
 
 [node name="Floor" type="Sprite" parent="World/Environment/Background"]
-position = Vector2( 2666.57, 580.557 )
-scale = Vector2( 2.68265, 0.28966 )
+position = Vector2( 4234.93, 580.557 )
+scale = Vector2( 3.30999, 0.28966 )
 texture = ExtResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 2531.13, 552.557 )
+position = Vector2( 3468.51, 552.557 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 8942.96, -25.6681 )
+position = Vector2( 12390.1, -25.6681 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
@@ -100,6 +109,15 @@ position = Vector2( -3401.63, 31.1099 )
 shape = SubResource( 2 )
 
 [node name="Triggers" type="Node2D" parent="World/Environment"]
+
+[node name="DialogueTrigger" type="Area2D" parent="World/Environment/Triggers"]
+position = Vector2( 112, 116 )
+script = ExtResource( 16 )
+DialogueKey = "statues"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/DialogueTrigger"]
+position = Vector2( -126.992, 36.5102 )
+shape = SubResource( 8 )
 
 [node name="Props" type="Node2D" parent="World/Environment"]
 position = Vector2( 2342.12, -157.714 )
@@ -114,16 +132,25 @@ texture = ExtResource( 11 )
 z_index = 10
 
 [node name="OfficePlant" parent="World/Interactables" instance=ExtResource( 8 )]
-position = Vector2( 1431.1, 104.368 )
+position = Vector2( 2999.08, 75.8593 )
 
 [node name="OfficePlant2" parent="World/Interactables" instance=ExtResource( 8 )]
-position = Vector2( 5872.73, 67.994 )
+position = Vector2( 7889.73, 89.3756 )
 
 [node name="Watercooler" parent="World/Interactables" instance=ExtResource( 10 )]
-position = Vector2( 3959.42, 161.559 )
+position = Vector2( 5263.69, 111.669 )
 
 [node name="Watercooler2" parent="World/Interactables" instance=ExtResource( 10 )]
 position = Vector2( -1878.13, 83.5261 )
+
+[node name="Statue1" parent="World/Interactables" instance=ExtResource( 15 )]
+position = Vector2( 9845.69, 84.7949 )
+
+[node name="Statue2" parent="World/Interactables" instance=ExtResource( 13 )]
+position = Vector2( 1856.11, 113.304 )
+
+[node name="Statue3" parent="World/Interactables" instance=ExtResource( 14 )]
+position = Vector2( 416.422, 134.685 )
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
 position = Vector2( -1342.88, 163.93 )
@@ -137,7 +164,7 @@ zoom = Vector2( 3, 3 )
 z_index = 20
 
 [node name="Boss" parent="World/Enemies" instance=ExtResource( 7 )]
-position = Vector2( 7910.85, -231.325 )
+position = Vector2( 11096.7, -259.834 )
 phase_1_patrol = "Phase1"
 
 [node name="PatrolPaths" type="Node2D" parent="World"]

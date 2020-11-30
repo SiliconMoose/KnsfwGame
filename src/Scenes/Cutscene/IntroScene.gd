@@ -63,6 +63,7 @@ func _on_dialogue_done():
 
 func _show_imp():
 	$World/Environment/Props/IMP_MC.visible = true
+	$World/Environment/Props/IMP_MC/AnimatedSprite.play("Show")
 	$Interfaces/FireSound.play()
 	$Timers/StartDialogTimer.start()
 
@@ -71,6 +72,7 @@ func _start_dialogue():
 	var diagDict = $Interfaces/Dialogue.dict as Dictionary
 	var dialogueList = diagDict["intro"] as Array
 	$Interfaces/Dialogue.startDialogue(dialogueList)
+	$World/Environment/Props/IMP_MC/AnimatedSprite.play("default")
 
 
 func _start_dialogue_part2():

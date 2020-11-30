@@ -17,7 +17,7 @@
             "text": "STATE THY BIDDING."
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_smile",
             "text": "Uh, hi... again."
         },
         {
@@ -25,11 +25,11 @@
             "text": "... What have you imbeciles done this time?"
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_frown",
             "text": "Welllll, our VP summoned a greater demon to streamline our HR department except it possessed her and summoned a bunch of other demons."
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_frown",
             "text": "So now they’re all over the building and a lot of things are on fire. Also, I think the photocopier is possessed."
         },
         {
@@ -37,7 +37,7 @@
             "text": "... And you expect me to fix this?"
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_smile",
             "text": "Um, yes... please?"
         },
         {
@@ -45,7 +45,7 @@
             "text": "Summoning me to correct your mistakes is an terrible waste of a ritual but very well."
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_smile",
             "text": "Thank you so much!"
         },
         {
@@ -57,7 +57,7 @@
             "text": "Why am I the size of an imp?"
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_smile",
             "text": "Oh, well... I wasn’t able to get any blood or a live chicken to summon you, so I figured sharpies and a roast chicken would be good enough!"
         },
         {
@@ -65,7 +65,7 @@
             "text": "… You summoned me with a roast chicken?"
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_frown",
             "text": "Uh, yeah."
         },
         {
@@ -73,7 +73,7 @@
             "text": "..."
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_frown",
             "text": "Sorry..."
         },
         {
@@ -85,7 +85,7 @@
             "text": "One, I take your soul, or two, I take some of your life essence."
         },
         {
-            "portrait": "npc",
+            "portrait": "npc_smile",
             "text": "Um, option two?"
         },
         {
@@ -110,6 +110,17 @@
         {
             "portrait": "default",
             "text": "...Right. Should've asked before I fucked her into a coma."
+        }
+    ],
+    "statues":
+    [
+        {
+            "portrait": "default",
+            "text": "Damn it, these statue wards are intertwined."
+        },
+        {
+            "portrait": "default",
+            "text": "I'll have to start at the far end and work my way backward."
         }
     ]
 }

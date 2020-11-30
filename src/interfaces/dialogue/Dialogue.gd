@@ -67,8 +67,10 @@ func showPortrait(name: String):
 			$PortraitBox/PortraitGrin.visible = true
 		"question":
 			$PortraitBox/PortraitQuestion.visible = true
-		"npc":
-			$PortraitBox/PortraitNPC.visible = true
+		"npc_smile":
+			$PortraitBox/PortraitNPCSmile.visible = true
+		"npc_frown":
+			$PortraitBox/PortraitNPCFrown.visible = true
 		_:
 			$PortraitBox/PortraitNeutral.visible = true
 

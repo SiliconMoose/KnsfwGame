@@ -41,5 +41,5 @@ __meta__ = {
 
 [node name="Loading_Spinner" type="Sprite" parent="."]
 position = Vector2( 640, 360 )
-rotation = -6.15053
+rotation = -0.962717
 texture = ExtResource( 2 )

@@ -69,5 +69,5 @@ func _on_save_loaded():
 	var saveFile = UserDataManager.get_data("save-file")
 	if(saveFile != null):
 		continueOnLevel = saveFile["level"]
-	if(continueOnLevel != null):
+	if(continueOnLevel != null && continueOnLevel != ""):
 		$SideMenu/ContinueButton.disabled = false
