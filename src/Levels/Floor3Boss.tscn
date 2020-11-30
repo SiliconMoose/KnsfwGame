@@ -19,7 +19,7 @@
 [ext_resource path="res://environment/HidingPlaces/Big_Candles.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8970.67, 35.3273 )
+extents = Vector2( 9727.25, 35.3273 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.5732, 546.497 )
@@ -29,7 +29,7 @@ extents = Vector2( 76.7229, 138.542 )
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 12030, -93.7112, 0, 0, 0, 0, 9135.01, 99.8135 )
+"points": PoolVector2Array( 0, 0, 0, 0, 12361.4, -59.5242, 0, 0, 0, 0, 9135.01, 99.8135 )
 }
 
 [sub_resource type="Curve2D" id=5]
@@ -85,13 +85,13 @@ layer = -1
 follow_viewport_enable = true
 
 [node name="Wall" type="Sprite" parent="World/Environment/Background"]
-position = Vector2( 4235.07, 77.351 )
-scale = Vector2( 3.31066, 1.19715 )
+position = Vector2( 4572.98, 77.351 )
+scale = Vector2( 3.44582, 1.19715 )
 texture = ExtResource( 9 )
 
 [node name="Floor" type="Sprite" parent="World/Environment/Background"]
-position = Vector2( 4234.93, 580.557 )
-scale = Vector2( 3.30999, 0.28966 )
+position = Vector2( 4572.84, 580.557 )
+scale = Vector2( 3.44515, 0.28966 )
 texture = ExtResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
@@ -102,7 +102,7 @@ position = Vector2( 3468.51, 552.557 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 12390.1, -25.6681 )
+position = Vector2( 13133.9, -18.1172 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]

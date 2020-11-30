@@ -1,0 +1,227 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Cutscene/IntroScene.gd" type="Script" id=3]
+[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Backgrounds/DoorEnd.png" type="Texture" id=6]
+[ext_resource path="res://Data/Triggers/ChangeLevelTrigger.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Cutscene/Pentagram_Sharpie.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Cutscene/NPC_Extra.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Cutscene/IMP_MC.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Audio/Effects/Foley/Fire Burst 4.wav" type="AudioStream" id=12]
+[ext_resource path="res://Scenes/GameOver/BonusNPC.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Environments/Props/Evil_chicken.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Environments/Props/Trash.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Environments/Props/Box_0.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Environments/Props/Box_1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Environments/Props/Tape.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Environments/Props/bricks.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Environments/Props/Rubble.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Environments/Props/Locker.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Environments/Props/Vending_Machine.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Environments/Props/Vent.png" type="Texture" id=23]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4249.98, 35.3273 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.5732, 546.497 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 57.8567, 655.416 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+levelId = "IntroLevel"
+
+[node name="Interfaces" type="CanvasLayer" parent="."]
+
+[node name="Dialogue" parent="Interfaces" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Pause" parent="Interfaces" instance=ExtResource( 2 )]
+visible = false
+
+[node name="CGTimer" type="Timer" parent="Interfaces"]
+
+[node name="FireSound" type="AudioStreamPlayer" parent="Interfaces"]
+stream = ExtResource( 12 )
+
+[node name="CG" parent="Interfaces" instance=ExtResource( 13 )]
+visible = false
+
+[node name="FadePanel" parent="Interfaces" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -315.375
+margin_top = -595.724
+margin_right = 2244.63
+margin_bottom = 844.276
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Left" type="Position2D" parent="Bounds"]
+position = Vector2( -3.94995, 122.079 )
+
+[node name="Right" type="Position2D" parent="Bounds"]
+position = Vector2( 2673.15, 78.0046 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Environment" type="Node2D" parent="World"]
+
+[node name="Background" type="CanvasLayer" parent="World/Environment"]
+layer = -1
+follow_viewport_enable = true
+
+[node name="Wall" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 77.351 )
+scale = Vector2( 1.66823, 1.19715 )
+texture = ExtResource( 9 )
+
+[node name="Floor" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 287.262, 580.557 )
+scale = Vector2( 1.66823, 0.28966 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 432.432, 552.557 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 3181.95, 20.6749 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( -1197.49, 31.0016 )
+shape = SubResource( 2 )
+
+[node name="Triggers" type="Node2D" parent="World/Environment"]
+
+[node name="LeftDoor" type="Area2D" parent="World/Environment/Triggers"]
+position = Vector2( 2159.18, 157.502 )
+script = ExtResource( 7 )
+levelName = "TutorialHallway"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Triggers/LeftDoor"]
+position = Vector2( 383.213, -41.5305 )
+shape = SubResource( 3 )
+
+[node name="Props" type="Node2D" parent="World/Environment"]
+position = Vector2( 1515.97, -192.076 )
+
+[node name="Pentagram_Sharpie" parent="World/Environment/Props" instance=ExtResource( 8 )]
+position = Vector2( -1244.32, 724.871 )
+
+[node name="NPC_Extra" parent="World/Environment/Props" instance=ExtResource( 10 )]
+position = Vector2( -682.818, 505.307 )
+
+[node name="IMP_MC" parent="World/Environment/Props" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -1229, 481.147 )
+
+[node name="Hazards" type="Node2D" parent="World"]
+
+[node name="Interactables" type="Node2D" parent="World"]
+z_index = 10
+
+[node name="Player" parent="World" instance=ExtResource( 1 )]
+position = Vector2( 1173.54, 163.413 )
+z_index = 15
+
+[node name="Camera" type="Camera2D" parent="World/Player"]
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="Enemies" type="Node2D" parent="World"]
+z_index = 20
+
+[node name="PatrolPaths" type="Node2D" parent="World"]
+
+[node name="Foreground" type="Node2D" parent="World"]
+z_index = 30
+
+[node name="DoorEnd" type="Sprite" parent="World/Foreground"]
+position = Vector2( 2457.64, 110.35 )
+rotation = 3.14159
+scale = Vector2( 1, 1.1862 )
+texture = ExtResource( 6 )
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="StartDialogTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="ShowImpTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartWalkingTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+
+[node name="Props" type="Node2D" parent="."]
+position = Vector2( -552.55, 232.735 )
+
+[node name="Locker2" type="Sprite" parent="Props"]
+position = Vector2( 33.6359, -141.271 )
+texture = ExtResource( 21 )
+
+[node name="Locker3" type="Sprite" parent="Props"]
+position = Vector2( -227.452, -138.907 )
+texture = ExtResource( 21 )
+
+[node name="Locker4" type="Sprite" parent="Props"]
+position = Vector2( -491.085, -138.907 )
+texture = ExtResource( 21 )
+
+[node name="Locker" type="Sprite" parent="Props"]
+position = Vector2( 295.995, -131.18 )
+texture = ExtResource( 21 )
+
+[node name="Box_0" type="Sprite" parent="Props"]
+position = Vector2( 0, 23 )
+texture = ExtResource( 16 )
+
+[node name="Box_2" type="Sprite" parent="Props"]
+position = Vector2( -430.539, 187.816 )
+texture = ExtResource( 16 )
+
+[node name="Box_1" type="Sprite" parent="Props"]
+position = Vector2( 3.3634, 197.634 )
+texture = ExtResource( 17 )
+
+[node name="bricks" type="Sprite" parent="Props"]
+position = Vector2( 181.634, 258.996 )
+texture = ExtResource( 19 )
+
+[node name="Evil_chicken" type="Sprite" parent="Props"]
+position = Vector2( 57.1809, -121.634 )
+texture = ExtResource( 14 )
+
+[node name="Rubble" type="Sprite" parent="Props"]
+position = Vector2( 1177.25, 282.541 )
+texture = ExtResource( 20 )
+
+[node name="Tape" type="Sprite" parent="Props"]
+position = Vector2( 366.63, 383.449 )
+texture = ExtResource( 18 )
+
+[node name="Trash" type="Sprite" parent="Props"]
+position = Vector2( 1984.51, 127.816 )
+texture = ExtResource( 15 )
+
+[node name="Vending_Machine" type="Sprite" parent="Props"]
+position = Vector2( 2314.15, -154.725 )
+texture = ExtResource( 22 )
+
+[node name="Vent" type="Sprite" parent="Props"]
+position = Vector2( 45.4073, -650.854 )
+scale = Vector2( 0.803987, 0.836366 )
+texture = ExtResource( 23 )

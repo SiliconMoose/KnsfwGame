@@ -159,7 +159,15 @@ func _on_player_interact(type: String):
 		var level = activeDoor.ConnectedLevel
 		LevelManager.start_level(level)
 	if type == "Statue":
-		activeStatue.highlight(true)
+		if activeStatue.name == "Statue1":
+			$World.statue1Active = true
+			activeStatue.highlight(true)
+		elif activeStatue.name == "Statue2" && $World.statue1Active:
+			$World.statue2Active = true
+			activeStatue.highlight(true)
+		elif (activeStatue.name == "Statue3" && $World.statue1Active && $World.statue2Active):
+			activeStatue.highlight(true)
+			_a_winner_is_you()
 
 
 func _transition_to_CG():
@@ -167,3 +175,7 @@ func _transition_to_CG():
 		LevelManager.goto_scene("res://Scenes/GameOver/ChimeraEnd.tscn", true)
 	elif(targetCG == "boss"):
 		LevelManager.goto_scene("res://Scenes/GameOver/BossLoss.tscn", true)
+
+
+func _a_winner_is_you():
+	LevelManager.goto_scene("res://Scenes/GameOver/BossVictory.tscn", true)
