@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Assets/Environments/Props/Vending_Machine.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Environments/Props/Vent.png" type="Texture" id=29]
 [ext_resource path="res://Levels/PatrolPath.gd" type="Script" id=30]
+[ext_resource path="res://Assets/Audio/Music/lights--by-rafael-krux-from-filmmusic-io.ogg" type="AudioStream" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5700.14, 35.3273 )
@@ -249,3 +250,7 @@ texture = ExtResource( 16 )
 [node name="Candle_1" type="Sprite" parent="."]
 position = Vector2( -1865.35, 485.006 )
 texture = ExtResource( 19 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+autoplay = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://Assets/Environments/Props/Photocopier.png" type="Texture" id=46]
 [ext_resource path="res://Assets/Environments/Props/Tape.png" type="Texture" id=47]
 [ext_resource path="res://Assets/Environments/Props/Trash.png" type="Texture" id=48]
+[ext_resource path="res://Assets/Audio/Music/lights--by-rafael-krux-from-filmmusic-io.ogg" type="AudioStream" id=49]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8970.67, 35.3273 )
@@ -427,3 +428,7 @@ texture = ExtResource( 38 )
 [node name="Tape" type="Sprite" parent="."]
 position = Vector2( 9220.05, 436.01 )
 texture = ExtResource( 47 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 49 )
+autoplay = true

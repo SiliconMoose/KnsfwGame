@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://Assets/Environments/Props/Coatrack_1.png" type="Texture" id=43]
 [ext_resource path="res://Assets/Environments/Props/Candle_2.png" type="Texture" id=44]
 [ext_resource path="res://Levels/PatrolPath.gd" type="Script" id=45]
+[ext_resource path="res://Assets/Audio/Music/lights--by-rafael-krux-from-filmmusic-io.ogg" type="AudioStream" id=46]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11648.2, 35.3273 )
@@ -583,3 +584,7 @@ texture = ExtResource( 18 )
 [node name="Poster_3" type="Sprite" parent="."]
 position = Vector2( 9466.9, -167.028 )
 texture = ExtResource( 20 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
+autoplay = true
