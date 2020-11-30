@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -7,17 +7,30 @@
 [ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interfaces/menu/Instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/enemies/Boss/Boss.tscn" type="PackedScene" id=7]
+[ext_resource path="res://environment/HidingPlaces/OfficePlant.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=9]
+[ext_resource path="res://environment/HidingPlaces/Watercooler.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Environments/Objects/Door_Stairs_Up.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3843.07, 35.3273 )
+extents = Vector2( 6623.46, 35.3273 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.5732, 546.497 )
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -190.178, 195.508, 0, 0, 0, 0, -2767.35, 262.856 )
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array(  )
 }
 
 [node name="Game" type="Node2D"]
@@ -62,24 +75,24 @@ layer = -1
 follow_viewport_enable = true
 
 [node name="Wall" type="Sprite" parent="World/Environment/Background"]
-position = Vector2( 287.262, 77.351 )
-scale = Vector2( 1.66823, 1.19715 )
+position = Vector2( 2690.19, 77.351 )
+scale = Vector2( 2.69272, 1.19715 )
 texture = ExtResource( 9 )
 
 [node name="Floor" type="Sprite" parent="World/Environment/Background"]
-position = Vector2( 287.262, 580.557 )
-scale = Vector2( 1.66823, 0.28966 )
+position = Vector2( 2666.57, 580.557 )
+scale = Vector2( 2.68265, 0.28966 )
 texture = ExtResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 432.432, 552.557 )
+position = Vector2( 2531.13, 552.557 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 4145.95, -31.3251 )
+position = Vector2( 8942.96, -25.6681 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
@@ -89,14 +102,31 @@ shape = SubResource( 2 )
 [node name="Triggers" type="Node2D" parent="World/Environment"]
 
 [node name="Props" type="Node2D" parent="World/Environment"]
-position = Vector2( 1515.97, -192.076 )
+position = Vector2( 2342.12, -157.714 )
+
+[node name="Door_Stairs_Up" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -3700.62, 246.158 )
+texture = ExtResource( 11 )
 
 [node name="Hazards" type="Node2D" parent="World"]
 
 [node name="Interactables" type="Node2D" parent="World"]
+z_index = 10
+
+[node name="OfficePlant" parent="World/Interactables" instance=ExtResource( 8 )]
+position = Vector2( 1431.1, 104.368 )
+
+[node name="OfficePlant2" parent="World/Interactables" instance=ExtResource( 8 )]
+position = Vector2( 5872.73, 67.994 )
+
+[node name="Watercooler" parent="World/Interactables" instance=ExtResource( 10 )]
+position = Vector2( 3959.42, 161.559 )
+
+[node name="Watercooler2" parent="World/Interactables" instance=ExtResource( 10 )]
+position = Vector2( -1878.13, 83.5261 )
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
-position = Vector2( 948.911, 164.685 )
+position = Vector2( -1340.5, 68.7934 )
 z_index = 15
 
 [node name="Camera" type="Camera2D" parent="World/Player"]
@@ -106,20 +136,20 @@ zoom = Vector2( 3, 3 )
 [node name="Enemies" type="Node2D" parent="World"]
 z_index = 20
 
-[node name="Chimera" parent="World/Enemies" instance=ExtResource( 7 )]
-position = Vector2( -1318.72, -225.332 )
+[node name="Boss" parent="World/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 7910.85, -231.325 )
 phase_1_patrol = "Phase1"
 
 [node name="PatrolPaths" type="Node2D" parent="World"]
 
 [node name="Phase1" type="Path2D" parent="World/PatrolPaths"]
-curve = SubResource( 3 )
+curve = SubResource( 6 )
 
 [node name="Phase2" type="Path2D" parent="World/PatrolPaths"]
-curve = SubResource( 3 )
+curve = SubResource( 7 )
 
 [node name="Phase3" type="Path2D" parent="World/PatrolPaths"]
-curve = SubResource( 3 )
+curve = SubResource( 5 )
 
 [node name="Foreground" type="Node2D" parent="World"]
 z_index = 30

@@ -87,6 +87,7 @@ position = Vector2( 1515.97, -192.076 )
 [node name="Hazards" type="Node2D" parent="World"]
 
 [node name="Interactables" type="Node2D" parent="World"]
+z_index = 10
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
 position = Vector2( 948.911, 164.685 )

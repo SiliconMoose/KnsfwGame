@@ -8,7 +8,10 @@ func _ready() -> void:
 	$SideMenu/NewGameButton.connect('pressed', self, '_onNewPressed')
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
 	$SideMenu/OptionsButton.connect('pressed', self, '_onOptionPressed')
-	$SideMenu/TestLevelButton.connect('pressed', self, '_onTestLevelPressed')
+	$SideMenu/TestLevelButton.connect('pressed', self, '_onTestLevelPressed', ["TutorialHallway"])
+	$SideMenu/TestLevelButton2.connect('pressed', self, '_onTestLevelPressed', ["Floor1"])
+	$SideMenu/TestLevelButton3.connect('pressed', self, '_onTestLevelPressed', ["Floor2"])
+	$SideMenu/TestLevelButton4.connect('pressed', self, '_onTestLevelPressed', ["Floor3Boss"])
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
 	$FadePanel.connect("fade_complete", self, '_fadeComplete')
 	$FadePanel.visible = true
@@ -43,8 +46,8 @@ func _onOptionPressed() -> void:
 	get_tree().reload_current_scene()
 
 
-func _onTestLevelPressed() -> void:
-	LevelManager.start_level("Floor3Boss")
+func _onTestLevelPressed(level: String) -> void:
+	LevelManager.start_level(level)
 	
 	
 func _onQuitPressed() -> void:

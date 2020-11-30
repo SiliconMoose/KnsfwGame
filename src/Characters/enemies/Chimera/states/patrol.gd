@@ -45,7 +45,7 @@ func update(host: Character, delta: float) -> void:
 
 
 func moveTo(host:Character, point: Vector2) -> void:
-	if host.position.distance_to(point) > 200:
+	if abs(host.position.x - point.x) > 200:
 		var target_direction = (point - host.position).normalized() 
 		update_look_direction(host, Vector2(int(round(target_direction.x)), 0), 1)
 		host.get_node('AnimatedSprite').play('Move')

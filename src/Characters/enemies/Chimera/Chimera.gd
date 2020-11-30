@@ -57,7 +57,7 @@ func _on_player_position_changed(new_position: Vector2) -> void:
 	var target_direction = (target_position - position).normalized()
 	var isFacingTarget = look_direction.x * target_direction.x > 0
 	var detectRange = FOLLOW_RANGE if isFacingTarget else BACK_DETECT_RANGE
-	has_target = position.distance_to(target_position) <= FOLLOW_RANGE && !player_hidden
+	has_target = position.distance_to(target_position) <= detectRange && !player_hidden
 	
 func _on_player_state_changed(state: String) -> void:
 	player_hidden = state == "Hide"
