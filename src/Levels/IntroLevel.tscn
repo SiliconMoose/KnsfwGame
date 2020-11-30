@@ -174,7 +174,11 @@ position = Vector2( 33.6359, -141.271 )
 texture = ExtResource( 21 )
 
 [node name="Locker3" type="Sprite" parent="Props"]
-position = Vector2( -235.452, -138.907 )
+position = Vector2( -227.452, -138.907 )
+texture = ExtResource( 21 )
+
+[node name="Locker4" type="Sprite" parent="Props"]
+position = Vector2( -491.085, -138.907 )
 texture = ExtResource( 21 )
 
 [node name="Locker" type="Sprite" parent="Props"]
@@ -183,6 +187,10 @@ texture = ExtResource( 21 )
 
 [node name="Box_0" type="Sprite" parent="Props"]
 position = Vector2( 0, 23 )
+texture = ExtResource( 16 )
+
+[node name="Box_2" type="Sprite" parent="Props"]
+position = Vector2( -430.539, 187.816 )
 texture = ExtResource( 16 )
 
 [node name="Box_1" type="Sprite" parent="Props"]
@@ -197,23 +205,23 @@ texture = ExtResource( 19 )
 position = Vector2( 57.1809, -121.634 )
 texture = ExtResource( 14 )
 
-[node name="Rubble" type="Sprite" parent="."]
-position = Vector2( 624.704, 515.277 )
+[node name="Rubble" type="Sprite" parent="Props"]
+position = Vector2( 1177.25, 282.541 )
 texture = ExtResource( 20 )
 
-[node name="Tape" type="Sprite" parent="."]
-position = Vector2( -185.92, 616.184 )
+[node name="Tape" type="Sprite" parent="Props"]
+position = Vector2( 366.63, 383.449 )
 texture = ExtResource( 18 )
 
-[node name="Trash" type="Sprite" parent="."]
-position = Vector2( 1431.96, 360.552 )
+[node name="Trash" type="Sprite" parent="Props"]
+position = Vector2( 1984.51, 127.816 )
 texture = ExtResource( 15 )
 
-[node name="Vending_Machine" type="Sprite" parent="."]
-position = Vector2( 1761.6, 78.0105 )
+[node name="Vending_Machine" type="Sprite" parent="Props"]
+position = Vector2( 2314.15, -154.725 )
 texture = ExtResource( 22 )
 
-[node name="Vent" type="Sprite" parent="."]
-position = Vector2( -507.143, -418.118 )
+[node name="Vent" type="Sprite" parent="Props"]
+position = Vector2( 45.4073, -650.854 )
 scale = Vector2( 0.803987, 0.836366 )
 texture = ExtResource( 23 )
