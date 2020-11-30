@@ -34,12 +34,12 @@ _data = {
 
 [sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array(  )
+"points": PoolVector2Array( 0, 0, 0, 0, 1315.28, 179.583 )
 }
 
 [sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array(  )
+"points": PoolVector2Array( 0, 0, 0, 0, -1045.66, 149.535 )
 }
 
 [node name="Game" type="Node2D"]
@@ -167,6 +167,8 @@ z_index = 20
 [node name="Boss" parent="World/Enemies" instance=ExtResource( 7 )]
 position = Vector2( 11096.7, -259.834 )
 phase_1_patrol = "Phase1"
+phase_2_patrol = "Phase2"
+phase_3_patrol = "Phase3"
 
 [node name="PatrolPaths" type="Node2D" parent="World"]
 

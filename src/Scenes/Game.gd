@@ -162,9 +162,11 @@ func _on_player_interact(type: String):
 		if activeStatue.name == "Statue1":
 			$World.statue1Active = true
 			activeStatue.highlight(true)
+			$World/Enemies/Boss.set_phase(2)
 		elif activeStatue.name == "Statue2" && $World.statue1Active:
 			$World.statue2Active = true
 			activeStatue.highlight(true)
+			$World/Enemies/Boss.set_phase(3)
 		elif (activeStatue.name == "Statue3" && $World.statue1Active && $World.statue2Active):
 			activeStatue.highlight(true)
 			_a_winner_is_you()

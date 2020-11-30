@@ -22,6 +22,7 @@ export var phase_1_patrol: String
 export var phase_2_patrol: String
 export var phase_3_patrol: String
 
+var currentPhase: int = 1
 
 var patrol_path: Curve2D
 
@@ -53,6 +54,22 @@ func _physics_process(delta: float) -> void:
 func start_cooldown():
 	$CooldownTimer.start()
 	$CooldownBar.start()
+
+
+func set_phase(phase: int):
+	currentPhase = phase
+	
+	if(phase == 1):
+		patrol_path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_1_patrol).curve
+	elif phase == 2:
+		patrol_path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_2_patrol).curve
+	elif phase == 3:
+		patrol_path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_3_patrol).curve
+		
+	$States/Patrol.patrol_index = 0
+	$States/Patrol.elapsed = 1000;
+	$States/Patrol.targetPosition = $States/Patrol._get_next_patrol_point(self)
+
 
 
 func _on_player_position_changed(new_position: Vector2) -> void:

@@ -29,9 +29,9 @@ func exit(host: Character) -> void:
 
 #warning-ignore:unused_argument
 func update(host: Character, delta: float) -> void:
-	if host.has_target:
-		emit_signal('finished', 'Chase')
-		return
+#	if host.has_target:
+#		emit_signal('finished', 'Chase')
+#		return
 	
 	elapsed += delta
 	
