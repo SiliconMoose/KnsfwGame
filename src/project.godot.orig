@@ -1,0 +1,212 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Character",
+"class": "Boss",
+"language": "GDScript",
+"path": "res://Characters/enemies/Boss/Boss.gd"
+}, {
+"base": "Area2D",
+"class": "ChangeLevelTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/ChangeLevelTrigger.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Characters/Common/Character.gd"
+}, {
+"base": "Character",
+"class": "Chimera",
+"language": "GDScript",
+"path": "res://Characters/enemies/Chimera/Chimera.gd"
+}, {
+"base": "Area2D",
+"class": "DialogueTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/DialogueTrigger.gd"
+}, {
+"base": "Area2D",
+"class": "Door",
+"language": "GDScript",
+"path": "res://environment/Doors/Door.gd"
+}, {
+"base": "Area2D",
+"class": "DialogueTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/DialogueTrigger.gd"
+}, {
+"base": "Area2D",
+"class": "Door",
+"language": "GDScript",
+"path": "res://environment/Doors/Door.gd"
+}, {
+"base": "Node2D",
+"class": "Draw",
+"language": "GDScript",
+"path": "res://tools/draw.gd"
+}, {
+<<<<<<< HEAD
+=======
+"base": "State",
+"class": "GettingHit",
+"language": "GDScript",
+"path": "res://Characters/Common/states/motion/combat/getting-hit.gd"
+}, {
+>>>>>>> origin/sainthyena-patch-1
+"base": "Node2D",
+"class": "Health",
+"language": "GDScript",
+"path": "res://Characters/Common/Health.gd"
+}, {
+"base": "Area2D",
+"class": "HidingPlace",
+<<<<<<< HEAD
+=======
+"language": "GDScript",
+"path": "res://environment/HidingPlaces/HidingPlace.gd"
+}, {
+"base": "Motion",
+"class": "InAir",
+>>>>>>> origin/sainthyena-patch-1
+"language": "GDScript",
+"path": "res://environment/HidingPlaces/HidingPlace.gd"
+}, {
+"base": "Area2D",
+"class": "InstructionTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/InstructionTrigger.gd"
+}, {
+"base": "Area2D",
+"class": "InstructionTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/InstructionTrigger.gd"
+}, {
+"base": "State",
+"class": "Motion",
+"language": "GDScript",
+"path": "res://Characters/Common/states/motion/motion.gd"
+}, {
+"base": "Motion",
+"class": "OnGround",
+"language": "GDScript",
+"path": "res://Characters/Common/states/motion/on-ground/on-ground.gd"
+}, {
+"base": "Node2D",
+"class": "Physics2D",
+"language": "GDScript",
+"path": "res://engine/Physics2D.gd"
+}, {
+"base": "Character",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Characters/Player/Player.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://Characters/Common/states/state.gd"
+}, {
+"base": "Area2D",
+"class": "Statue",
+"language": "GDScript",
+"path": "res://environment/Statues/Statue.gd"
+} ]
+_global_script_class_icons={
+"Boss": "",
+"ChangeLevelTrigger": "",
+"Character": "",
+"Chimera": "",
+<<<<<<< HEAD
+"DialogueTrigger": "",
+"Door": "",
+"Draw": "",
+"Health": "",
+"HidingPlace": "",
+=======
+"DamageZone": "",
+"Death": "",
+"DialogueTrigger": "",
+"Door": "",
+"Draw": "",
+"GettingHit": "",
+"Health": "",
+"HidingPlace": "",
+"InAir": "",
+>>>>>>> origin/sainthyena-patch-1
+"InstructionTrigger": "",
+"Motion": "",
+"OnGround": "",
+"Physics2D": "",
+"Player": "",
+<<<<<<< HEAD
+=======
+"SlashDamageZone": "",
+>>>>>>> origin/sainthyena-patch-1
+"State": "",
+"Statue": ""
+}
+
+[application]
+
+config/name="Corporate Hellfare"
+run/main_scene="res://Scenes/MainMenu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+LevelManager="*res://managers/LevelManager.gd"
+GameManager="*res://managers/GameManager.gd"
+UserDataManager="*res://managers/UserDataManager.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hide={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"
