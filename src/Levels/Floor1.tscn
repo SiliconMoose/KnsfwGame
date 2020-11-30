@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Assets/Environments/Props/Poster_0.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Environments/Props/Vending_Machine.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Environments/Props/Vent.png" type="Texture" id=29]
+[ext_resource path="res://Levels/PatrolPath.gd" type="Script" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5700.14, 35.3273 )
@@ -188,9 +189,11 @@ patrol_name = "Patrol02"
 
 [node name="Patrol01" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 3 )
+script = ExtResource( 30 )
 
 [node name="Patrol02" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 4 )
+script = ExtResource( 30 )
 
 [node name="Foreground" type="Node2D" parent="World"]
 z_index = 30

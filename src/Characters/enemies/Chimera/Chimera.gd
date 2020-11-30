@@ -22,6 +22,8 @@ export var patrol_name: String
 
 var patrol_path: Curve2D
 
+var patrol: Node2D
+
 func _ready() -> void:
 	# Signals
 	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
@@ -34,10 +36,10 @@ func _ready() -> void:
 		player.connect('player_position_changed', self, '_on_player_position_changed')
 		player.connect('state_changed', self, '_on_player_state_changed')
 	
-	var path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+patrol_name)
-	patrol_path = path.curve
+	patrol = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+patrol_name)
+	patrol_path = patrol.curve
 	
-	var startState = "Patrol" if path != null else "Idle"
+	var startState = "Patrol" if patrol != null else "Idle"
 	._initialize_state(startState)
 
 

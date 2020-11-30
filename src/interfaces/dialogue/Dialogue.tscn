@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://interfaces/dialogue/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/Custom Fonts/PoetsenOne-Regular.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/UI/Dialog/arrow_hover.png" type="Texture" id=10]
 [ext_resource path="res://Assets/UI/Dialog/arrow_press.png" type="Texture" id=11]
 [ext_resource path="res://Assets/UI/Dialog/Portraits/NPC_smile.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/Talk_alt.png" type="Texture" id=13]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.501961 )
@@ -233,6 +234,24 @@ margin_bottom = 0.300018
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitAlt" type="TextureRect" parent="PortraitBox"]
+anchor_left = 0.058
+anchor_top = 0.945
+anchor_right = 0.058
+anchor_bottom = 0.945
+margin_left = -24.1083
+margin_top = -419.7
+margin_right = 325.892
+margin_bottom = 0.300018
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 5
 __meta__ = {

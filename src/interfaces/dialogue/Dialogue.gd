@@ -61,6 +61,8 @@ func showPortrait(name: String):
 	match (name):
 		"default":
 			$PortraitBox/PortraitNeutral.visible = true
+		"default_alt":
+			$PortraitBox/PortraitAlt.visible = true
 		"smile":
 			$PortraitBox/PortraitSmile.visible = true
 		"grin":

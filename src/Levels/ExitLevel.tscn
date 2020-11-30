@@ -344,7 +344,7 @@ texture = ExtResource( 45 )
 [node name="Demon_Defeated" type="AnimatedSprite" parent="World/Environment/Props"]
 position = Vector2( 8758.75, 537.44 )
 frames = SubResource( 4 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Hazards" type="Node2D" parent="World"]
