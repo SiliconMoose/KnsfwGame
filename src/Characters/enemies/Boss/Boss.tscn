@@ -1,35 +1,106 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://Assets/Sprites/BOSS/Human/Boss_Dead_4.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Sprites/BOSS/Half_Human/Boss_Idle_3.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/BOSS/Human/Boss_Dead_1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/BOSS/Half_Human/Boss_Idle_1.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/BOSS/Human/Boss_Dead_5.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/BOSS/Human/Boss_Dead_2.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/BOSS/Human/Boss_Dead_3.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/BOSS/Half_Human/Boss_Idle_2.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/BOSS/Half_Human/Boss_Idle_0.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/BOSS/Human/Boss_Dead_0.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Walk/Boss_Walk_6.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_0.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_7.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_5.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_6.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Walk/Boss_Walk_0.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Walk/Boss_Walk_1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Walk/Boss_Walk_3.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Walk/Boss_Walk_4.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_3.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Walk/Boss_Walk_2.png" type="Texture" id=13]
+[ext_resource path="res://Characters/enemies/Boss/Boss.gd" type="Script" id=14]
+[ext_resource path="res://Characters/enemies/Chimera/states/fall.gd" type="Script" id=15]
+[ext_resource path="res://Characters/enemies/Chimera/states/chase.gd" type="Script" id=16]
+[ext_resource path="res://Characters/enemies/Chimera/states/search.gd" type="Script" id=17]
+[ext_resource path="res://Characters/enemies/Chimera/states/patrol.gd" type="Script" id=18]
+[ext_resource path="res://Characters/enemies/Chimera/states/idle.gd" type="Script" id=19]
+[ext_resource path="res://Characters/enemies/Chimera/states/catch.gd" type="Script" id=20]
+[ext_resource path="res://Characters/Player/gui/CooldownBar.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/Audio/Effects/Footsteps/Chimera/chimera_footstep.tres" type="AudioStream" id=22]
+[ext_resource path="res://Assets/Audio/Effects/Foley/Hard_Hit.wav" type="AudioStream" id=23]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Idle/Boss_Idle_2.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/BOSS/Demon/Walk/Boss_Walk_5.png" type="Texture" id=25]
+[ext_resource path="res://engine/Physics2D.gd" type="Script" id=28]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 609.228
+height = 0.0
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 25 ), ExtResource( 1 ) ],
 "loop": true,
-"name": "Defeated",
-"speed": 5.0
+"name": "Move",
+"speed": 12.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 24 ), ExtResource( 12 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "Dead",
-"speed": 8.0
+"name": "Idle",
+"speed": 12.0
 } ]
 
-[node name="Boss" type="Node2D"]
+[node name="Boss" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 14 )
 
-[node name="Defeated" type="Node2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+max_distance = 5000.0
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Defeated"]
-frames = SubResource( 1 )
-animation = "Defeated"
-frame = 2
-playing = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 6, 74 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "Idle"
+flip_h = true
+
+[node name="Physics2D" type="Node2D" parent="."]
+script = ExtResource( 28 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="CooldownBar" parent="." instance=ExtResource( 21 )]
+duration = 0.5
+
+[node name="Footsteps" type="Node2D" parent="."]
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="Footsteps"]
+stream = ExtResource( 22 )
+pitch_scale = 0.7
+max_distance = 5000.0
+attenuation = 0.574349
+
+[node name="FootstepTimer" type="Timer" parent="Footsteps"]
+wait_time = 0.35
+
+[node name="States" type="Node2D" parent="."]
+
+[node name="Idle" type="Node2D" parent="States"]
+script = ExtResource( 19 )
+
+[node name="Fall" type="Node2D" parent="States"]
+script = ExtResource( 15 )
+
+[node name="Chase" type="Node2D" parent="States"]
+position = Vector2( 0, 1.4142 )
+script = ExtResource( 16 )
+SPEED = 1000.0
+
+[node name="Search" type="Node2D" parent="States"]
+script = ExtResource( 17 )
+SPEED = 500.0
+
+[node name="Patrol" type="Node2D" parent="States"]
+script = ExtResource( 18 )
+SPEED = 600.0
+
+[node name="Catch" type="Node2D" parent="States"]
+script = ExtResource( 20 )
+catchSound = ExtResource( 23 )

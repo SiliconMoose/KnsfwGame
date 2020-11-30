@@ -1,85 +1,240 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_2.png" type="Texture" id=1]
+[ext_resource path="res://interfaces/dialogue/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/Custom Fonts/PoetsenOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_0.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/MC_Talksprite_Question.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Dialog/arrow.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=8]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/NPC_frown.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/Dialog/arrow_hover.png" type="Texture" id=10]
+[ext_resource path="res://Assets/UI/Dialog/arrow_press.png" type="Texture" id=11]
+[ext_resource path="res://Assets/UI/Dialog/Portraits/NPC_smile.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.501961 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.717647 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 64
+size = 32
 outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 5
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-border_width_left = 30
-border_width_top = 30
-border_width_right = 30
-border_width_bottom = 30
+[sub_resource type="DynamicFont" id=4]
+resource_name = "Poetsen0ne 48"
+size = 20
+outline_size = 1
+outline_color = Color( 0.764706, 0.160784, 0.698039, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "FadeInstruction"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Instructions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=6]
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
 border_color = Color( 0, 0, 0, 1 )
 
-[node name="Dialog" type="Panel"]
+[node name="Dialogue" type="Panel"]
 anchor_left = 0.084
 anchor_top = 0.533
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -107.52
-margin_top = -383.76
-margin_right = -1280.0
-margin_bottom = -720.0
+margin_left = 548.471
+margin_top = -15.7453
+margin_right = -624.009
+margin_bottom = -351.985
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogBox" type="Panel" parent="."]
-margin_left = -658.0
-margin_top = 148.0
-margin_right = 1140.0
-margin_bottom = 635.0
+[node name="DialogueBox" type="Panel" parent="."]
+margin_left = -339.0
+margin_top = 83.0
+margin_right = 550.0
+margin_bottom = 312.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="DialogBox"]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 1726.0
-margin_bottom = 445.0
+[node name="Label" type="Label" parent="DialogueBox"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 822.0
+margin_bottom = 184.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "adskjlkjhdslkjfhglksjdhlfg"
+text = "< no text defined >
+"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PortraitBox" type="Panel" parent="."]
-margin_left = -1181.0
-margin_top = 108.0
-margin_right = -635.0
-margin_bottom = 644.0
-custom_styles/panel = SubResource( 4 )
+[node name="NextArrow" type="TextureButton" parent="DialogueBox"]
+margin_left = 823.298
+margin_top = 163.027
+margin_right = 862.298
+margin_bottom = 204.027
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 10 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="PortraitBox"]
-margin_left = -66.0
-margin_top = -356.0
-margin_right = 520.0
-margin_bottom = 506.0
-texture = ExtResource( 1 )
+[node name="Instructions" type="Label" parent="DialogueBox"]
+margin_left = 7.57953
+margin_top = 189.375
+margin_right = 874.58
+margin_bottom = 214.375
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 0.517647 )
+text = "Press E or Enter..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueBox"]
+anims/FadeInstruction = SubResource( 5 )
+
+[node name="PortraitBox" type="Panel" parent="."]
+margin_left = -607.0
+margin_top = 60.0
+margin_right = -335.0
+margin_bottom = 320.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitNeutral" type="TextureRect" parent="PortraitBox"]
+margin_left = -25.0
+margin_top = -170.0
+margin_right = 275.0
+margin_bottom = 246.0
+texture = ExtResource( 3 )
 expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitSmile" type="TextureRect" parent="PortraitBox"]
+margin_left = -25.0
+margin_top = -170.0
+margin_right = 275.0
+margin_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitGrin" type="TextureRect" parent="PortraitBox"]
+anchor_left = 0.055
+anchor_top = 0.938
+anchor_right = 0.055
+anchor_bottom = 0.938
+margin_left = -39.96
+margin_top = -413.88
+margin_right = 260.04
+margin_bottom = 2.12003
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitQuestion" type="TextureRect" parent="PortraitBox"]
+anchor_left = 0.058
+anchor_top = 0.945
+anchor_right = 0.058
+anchor_bottom = 0.945
+margin_left = -40.776
+margin_top = -419.7
+margin_right = 309.224
+margin_bottom = 0.300018
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitNPCSmile" type="TextureRect" parent="PortraitBox"]
+anchor_left = 0.058
+anchor_top = 0.945
+anchor_right = 0.058
+anchor_bottom = 0.945
+margin_left = 1.29013
+margin_top = -419.7
+margin_right = 351.29
+margin_bottom = 0.300018
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitNPCFrown" type="TextureRect" parent="PortraitBox"]
+anchor_left = 0.058
+anchor_top = 0.945
+anchor_right = 0.058
+anchor_bottom = 0.945
+margin_left = 2.08382
+margin_top = -419.7
+margin_right = 352.084
+margin_bottom = 0.300018
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }

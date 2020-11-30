@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fireburst.wav-cf4668fd8fba02e6ba23da03aa7f9494.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Effects/Foley/Fireburst.wav"
+dest_files=[ "res://.import/Fireburst.wav-cf4668fd8fba02e6ba23da03aa7f9494.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

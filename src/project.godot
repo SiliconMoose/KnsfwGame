@@ -9,10 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Character",
+"class": "Boss",
+"language": "GDScript",
+"path": "res://Characters/enemies/Boss/Boss.gd"
+}, {
+"base": "Area2D",
+"class": "ChangeLevelTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/ChangeLevelTrigger.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Characters/Common/Character.gd"
+}, {
+"base": "Character",
+"class": "Chimera",
+"language": "GDScript",
+"path": "res://Characters/enemies/Chimera/Chimera.gd"
 }, {
 "base": "Area2D",
 "class": "DamageZone",
@@ -23,6 +38,16 @@ _global_script_classes=[ {
 "class": "Death",
 "language": "GDScript",
 "path": "res://Characters/Common/states/motion/combat/death.gd"
+}, {
+"base": "Area2D",
+"class": "DialogueTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/DialogueTrigger.gd"
+}, {
+"base": "Area2D",
+"class": "Door",
+"language": "GDScript",
+"path": "res://environment/Doors/Door.gd"
 }, {
 "base": "Node2D",
 "class": "Draw",
@@ -39,10 +64,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Common/Health.gd"
 }, {
+"base": "Area2D",
+"class": "HidingPlace",
+"language": "GDScript",
+"path": "res://environment/HidingPlaces/HidingPlace.gd"
+}, {
 "base": "Motion",
 "class": "InAir",
 "language": "GDScript",
 "path": "res://Characters/Player/states/motion/in-air/in-air.gd"
+}, {
+"base": "Area2D",
+"class": "InstructionTrigger",
+"language": "GDScript",
+"path": "res://Data/Triggers/InstructionTrigger.gd"
 }, {
 "base": "State",
 "class": "Motion",
@@ -73,21 +108,34 @@ _global_script_classes=[ {
 "class": "State",
 "language": "GDScript",
 "path": "res://Characters/Common/states/state.gd"
+}, {
+"base": "Area2D",
+"class": "Statue",
+"language": "GDScript",
+"path": "res://environment/Statues/Statue.gd"
 } ]
 _global_script_class_icons={
+"Boss": "",
+"ChangeLevelTrigger": "",
 "Character": "",
+"Chimera": "",
 "DamageZone": "",
 "Death": "",
+"DialogueTrigger": "",
+"Door": "",
 "Draw": "",
 "GettingHit": "",
 "Health": "",
+"HidingPlace": "",
 "InAir": "",
+"InstructionTrigger": "",
 "Motion": "",
 "OnGround": "",
 "Physics2D": "",
 "Player": "",
 "SlashDamageZone": "",
-"State": ""
+"State": "",
+"Statue": ""
 }
 
 [application]

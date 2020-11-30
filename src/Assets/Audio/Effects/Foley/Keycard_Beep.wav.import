@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Keycard_Beep.wav-31e363324d130f11a7a7f438fd1ee6de.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Effects/Foley/Keycard_Beep.wav"
+dest_files=[ "res://.import/Keycard_Beep.wav-31e363324d130f11a7a7f438fd1ee6de.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

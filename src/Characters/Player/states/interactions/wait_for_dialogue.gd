@@ -2,7 +2,7 @@ extends Motion
 
 
 func enter(host: Player) -> void:
-	host.get_node('AnimationPlayer').play('Idle')
+	host.get_node('AnimatedSprite').play('Idle')
 	host.velocity = Vector2(0, 0)
 
 

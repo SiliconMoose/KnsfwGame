@@ -26,7 +26,7 @@ func get_scene_path() -> String:
 	return scene_path
 
 
-func goto_scene(path: String) -> void: # game requests to switch to this scene
+func goto_scene(path: String, hideSpinner: bool = false) -> void: # game requests to switch to this scene
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # check for errors
 		show_error()
@@ -37,6 +37,7 @@ func goto_scene(path: String) -> void: # game requests to switch to this scene
 	
 	# start your "loading..." animation
 	loading_screen = loading_screen_scene.instance()	
+	loading_screen.get_child(2).visible = !hideSpinner
 	root.add_child(loading_screen)
 	wait_frames = 1
 
@@ -56,26 +57,25 @@ func _process(time: float) -> void:
 	while OS.get_ticks_msec() < t + time_max: # use "time_max" to control for how long we block this thread
 
 		# poll your loader
-		var err = loader.poll()
+		var poll = loader.poll()
 
-		if err == ERR_FILE_EOF: # Finished loading.
-			update_progress(1)
+		if poll == ERR_FILE_EOF: # Finished loading.
 			current_resource = loader.get_resource()
 			loader = null
 			loading_screen.set_resource(current_resource)
 			break
-		elif err == OK:
-			update_progress(float(loader.get_stage()) / loader.get_stage_count())
+		elif poll == OK:
+			break
 		else: # error during loading
 			show_error()
 			loader = null
 			break
 
-
-func update_progress(value: float) -> void:
-	loading_screen.set_progress(round(value * 100))
-
-
 func set_new_scene(scene_resource: Resource) -> void:
 	var scene = scene_resource.instance()
 	get_node('/root').add_child(scene)
+
+
+func start_level(level: String):
+	GameManager.currentLevel = level
+	LevelManager.goto_scene("res://Levels/%s.tscn" % level)
