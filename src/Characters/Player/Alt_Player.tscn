@@ -16,7 +16,6 @@
 [ext_resource path="res://Characters/Player/Alt_Player.gd" type="Script" id=14]
 [ext_resource path="res://Characters/enemies/Chimera/states/fall.gd" type="Script" id=15]
 [ext_resource path="res://Characters/enemies/Chimera/states/patrol.gd" type="Script" id=18]
-[ext_resource path="res://Characters/Player/gui/CooldownBar.tscn" type="PackedScene" id=21]
 [ext_resource path="res://engine/Physics2D.gd" type="Script" id=28]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -55,11 +54,6 @@ frame = 7
 
 [node name="Physics2D" type="Node2D" parent="."]
 script = ExtResource( 28 )
-
-[node name="CooldownTimer" type="Timer" parent="."]
-
-[node name="CooldownBar" parent="." instance=ExtResource( 21 )]
-duration = 0.5
 
 [node name="Footsteps" type="Node2D" parent="."]
 

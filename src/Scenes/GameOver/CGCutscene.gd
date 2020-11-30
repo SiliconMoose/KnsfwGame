@@ -25,5 +25,5 @@ func _on_next():
 	emit_signal("cg_complete")
 
 
-func _on_anim_complete(anim: String):
+func _on_anim_complete(_anim: String):
 	$CanvasLayer/NextButton.visible = true

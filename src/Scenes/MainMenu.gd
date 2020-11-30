@@ -7,7 +7,6 @@ var continueOnLevel: String
 func _ready() -> void:
 	$SideMenu/NewGameButton.connect('pressed', self, '_onNewPressed')
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
-	$SideMenu/OptionsButton.connect('pressed', self, '_onOptionPressed')
 	$SideMenu/TestLevelButton4.connect('pressed', self, '_onTestLevelPressed', ["ExitLevel"])
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
 	$FadePanel.connect("fade_complete", self, '_fadeComplete')
@@ -43,10 +42,6 @@ func _onContinuePressed() -> void:
 	$FadePanel.fadeOut()
 	
 	
-func _onOptionPressed() -> void:
-	get_tree().reload_current_scene()
-
-
 func _onTestLevelPressed(level: String) -> void:
 	LevelManager.start_level(level)
 	

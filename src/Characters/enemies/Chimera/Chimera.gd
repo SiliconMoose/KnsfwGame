@@ -26,8 +26,6 @@ var patrol: Node2D
 
 func _ready() -> void:
 	# Signals
-	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
-	$CooldownBar.set_duration($CooldownTimer.wait_time)
 	$States/Catch.connect("player_caught", self, "_on_player_caught")
 	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
@@ -47,11 +45,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	current_state.update(self, delta)
 	Physics2D.compute_gravity(self, delta)
-
-
-func start_cooldown():
-	$CooldownTimer.start()
-	$CooldownBar.start()
 
 
 func _on_player_position_changed(new_position: Vector2) -> void:

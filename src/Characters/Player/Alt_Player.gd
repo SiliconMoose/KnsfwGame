@@ -24,8 +24,6 @@ var patrol_path: Curve2D
 
 func _ready() -> void:
 	# Signals
-	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
-	$CooldownBar.set_duration($CooldownTimer.wait_time)
 	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
 	var path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+patrol_name)
