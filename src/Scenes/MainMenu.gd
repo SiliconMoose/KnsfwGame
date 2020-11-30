@@ -8,10 +8,7 @@ func _ready() -> void:
 	$SideMenu/NewGameButton.connect('pressed', self, '_onNewPressed')
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
 	$SideMenu/OptionsButton.connect('pressed', self, '_onOptionPressed')
-	$SideMenu/TestLevelButton.connect('pressed', self, '_onTestLevelPressed', ["TutorialHallway"])
-	$SideMenu/TestLevelButton2.connect('pressed', self, '_onTestLevelPressed', ["Floor1"])
-	$SideMenu/TestLevelButton3.connect('pressed', self, '_onTestLevelPressed', ["Floor2"])
-	$SideMenu/TestLevelButton4.connect('pressed', self, '_onTestLevelPressed', ["Floor3Boss"])
+	$SideMenu/TestLevelButton4.connect('pressed', self, '_onTestLevelPressed', ["ExitLevel"])
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
 	$FadePanel.connect("fade_complete", self, '_fadeComplete')
 	$FadePanel.visible = true

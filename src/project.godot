@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Character",
+"class": "Alt_Player",
+"language": "GDScript",
+"path": "res://Characters/Player/Alt_Player.gd"
+}, {
+"base": "Character",
 "class": "Boss",
 "language": "GDScript",
 "path": "res://Characters/enemies/Boss/Boss.gd"
@@ -90,6 +95,7 @@ _global_script_classes=[ {
 "path": "res://environment/Statues/Statue.gd"
 } ]
 _global_script_class_icons={
+"Alt_Player": "",
 "Boss": "",
 "ChangeLevelTrigger": "",
 "Character": "",
