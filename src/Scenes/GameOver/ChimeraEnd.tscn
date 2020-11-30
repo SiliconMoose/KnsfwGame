@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/GameOver/CGCutscene.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/GameOver/LossCutscene.gd" type="Script" id=2]
 [ext_resource path="res://Assets/CG/Enemy/Chimera_CG_Jizz.png" type="Texture" id=3]
 [ext_resource path="res://Assets/CG/Enemy/Chimera_CG.png" type="Texture" id=4]
 [ext_resource path="res://interfaces/menu/CumButton.tscn" type="PackedScene" id=5]
@@ -35,6 +35,19 @@ anims/Show_01 = SubResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Images" type="Node2D" parent="."]
+
+[node name="Chimera_CG" type="Sprite" parent="Images"]
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Chimera_CG_Jizz" type="Sprite" parent="Images"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 3 )
+centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -70,18 +83,4 @@ __meta__ = {
 }
 
 [node name="FadePanel" parent="CanvasLayer" instance=ExtResource( 1 )]
-visible = false
 mouse_filter = 2
-
-[node name="Images" type="Node2D" parent="."]
-
-[node name="Chimera_CG" type="Sprite" parent="Images"]
-scale = Vector2( 0.333333, 0.333333 )
-texture = ExtResource( 4 )
-centered = false
-
-[node name="Chimera_CG_Jizz" type="Sprite" parent="Images"]
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.333333, 0.333333 )
-texture = ExtResource( 3 )
-centered = false

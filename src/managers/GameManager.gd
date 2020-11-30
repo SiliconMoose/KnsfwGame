@@ -4,6 +4,10 @@ var hasSaveLoaded: bool = false
 var currentLevel: String
 
 
+func restart_current_level():
+	LevelManager.start_level(currentLevel)
+
+
 func _ready():
 	UserDataManager.connect("loaded", self, "_on_save_loaded")
 	UserDataManager.load_data({}, "1.0")

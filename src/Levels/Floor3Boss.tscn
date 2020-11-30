@@ -8,7 +8,7 @@
 [ext_resource path="res://interfaces/menu/Instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/enemies/Boss/Boss.tscn" type="PackedScene" id=7]
 [ext_resource path="res://environment/HidingPlaces/OfficePlant.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Environments/Props/Devil_Props/Background_Demon.png" type="Texture" id=9]
 [ext_resource path="res://environment/HidingPlaces/Watercooler.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Environments/Objects/Door_Stairs_Up.png" type="Texture" id=11]
 
@@ -126,7 +126,7 @@ position = Vector2( 3959.42, 161.559 )
 position = Vector2( -1878.13, 83.5261 )
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
-position = Vector2( -1340.5, 68.7934 )
+position = Vector2( -1342.88, 163.93 )
 z_index = 15
 
 [node name="Camera" type="Camera2D" parent="World/Player"]
