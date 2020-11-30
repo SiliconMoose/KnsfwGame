@@ -18,19 +18,19 @@
         },
         {
             "portrait": "npc_smile",
-            "text": "Uh, hi... again."
+            "text": "Hi, hello, good evening. Um. Nice to see you… again."
         },
         {
             "portrait": "default",
-            "text": "... What have you imbeciles done this time?"
+            "text": "... WHAT IS IT THIS TIME"
         },
         {
             "portrait": "npc_frown",
-            "text": "Welllll, our VP summoned a greater demon to streamline our HR department except it possessed her and summoned a bunch of other demons."
+            "text": "Well you know how it is with upper management, occult-oriented management strategies only go so far and well…"
         },
-        {
+	{
             "portrait": "npc_frown",
-            "text": "So now they’re all over the building and a lot of things are on fire. Also, I think the photocopier is possessed."
+            "text": "the VP is possessed and there’s demons everywhere. Pretty sure the photocopier is possessed too..."
         },
         {
             "portrait": "default",
@@ -74,7 +74,7 @@
         },
         {
             "portrait": "npc_frown",
-            "text": "Sorry..."
+            "text": "..."
         },
         {
             "portrait": "default",
@@ -89,7 +89,7 @@
             "text": "Um, option two?"
         },
         {
-            "portrait": "default",
+            "portrait": "grin",
             "text": "Very well, lay down."
         }
     ],
@@ -116,7 +116,7 @@
     [
         {
             "portrait": "default",
-            "text": "Damn it, these statue wards are intertwined."
+            "text": "Looks like these statues work like wards."
         },
         {
             "portrait": "default",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -13,6 +13,16 @@
 [ext_resource path="res://Scenes/Cutscene/IMP_MC.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Audio/Effects/Foley/Fire Burst 4.wav" type="AudioStream" id=12]
 [ext_resource path="res://Scenes/GameOver/BonusNPC.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Environments/Props/Evil_chicken.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Environments/Props/Trash.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Environments/Props/Box_0.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Environments/Props/Box_1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Environments/Props/Tape.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Environments/Props/bricks.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Environments/Props/Rubble.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Environments/Props/Locker.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Environments/Props/Vending_Machine.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Environments/Props/Vent.png" type="Texture" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4249.98, 35.3273 )
@@ -155,3 +165,63 @@ one_shot = true
 
 [node name="StartWalkingTimer" type="Timer" parent="Timers"]
 wait_time = 0.5
+
+[node name="Props" type="Node2D" parent="."]
+position = Vector2( -552.55, 232.735 )
+
+[node name="Locker2" type="Sprite" parent="Props"]
+position = Vector2( 33.6359, -141.271 )
+texture = ExtResource( 21 )
+
+[node name="Locker3" type="Sprite" parent="Props"]
+position = Vector2( -227.452, -138.907 )
+texture = ExtResource( 21 )
+
+[node name="Locker4" type="Sprite" parent="Props"]
+position = Vector2( -491.085, -138.907 )
+texture = ExtResource( 21 )
+
+[node name="Locker" type="Sprite" parent="Props"]
+position = Vector2( 295.995, -131.18 )
+texture = ExtResource( 21 )
+
+[node name="Box_0" type="Sprite" parent="Props"]
+position = Vector2( 0, 23 )
+texture = ExtResource( 16 )
+
+[node name="Box_2" type="Sprite" parent="Props"]
+position = Vector2( -430.539, 187.816 )
+texture = ExtResource( 16 )
+
+[node name="Box_1" type="Sprite" parent="Props"]
+position = Vector2( 3.3634, 197.634 )
+texture = ExtResource( 17 )
+
+[node name="bricks" type="Sprite" parent="Props"]
+position = Vector2( 181.634, 258.996 )
+texture = ExtResource( 19 )
+
+[node name="Evil_chicken" type="Sprite" parent="Props"]
+position = Vector2( 57.1809, -121.634 )
+texture = ExtResource( 14 )
+
+[node name="Rubble" type="Sprite" parent="Props"]
+position = Vector2( 1177.25, 282.541 )
+texture = ExtResource( 20 )
+
+[node name="Tape" type="Sprite" parent="Props"]
+position = Vector2( 366.63, 383.449 )
+texture = ExtResource( 18 )
+
+[node name="Trash" type="Sprite" parent="Props"]
+position = Vector2( 1984.51, 127.816 )
+texture = ExtResource( 15 )
+
+[node name="Vending_Machine" type="Sprite" parent="Props"]
+position = Vector2( 2314.15, -154.725 )
+texture = ExtResource( 22 )
+
+[node name="Vent" type="Sprite" parent="Props"]
+position = Vector2( 45.4073, -650.854 )
+scale = Vector2( 0.803987, 0.836366 )
+texture = ExtResource( 23 )

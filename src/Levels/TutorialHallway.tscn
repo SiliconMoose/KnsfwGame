@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Data/Triggers/InstructionTrigger.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=2]
@@ -11,6 +11,16 @@
 [ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://environment/HidingPlaces/Watercooler.tscn" type="PackedScene" id=10]
 [ext_resource path="res://environment/Doors/DoorDown.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Environments/Props/Photocopier.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Environments/Props/Trash.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Environments/Props/Box_0.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Environments/Props/Box_1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Environments/Props/Tape.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Environments/Props/bricks.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Environments/Props/Office_Plant_Normal.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Environments/Props/Rubble.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Environments/Props/Fallen_Book.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Environments/Props/Devil_Props/Wires.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3843.07, 35.3273 )
@@ -150,3 +160,48 @@ z_index = 20
 
 [node name="Foreground" type="Node2D" parent="World"]
 z_index = 30
+
+[node name="Photocopier" type="Sprite" parent="."]
+position = Vector2( 271.624, 253.832 )
+scale = Vector2( 0.86784, 0.86784 )
+texture = ExtResource( 12 )
+
+[node name="bricks" type="Sprite" parent="."]
+position = Vector2( -3218.16, 462.978 )
+texture = ExtResource( 17 )
+
+[node name="Box_1" type="Sprite" parent="."]
+position = Vector2( -2331.18, 397.463 )
+texture = ExtResource( 15 )
+
+[node name="Box_2" type="Sprite" parent="."]
+position = Vector2( -2036.88, 393.463 )
+texture = ExtResource( 15 )
+
+[node name="Box_0" type="Sprite" parent="."]
+position = Vector2( -2159.83, 216.034 )
+texture = ExtResource( 14 )
+
+[node name="Tape" type="Sprite" parent="."]
+position = Vector2( -2109.43, 91.0417 )
+texture = ExtResource( 16 )
+
+[node name="Rubble" type="Sprite" parent="."]
+position = Vector2( -1782.88, 467.002 )
+texture = ExtResource( 19 )
+
+[node name="Trash" type="Sprite" parent="."]
+position = Vector2( 741.697, 391.135 )
+texture = ExtResource( 13 )
+
+[node name="Office_Plant_Normal" type="Sprite" parent="."]
+position = Vector2( 2373.89, 105.725 )
+texture = ExtResource( 18 )
+
+[node name="Fallen_Book" type="Sprite" parent="."]
+position = Vector2( 742.294, 280.214 )
+texture = ExtResource( 20 )
+
+[node name="Wires" type="Sprite" parent="."]
+position = Vector2( -2516.6, -454.996 )
+texture = ExtResource( 21 )
