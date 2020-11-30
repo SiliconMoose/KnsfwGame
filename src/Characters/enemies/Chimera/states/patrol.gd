@@ -54,7 +54,7 @@ func moveTo(host:Character, point: Vector2) -> void:
 	else:
 		host.get_node('AnimatedSprite').play('Idle')
 		if host.patrol.directions:
-			var lookDir = 1 if host.patrol.directions[patrol_index] == "right" else -1
+			var lookDir = 1 if  host.patrol.directions.size() > patrol_index && host.patrol.directions[patrol_index] == "right" else -1
 			update_look_direction(host, Vector2(lookDir, 0), 1)
 		host.velocity.x = 0
 		host.get_node('Footsteps/FootstepTimer').stop()
