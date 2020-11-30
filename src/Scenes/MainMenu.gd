@@ -15,6 +15,8 @@ func _ready() -> void:
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
 	$FadePanel.connect("fade_complete", self, '_fadeComplete')
 	$FadePanel.visible = true
+
+	_pick_random_title_image()
 	
 	UserDataManager.connect("loaded", self, "_on_save_loaded")
 	
@@ -25,6 +27,8 @@ func _ready() -> void:
 	$FadePanel.fadeIn()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
+
+
 
 
 # disables the cursor and begins fade out to load next level
@@ -71,3 +75,14 @@ func _on_save_loaded():
 		continueOnLevel = saveFile["level"]
 	if(continueOnLevel != null && continueOnLevel != ""):
 		$SideMenu/ContinueButton.disabled = false
+
+
+func _pick_random_title_image():
+	$MenuArt1.visible = false
+	$MenuArt2.visible = false
+	
+	var pick = randi() % 2
+	if(pick == 0):
+		$MenuArt1.visible = true
+	elif(pick == 1):
+		$MenuArt2.visible = true

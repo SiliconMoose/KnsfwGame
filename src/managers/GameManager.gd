@@ -9,6 +9,8 @@ func restart_current_level():
 
 
 func _ready():
+	randomize()
+	
 	UserDataManager.connect("loaded", self, "_on_save_loaded")
 	UserDataManager.load_data({}, "1.0")
 

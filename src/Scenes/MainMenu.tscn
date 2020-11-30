@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=1]
 [ext_resource path="res://Assets/Audio/Music/mm_v3.ogg" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/UI/Menu/Menu_Art_0.png" type="Texture" id=5]
 [ext_resource path="res://Assets/UI/Custom Fonts/AttackOnCourier.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/UI/Menu/Menu_Art_1.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.117647, 0.117647, 0.121569, 1 )
@@ -123,12 +124,25 @@ theme = ExtResource( 1 )
 enabled_focus_mode = 0
 text = "Quit"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MenuArt1" type="TextureRect" parent="."]
+visible = false
 margin_left = 339.0
 margin_top = 123.0
 margin_right = 1284.0
 margin_bottom = 681.0
 texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuArt2" type="TextureRect" parent="."]
+margin_left = 339.0
+margin_top = 123.0
+margin_right = 1284.0
+margin_bottom = 681.0
+texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 __meta__ = {
