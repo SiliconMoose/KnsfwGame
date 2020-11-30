@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://environment/Statues/Statue1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Data/Triggers/DialogueTrigger.gd" type="Script" id=16]
 [ext_resource path="res://environment/HidingPlaces/Big_Candles.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Levels/PatrolPath.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9727.25, 35.3273 )
@@ -29,7 +30,7 @@ extents = Vector2( 76.7229, 138.542 )
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 12361.4, -59.5242, 0, 0, 0, 0, 9135.01, 99.8135 )
+"points": PoolVector2Array( 0, 0, 0, 0, 12450.5, -51.778, 0, 0, 0, 0, 4052.48, 129.551, 0, 0, 0, 0, 6613.39, 123.654, 0, 0, 0, 0, 9206.95, 140.606 )
 }
 
 [sub_resource type="Curve2D" id=5]
@@ -174,9 +175,13 @@ phase_3_patrol = "Phase3"
 
 [node name="Phase1" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 4 )
+script = ExtResource( 18 )
+directions = [ "left", "left", "left", "left" ]
 
 [node name="Phase2" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 5 )
+script = ExtResource( 18 )
+directions = [ "right" ]
 
 [node name="Phase3" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 6 )
