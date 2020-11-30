@@ -6,7 +6,8 @@ var flareSound: Resource = preload("res://Assets/Audio/Effects/Foley/Fire Burst 
 var stage: int = 0
 
 
-# Called when the node enters the scene tree for the first time.
+# This class is an abomination held together by chewing gum and prayer
+
 func _ready():
 	var global_l = $Bounds/Left.global_position
 	var global_r = $Bounds/Right.global_position
@@ -17,6 +18,8 @@ func _ready():
 	$Interfaces/Dialogue.visible = false
 	
 	$Interfaces/FadePanel.connect("fade_complete", self, '_fadeComplete')
+	
+	$Interfaces/CG.connect("cg_complete", self, "_cg_complete")
 	
 	var triggers = $World/Environment/Triggers.get_children()
 	for trigger in triggers:
@@ -68,10 +71,21 @@ func _start_dialogue_part2():
 func _fadeComplete(): 
 	if stage == 1:
 		stage = 2
+		$Interfaces/CG.visible = true
+		$Interfaces/CG.start()
+		$Interfaces/FadePanel.fadeIn()
+	elif stage == 3:
+		$Interfaces/CG.visible = false
+		$Interfaces/FadePanel.fadeIn()
+		stage = 4
+	elif stage == 4:
+		_start_dialogue_part2()
+
+
+func _cg_complete():
 		$World/Environment/Props/IMP_MC.visible = false
 		$World/Environment/Props/NPC_Extra/AnimatedSprite.play("Dead")
 		$World/Player.visible = true
-		$Interfaces/FadePanel.fadeIn()
-	elif stage == 2:
-		_start_dialogue_part2()
-
+		stage = 3
+		$Interfaces/FadePanel.fadeOut()
+		

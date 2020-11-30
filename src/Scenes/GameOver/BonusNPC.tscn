@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/GameOver/CGCutscene.gd" type="Script" id=2]
-[ext_resource path="res://Assets/CG/Boss/Boss_Defeat.png" type="Texture" id=3]
-[ext_resource path="res://Assets/CG/Boss/Boss_Defeat_Jizz.png" type="Texture" id=4]
+[ext_resource path="res://Assets/CG/Bonus/Bonus_0.png" type="Texture" id=3]
+[ext_resource path="res://Assets/CG/Bonus/Bonus_1.png" type="Texture" id=4]
 [ext_resource path="res://interfaces/menu/CumButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/UI/Next.png" type="Texture" id=6]
 [ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=7]
@@ -11,7 +10,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Show_01"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Images/Boss_CG_Jizz:modulate")
+tracks/0/path = NodePath("Images/NPC_CG_Jizz:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,35 +22,44 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="BossLoss" type="Node2D"]
+[node name="BonusNPC" type="Node2D"]
 script = ExtResource( 2 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Show_01 = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Images" type="Node2D" parent="."]
+
+[node name="NPC_CG" type="Sprite" parent="Images"]
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="NPC_CG_Jizz" type="Sprite" parent="Images"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="CanvasLayer" type="Node2D" parent="."]
 
 [node name="CumButton" parent="CanvasLayer" instance=ExtResource( 5 )]
-margin_left = 87.1811
-margin_top = 72.7945
-margin_right = 274.181
-margin_bottom = 162.795
+margin_left = 1006.79
+margin_top = 61.1404
+margin_right = 1193.79
+margin_bottom = 151.141
 
 [node name="NextButton" type="ToolButton" parent="CanvasLayer"]
-margin_left = 40.5889
-margin_top = 70.6992
-margin_right = 258.589
-margin_bottom = 136.699
+margin_left = 979.273
+margin_top = 60.1046
+margin_right = 1197.27
+margin_bottom = 126.105
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.996078, 1, 0.909804, 1 )
-text = "Restart"
+text = "Continue"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,20 +76,3 @@ stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="FadePanel" parent="CanvasLayer" instance=ExtResource( 1 )]
-visible = false
-mouse_filter = 2
-
-[node name="Images" type="Node2D" parent="."]
-
-[node name="Boss_CG" type="Sprite" parent="Images"]
-scale = Vector2( 0.333333, 0.333333 )
-texture = ExtResource( 3 )
-centered = false
-
-[node name="Boss_CG_Jizz" type="Sprite" parent="Images"]
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.333333, 0.333333 )
-texture = ExtResource( 4 )
-centered = false
