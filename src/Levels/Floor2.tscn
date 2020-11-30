@@ -146,10 +146,6 @@ position = Vector2( 1515.97, -192.076 )
 position = Vector2( -4318.69, 284.564 )
 texture = ExtResource( 8 )
 
-[node name="Poster_0" type="Sprite" parent="World/Environment/Props"]
-position = Vector2( -6591.18, 335.869 )
-texture = ExtResource( 20 )
-
 [node name="Poster_1" type="Sprite" parent="World/Environment/Props"]
 position = Vector2( -1568.26, 36.6058 )
 texture = ExtResource( 18 )
@@ -320,7 +316,7 @@ position = Vector2( 288.328, -16.0181 )
 texture = ExtResource( 32 )
 
 [node name="Drawer_plain2" type="Sprite" parent="World/Environment/Props"]
-position = Vector2( 13642.7, 548.305 )
+position = Vector2( 13685.4, 542.966 )
 texture = ExtResource( 17 )
 
 [node name="Drawer2" type="Sprite" parent="World/Environment/Props"]
@@ -534,3 +530,51 @@ curve = SubResource( 6 )
 
 [node name="Foreground" type="Node2D" parent="World"]
 z_index = 30
+
+[node name="Wires" type="Sprite" parent="."]
+position = Vector2( 6193.88, -466.032 )
+texture = ExtResource( 42 )
+
+[node name="bricks" type="Sprite" parent="."]
+position = Vector2( 8756.77, 425.641 )
+texture = ExtResource( 38 )
+
+[node name="Candle_1" type="Sprite" parent="."]
+position = Vector2( 9717.85, 452.338 )
+texture = ExtResource( 31 )
+
+[node name="Candle_2" type="Sprite" parent="."]
+position = Vector2( 10118.3, 457.677 )
+texture = ExtResource( 44 )
+
+[node name="Candle_3" type="Sprite" parent="."]
+position = Vector2( 9627.08, 420.302 )
+texture = ExtResource( 31 )
+
+[node name="Candle_4" type="Sprite" parent="."]
+position = Vector2( 16173.1, 414.962 )
+texture = ExtResource( 31 )
+
+[node name="Candle_0" type="Sprite" parent="."]
+position = Vector2( 16263.9, 441.659 )
+texture = ExtResource( 23 )
+
+[node name="bricks2" type="Sprite" parent="."]
+position = Vector2( 17502.6, 559.125 )
+texture = ExtResource( 38 )
+
+[node name="Poster_0" type="Sprite" parent="."]
+position = Vector2( 15041.2, -124.313 )
+texture = ExtResource( 20 )
+
+[node name="Poster_1" type="Sprite" parent="."]
+position = Vector2( 15244.1, -38.8832 )
+texture = ExtResource( 18 )
+
+[node name="Poster_2" type="Sprite" parent="."]
+position = Vector2( 8804.82, -92.2767 )
+texture = ExtResource( 18 )
+
+[node name="Poster_3" type="Sprite" parent="."]
+position = Vector2( 9466.9, -167.028 )
+texture = ExtResource( 20 )
