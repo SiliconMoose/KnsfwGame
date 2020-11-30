@@ -154,4 +154,4 @@ func _transition_to_CG():
 	if(targetCG == "chimera"):
 		LevelManager.goto_scene("res://Scenes/GameOver/ChimeraEnd.tscn")
 	elif(targetCG == "boss"):
-		LevelManager.goto_scene("res://Scenes/GameOver/BossEnd.tscn")
+		LevelManager.goto_scene("res://Scenes/GameOver/BossLoss.tscn")

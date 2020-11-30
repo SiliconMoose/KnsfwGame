@@ -42,22 +42,31 @@ __meta__ = {
 }
 
 [node name="NewGameButton" type="ToolButton" parent="SideMenu"]
-margin_top = 257.0
+margin_top = 222.0
 margin_right = 378.0
-margin_bottom = 323.0
+margin_bottom = 288.0
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
 text = "New Game"
 
 [node name="ContinueButton" type="ToolButton" parent="SideMenu"]
-margin_top = 327.0
+margin_top = 292.0
 margin_right = 378.0
-margin_bottom = 393.0
+margin_bottom = 358.0
 theme = ExtResource( 1 )
 disabled = true
 enabled_focus_mode = 0
 text = "Continue"
+
+[node name="TestLevelButton" type="ToolButton" parent="SideMenu"]
+margin_top = 362.0
+margin_right = 378.0
+margin_bottom = 428.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Test Level 3"
 
 [node name="OptionsButton" type="ToolButton" parent="SideMenu"]
 visible = false
@@ -70,9 +79,9 @@ enabled_focus_mode = 0
 text = "Options"
 
 [node name="QuitButton" type="ToolButton" parent="SideMenu"]
-margin_top = 397.0
+margin_top = 432.0
 margin_right = 378.0
-margin_bottom = 463.0
+margin_bottom = 498.0
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0

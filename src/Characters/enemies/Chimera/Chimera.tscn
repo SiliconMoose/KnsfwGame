@@ -40,11 +40,6 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 6.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "Run",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]

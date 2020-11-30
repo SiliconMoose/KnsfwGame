@@ -1,7 +1,7 @@
 #warning-ignore-all:unused_class_variable
 extends Character
 
-class_name Chimera
+class_name Boss
 
 signal player_caught(type)
 
@@ -13,12 +13,15 @@ var player_hidden: bool = false
 var target_position: Vector2 = Vector2()
 var start_position: Vector2 = position
 
-const TARGET_MIN_DISTANCE: float = 600.0
-const FOLLOW_RANGE: float = 1500.0
-const ATTACK_RANGE: float = 700.0
-const BACK_DETECT_RANGE: float = 400.0
+const TARGET_MIN_DISTANCE: float = 800.0
+const FOLLOW_RANGE: float = 2000.0
+const ATTACK_RANGE: float = 900.0
+const BACK_DETECT_RANGE: float = 600.0
 
-export var patrol_name: String
+export var phase_1_patrol: String
+export var phase_2_patrol: String
+export var phase_3_patrol: String
+
 
 var patrol_path: Curve2D
 
@@ -34,7 +37,7 @@ func _ready() -> void:
 		player.connect('player_position_changed', self, '_on_player_position_changed')
 		player.connect('state_changed', self, '_on_player_state_changed')
 	
-	var path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+patrol_name)
+	var path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_1_patrol)
 	patrol_path = path.curve
 	
 	var startState = "Patrol" if path != null else "Idle"
@@ -64,7 +67,7 @@ func _on_player_state_changed(state: String) -> void:
 
 
 func _on_player_caught():
-	emit_signal("player_caught", "chimera")
+	emit_signal("player_caught", "boss")
 	
 	
 func _on_footstep():

@@ -5,23 +5,23 @@ export (float) var SPEED:= 600
 export (float) var ACCELERATION:= 1
 
 
-func enter(host: Chimera) -> void:
+func enter(host: Character) -> void:
 	host.get_node('AnimatedSprite').play('Move')
 	host.get_node('Footsteps/FootstepPlayer').play()
 	host.get_node('Footsteps/FootstepTimer').start()
 	
-func exit(host: Chimera): 
+func exit(host: Character): 
 	host.get_node('Footsteps/FootstepTimer').stop()
 
 #warning-ignore:unused_argument
-func update(host: Chimera, delta: float) -> void:
+func update(host: Character, delta: float) -> void:
 	if not host.has_target:
 		emit_signal('finished', 'Search')
 	else:
 		follow(host)
 
 
-func follow(host: Chimera) -> void:
+func follow(host: Character) -> void:
 	var target_direction = (host.target_position - host.position).normalized() 
 	update_look_direction(host, Vector2(int(round(target_direction.x)), 0), 1)
 	

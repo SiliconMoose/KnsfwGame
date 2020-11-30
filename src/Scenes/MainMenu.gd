@@ -8,6 +8,7 @@ func _ready() -> void:
 	$SideMenu/NewGameButton.connect('pressed', self, '_onNewPressed')
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
 	$SideMenu/OptionsButton.connect('pressed', self, '_onOptionPressed')
+	$SideMenu/TestLevelButton.connect('pressed', self, '_onTestLevelPressed')
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
 	$FadePanel.connect("fade_complete", self, '_fadeComplete')
 	$FadePanel.visible = true
@@ -32,11 +33,18 @@ func _onNewPressed() -> void:
 
 
 func _onContinuePressed() -> void:
-	LevelManager.start_level(continueOnLevel)
+	actionAfterFade = "continue"
+	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	$FadePanel.fadeOut()
 	
 	
 func _onOptionPressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _onTestLevelPressed() -> void:
+	LevelManager.start_level("Floor3Boss")
 	
 	
 func _onQuitPressed() -> void:
@@ -47,6 +55,8 @@ func _onQuitPressed() -> void:
 func _fadeComplete() -> void: 
 	if (actionAfterFade == "startNew"):
 		LevelManager.start_level("IntroLevel")
+	elif (actionAfterFade == "continue"):
+		LevelManager.start_level(continueOnLevel)
 	elif (actionAfterFade == "enableMenu"):
 		$FadePanel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
