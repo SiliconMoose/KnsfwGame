@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -14,6 +14,21 @@
 [ext_resource path="res://environment/Doors/DoorDown.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Environments/Props/Chair_1.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Environments/Props/bricks.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Environments/Props/Coatrack_1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Environments/Props/Candle_2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Environments/Props/Devil_Props/Eyes.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Environments/Props/Rubble.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Environments/Props/Candle_1.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Environments/Props/Coatrack_0.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Environments/Props/Drawer.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Environments/Props/Fallen_Book.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Environments/Props/Chair_3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Environments/Props/Chair_2.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Environments/Props/Desk_0.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Environments/Props/Locker.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Environments/Props/Poster_0.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Environments/Props/Vending_Machine.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Environments/Props/Vent.png" type="Texture" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5700.14, 35.3273 )
@@ -117,6 +132,22 @@ texture = ExtResource( 14 )
 position = Vector2( -508.788, 310.28 )
 texture = ExtResource( 13 )
 
+[node name="Coatrack_0" type="Sprite" parent="World/Environment/Propstuff"]
+position = Vector2( -639.259, -49.0299 )
+texture = ExtResource( 20 )
+
+[node name="Fallen_Book" type="Sprite" parent="World/Environment/Propstuff"]
+position = Vector2( -1518.95, 471.988 )
+texture = ExtResource( 22 )
+
+[node name="Locker" type="Sprite" parent="World/Environment/Propstuff"]
+position = Vector2( 6378.31, 103.765 )
+texture = ExtResource( 26 )
+
+[node name="Locker2" type="Sprite" parent="World/Environment/Propstuff"]
+position = Vector2( 6653.93, 102.214 )
+texture = ExtResource( 26 )
+
 [node name="Hazards" type="Node2D" parent="World"]
 
 [node name="Interactables" type="Node2D" parent="World"]
@@ -163,3 +194,55 @@ curve = SubResource( 4 )
 
 [node name="Foreground" type="Node2D" parent="World"]
 z_index = 30
+
+[node name="Vent" type="Sprite" parent="."]
+position = Vector2( 6518.01, -441.681 )
+texture = ExtResource( 29 )
+
+[node name="Vending_Machine" type="Sprite" parent="."]
+position = Vector2( 4626.49, 98.2142 )
+texture = ExtResource( 28 )
+
+[node name="Rubble" type="Sprite" parent="."]
+position = Vector2( 5691.17, 490.866 )
+texture = ExtResource( 18 )
+
+[node name="Poster_0" type="Sprite" parent="."]
+position = Vector2( 5011.59, -173.621 )
+texture = ExtResource( 27 )
+
+[node name="Drawer" type="Sprite" parent="."]
+position = Vector2( 620.687, 283.214 )
+texture = ExtResource( 21 )
+
+[node name="Desk_0" type="Sprite" parent="."]
+position = Vector2( 1153.03, 260.561 )
+texture = ExtResource( 25 )
+
+[node name="Chair_3" type="Sprite" parent="."]
+position = Vector2( 1421.09, 343.621 )
+texture = ExtResource( 23 )
+
+[node name="Eyes" type="Sprite" parent="."]
+position = Vector2( -2156.73, -145.216 )
+texture = ExtResource( 17 )
+
+[node name="Eyes2" type="Sprite" parent="."]
+position = Vector2( -2976.73, 154.784 )
+texture = ExtResource( 17 )
+
+[node name="Coatrack_1" type="Sprite" parent="."]
+position = Vector2( 3876.36, -35.425 )
+texture = ExtResource( 15 )
+
+[node name="Chair_2" type="Sprite" parent="."]
+position = Vector2( 4034.75, 281.359 )
+texture = ExtResource( 24 )
+
+[node name="Candle_2" type="Sprite" parent="."]
+position = Vector2( -1757.87, 445.408 )
+texture = ExtResource( 16 )
+
+[node name="Candle_1" type="Sprite" parent="."]
+position = Vector2( -1865.35, 485.006 )
+texture = ExtResource( 19 )
