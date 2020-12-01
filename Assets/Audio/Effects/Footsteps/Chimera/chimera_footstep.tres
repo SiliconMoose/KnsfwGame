@@ -1,0 +1,6 @@
+[gd_resource type="AudioStreamRandomPitch" load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Audio/Effects/Footsteps/Chimera/Footstep Monster 1_06.wav" type="AudioStream" id=1]
+
+[resource]
+audio_stream = ExtResource( 1 )

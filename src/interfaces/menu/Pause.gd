@@ -2,8 +2,9 @@ extends Control
 
 
 func _ready() -> void:
-	$Background/VBoxContainer/Resume.connect('pressed', self, '_on_Resume_pressed')
-	$Background/VBoxContainer/Quit.connect('pressed', self, '_on_Quit_pressed')
+	$Panel/VBoxContainer/ResumeButton.connect('pressed', self, '_on_Resume_pressed')
+	$Panel/VBoxContainer/QuitButton.connect('pressed', self, '_on_Quit_pressed')
+	visible = false
 
 
 func _input(event: InputEvent) -> void:
@@ -11,7 +12,11 @@ func _input(event: InputEvent) -> void:
 		var new_pause_state: bool = !get_tree().paused
 		get_tree().paused = new_pause_state
 		visible = new_pause_state
-		get_node('Background/VBoxContainer/Resume').grab_focus()
+		if(visible):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		get_node('Panel/VBoxContainer/ResumeButton').grab_focus()
 
 
 func _on_Resume_pressed() -> void:
@@ -20,4 +25,5 @@ func _on_Resume_pressed() -> void:
 
 
 func _on_Quit_pressed() -> void:
-	get_tree().quit()
+	get_tree().paused = false
+	LevelManager.goto_scene("res://Scenes/MainMenu.tscn")

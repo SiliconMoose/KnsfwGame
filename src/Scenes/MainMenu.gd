@@ -1,29 +1,53 @@
 extends Control
 
+var actionAfterFade: String = "enableMenu"
+
+var continueOnLevel: String
 
 func _ready() -> void:
 	$SideMenu/NewGameButton.connect('pressed', self, '_onNewPressed')
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
 	$SideMenu/OptionsButton.connect('pressed', self, '_onOptionPressed')
+	$SideMenu/TestLevelButton.connect('pressed', self, '_onTestLevelPressed', ["TutorialHallway"])
+	$SideMenu/TestLevelButton2.connect('pressed', self, '_onTestLevelPressed', ["Floor1"])
+	$SideMenu/TestLevelButton3.connect('pressed', self, '_onTestLevelPressed', ["Floor2"])
+	$SideMenu/TestLevelButton4.connect('pressed', self, '_onTestLevelPressed', ["Floor3Boss"])
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
-	$FadePanel/AnimationPlayer.play("FadeIn")
-	$FadePanel/AnimationPlayer.connect("animation_finished", self, '_fadeComplete')
+	$FadePanel.connect("fade_complete", self, '_fadeComplete')
+	$FadePanel.visible = true
+	
+	UserDataManager.connect("loaded", self, "_on_save_loaded")
+	
+	if GameManager.hasSaveLoaded:
+		_on_save_loaded()
+	
+	actionAfterFade = "enableMenu"
+	$FadePanel.fadeIn()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
 
 
 # disables the cursor and begins fade out to load next level
 func _onNewPressed() -> void:
+	actionAfterFade = "startNew"
 	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$FadePanel/AnimationPlayer.play("FadeOut");
+	$FadePanel.fadeOut()
 
 
 func _onContinuePressed() -> void:
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	actionAfterFade = "continue"
+	$FadePanel.mouse_filter = Control.MOUSE_FILTER_STOP
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	$FadePanel.fadeOut()
 	
 	
 func _onOptionPressed() -> void:
-	$FadePanel/AnimationPlayer.play("FadeOut")
+	get_tree().reload_current_scene()
+
+
+func _onTestLevelPressed(level: String) -> void:
+	LevelManager.start_level(level)
 	
 	
 func _onQuitPressed() -> void:
@@ -31,9 +55,19 @@ func _onQuitPressed() -> void:
 	
 	
 # Enables input after the initial fade in and loads the next scene after fade out
-func _fadeComplete(anim_name: String) -> void: 
-	if (anim_name == "FadeOut"):
-		get_tree().change_scene("res://Scenes/Game.tscn")
-	elif (anim_name == "FadeIn"):
+func _fadeComplete() -> void: 
+	if (actionAfterFade == "startNew"):
+		LevelManager.start_level("IntroLevel")
+	elif (actionAfterFade == "continue"):
+		LevelManager.start_level(continueOnLevel)
+	elif (actionAfterFade == "enableMenu"):
 		$FadePanel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _on_save_loaded():
+	var saveFile = UserDataManager.get_data("save-file")
+	if(saveFile != null):
+		continueOnLevel = saveFile["level"]
+	if(continueOnLevel != null && continueOnLevel != ""):
+		$SideMenu/ContinueButton.disabled = false

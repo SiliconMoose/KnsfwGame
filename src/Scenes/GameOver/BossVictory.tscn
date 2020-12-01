@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/GameOver/LossCutscene.gd" type="Script" id=2]
+[ext_resource path="res://Assets/CG/Enemy/Chimera_CG_Jizz.png" type="Texture" id=3]
+[ext_resource path="res://Assets/CG/Enemy/Chimera_CG.png" type="Texture" id=4]
+[ext_resource path="res://interfaces/menu/CumButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/UI/Next.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Show_01"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Images/Chimera_CG_Jizz:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="BossVictory" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Show_01 = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CumButton" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_left = 87.1811
+margin_top = 72.7945
+margin_right = 274.181
+margin_bottom = 162.795
+
+[node name="NextButton" type="ToolButton" parent="CanvasLayer"]
+margin_left = 40.5889
+margin_top = 70.6992
+margin_right = 258.589
+margin_bottom = 136.699
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 0.996078, 1, 0.909804, 1 )
+text = "Restart"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NextButton"]
+margin_left = 226.218
+margin_top = 7.79988
+margin_right = 269.218
+margin_bottom = 63.7999
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadePanel" parent="CanvasLayer" instance=ExtResource( 1 )]
+visible = false
+mouse_filter = 2
+
+[node name="Images" type="Node2D" parent="."]
+
+[node name="Chimera_CG" type="Sprite" parent="Images"]
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Chimera_CG_Jizz" type="Sprite" parent="Images"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 3 )
+centered = false

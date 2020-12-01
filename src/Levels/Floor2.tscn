@@ -1,0 +1,580 @@
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=3]
+[ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interfaces/dialogue/Dialogue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interfaces/menu/Instruction.tscn" type="PackedScene" id=6]
+[ext_resource path="res://environment/HidingPlaces/OfficePlant.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Environments/Objects/Door_Stairs_Up.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Backgrounds/Background.png" type="Texture" id=9]
+[ext_resource path="res://environment/Doors/DoorDown.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Characters/enemies/Chimera/Chimera.tscn" type="PackedScene" id=11]
+[ext_resource path="res://environment/HidingPlaces/Watercooler.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Environments/Props/Trash.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Environments/Props/Desk_0.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Environments/Props/Coatrack_2.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Environments/Props/Vending_Machine.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Environments/Props/Drawer_plain.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Environments/Props/Poster_1.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Environments/Props/Rubble.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Environments/Props/Poster_0.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Environments/Props/Vent.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Environments/Props/Bookshelf_1.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Environments/Props/Candle_0.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Environments/Props/Bookshelf_0.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Environments/Props/Drawer.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Environments/Props/Desk_1.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Environments/Props/Box_0.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Environments/Props/Box_1.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Environments/Props/Chair_1.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Environments/Props/Fallen_Book.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Environments/Props/Candle_1.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Environments/Props/Locker.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Environments/Props/Coatrack_0.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Environments/Props/Chair_3.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Environments/Props/Chair_2.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Environments/Props/Photocopier.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Environments/Props/Chair_0.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Environments/Props/bricks.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Environments/Props/Tape.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Environments/Props/Devil_Props/Eyes.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Environments/Props/Devil_Props/Banner.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Environments/Props/Devil_Props/Wires.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Environments/Props/Coatrack_1.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Environments/Props/Candle_2.png" type="Texture" id=44]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11648.2, 35.3273 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.5732, 546.497 )
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 446.986, 232.042, 0, 0, 0, 0, 2346.95, 244.641 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 5509.27, 97.7283, 0, 0, 0, 0, 7463.72, 114.699 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 11731.4, 236.148, 0, 0, 0, 0, 13612.6, 249.618 )
+}
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 17436.7, 170.096, 0, 0, 0, 0, 18958.3, 158.77 )
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+levelId = "Floor2"
+
+[node name="Interfaces" type="CanvasLayer" parent="."]
+
+[node name="FadePanel" parent="Interfaces" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -315.375
+margin_top = -595.724
+margin_right = 2244.63
+margin_bottom = 844.276
+
+[node name="Dialogue" parent="Interfaces" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Instruction" parent="Interfaces" instance=ExtResource( 6 )]
+
+[node name="Pause" parent="Interfaces" instance=ExtResource( 2 )]
+visible = false
+
+[node name="CGTimer" type="Timer" parent="Interfaces"]
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Left" type="Position2D" parent="Bounds"]
+position = Vector2( -3404.77, 23.1544 )
+
+[node name="Right" type="Position2D" parent="Bounds"]
+position = Vector2( 19387.9, -15.3124 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Environment" type="Node2D" parent="World"]
+
+[node name="Background" type="CanvasLayer" parent="World/Environment"]
+layer = -1
+follow_viewport_enable = true
+
+[node name="Wall" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 7913.08, 77.351 )
+scale = Vector2( 4.91948, 1.19715 )
+texture = ExtResource( 9 )
+
+[node name="Floor" type="Sprite" parent="World/Environment/Background"]
+position = Vector2( 7921.7, 580.557 )
+scale = Vector2( 4.92316, 0.28966 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Environment"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 7688.26, 691.15 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( 19385.3, -39.8007 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
+position = Vector2( -3401.63, 31.1099 )
+shape = SubResource( 2 )
+
+[node name="Triggers" type="Node2D" parent="World/Environment"]
+
+[node name="Props" type="Node2D" parent="World/Environment"]
+position = Vector2( 1515.97, -192.076 )
+
+[node name="Door_Stairs_Up" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -4318.69, 284.564 )
+texture = ExtResource( 8 )
+
+[node name="Poster_1" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -1568.26, 36.6058 )
+texture = ExtResource( 18 )
+
+[node name="Rubble" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -4781.05, 657.561 )
+texture = ExtResource( 19 )
+
+[node name="Rubble2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -3601.6, 691.502 )
+texture = ExtResource( 19 )
+
+[node name="Trash" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -3836.36, 558.081 )
+texture = ExtResource( 13 )
+
+[node name="Vending_Machine" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -3143.39, 285.581 )
+texture = ExtResource( 16 )
+
+[node name="Vent" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -2666.09, 495.098 )
+scale = Vector2( 0.831823, 0.831823 )
+texture = ExtResource( 21 )
+
+[node name="Drawer_plain" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -2289.21, 512.826 )
+texture = ExtResource( 17 )
+
+[node name="Desk_0" type="Sprite" parent="World/Environment/Props/Drawer_plain"]
+position = Vector2( 692.965, -53.7401 )
+texture = ExtResource( 14 )
+
+[node name="Coatrack_2" type="Sprite" parent="World/Environment/Props/Drawer_plain"]
+position = Vector2( 1824.34, -356.382 )
+texture = ExtResource( 15 )
+
+[node name="Chair_0" type="Sprite" parent="World/Environment/Props/Drawer_plain"]
+position = Vector2( 534.574, 82.0242 )
+texture = ExtResource( 37 )
+
+[node name="Candle_1" type="Sprite" parent="World/Environment/Props/Drawer_plain"]
+position = Vector2( 540.23, -200.819 )
+texture = ExtResource( 31 )
+
+[node name="Candle_0" type="Sprite" parent="World/Environment/Props/Drawer_plain"]
+position = Vector2( -5.65576, -229.103 )
+texture = ExtResource( 23 )
+
+[node name="bricks" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -1333.2, 666.046 )
+texture = ExtResource( 38 )
+
+[node name="Locker" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 706.097, 284.208 )
+texture = ExtResource( 32 )
+
+[node name="Locker2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 960.655, 284.208 )
+texture = ExtResource( 32 )
+
+[node name="Locker3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 1212.39, 287.037 )
+texture = ExtResource( 32 )
+
+[node name="Locker4" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 1464.12, 292.694 )
+texture = ExtResource( 32 )
+
+[node name="Coatrack_0" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 1851.61, 165.414 )
+texture = ExtResource( 33 )
+
+[node name="Bookshelf_1" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 2765.19, -94.8008 )
+texture = ExtResource( 22 )
+
+[node name="Bookshelf_0" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 2765.19, 86.2185 )
+texture = ExtResource( 24 )
+
+[node name="Fallen_Book" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 2999.95, 651.904 )
+texture = ExtResource( 30 )
+
+[node name="Drawer" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 4614.98, 459.115 )
+texture = ExtResource( 25 )
+
+[node name="Box_0" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 5285.32, 595.708 )
+scale = Vector2( 0.940662, 0.940662 )
+texture = ExtResource( 27 )
+
+[node name="Box_1" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 5568.16, 575.536 )
+scale = Vector2( 0.940662, 0.940662 )
+texture = ExtResource( 28 )
+
+[node name="Box_2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 5559.68, 417.144 )
+scale = Vector2( 0.940662, 0.940662 )
+texture = ExtResource( 27 )
+
+[node name="Photocopier" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 3963.51, 418.002 )
+scale = Vector2( 0.940662, 0.940662 )
+texture = ExtResource( 36 )
+
+[node name="Locker5" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -919.126, 291.468 )
+texture = ExtResource( 32 )
+
+[node name="Rubble3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 411.558, 744.918 )
+texture = ExtResource( 19 )
+
+[node name="Rubble4" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 2572.86, 689.826 )
+texture = ExtResource( 19 )
+
+[node name="Rubble5" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 5153.71, 812.724 )
+texture = ExtResource( 19 )
+
+[node name="Desk_1" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 6259.79, 431.317 )
+texture = ExtResource( 26 )
+
+[node name="Chair_1" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -354.564, 569.88 )
+texture = ExtResource( 29 )
+
+[node name="Chair_3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 6731, 529.035 )
+texture = ExtResource( 34 )
+
+[node name="Chair_2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 1962.61, 533.025 )
+texture = ExtResource( 35 )
+
+[node name="Tape" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 14465, 665.771 )
+texture = ExtResource( 39 )
+
+[node name="Rubble6" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 13904.3, 660.432 )
+texture = ExtResource( 19 )
+
+[node name="Rubble7" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 12414.6, 756.54 )
+texture = ExtResource( 19 )
+
+[node name="Locker6" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 16205.6, 334.731 )
+texture = ExtResource( 32 )
+
+[node name="Fallen_Book2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 14918.8, 729.844 )
+texture = ExtResource( 30 )
+
+[node name="Locker7" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 16483.2, 334.731 )
+texture = ExtResource( 32 )
+
+[node name="Locker" type="Sprite" parent="World/Environment/Props/Locker7"]
+position = Vector2( 288.328, -16.0181 )
+texture = ExtResource( 32 )
+
+[node name="Drawer_plain2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 13685.4, 542.966 )
+texture = ExtResource( 17 )
+
+[node name="Drawer2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 13295.6, 526.948 )
+texture = ExtResource( 25 )
+
+[node name="Desk_0" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 12644.2, 489.573 )
+texture = ExtResource( 14 )
+
+[node name="Coatrack_1" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 12014.2, 153.193 )
+texture = ExtResource( 43 )
+
+[node name="Coatrack_2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 14908.1, 153.193 )
+texture = ExtResource( 33 )
+
+[node name="Chair_4" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 15917.3, 585.681 )
+texture = ExtResource( 34 )
+
+[node name="Candle_2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 13509.2, 671.111 )
+texture = ExtResource( 44 )
+
+[node name="Bookshelf_2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 13055.4, 105.139 )
+texture = ExtResource( 24 )
+
+[node name="Bookshelf_3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 13050, -81.7389 )
+texture = ExtResource( 22 )
+
+[node name="bricks2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 11416.2, 692.468 )
+texture = ExtResource( 38 )
+
+[node name="Chair_0" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 11661.8, 585.681 )
+texture = ExtResource( 37 )
+
+[node name="Vent" type="Sprite" parent="World/Environment/Props/Chair_0"]
+position = Vector2( -821.639, -77.4207 )
+scale = Vector2( 0.79797, 0.79797 )
+texture = ExtResource( 21 )
+
+[node name="Chair_5" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 12911.2, 510.93 )
+texture = ExtResource( 35 )
+
+[node name="Rubble8" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 8015.01, 703.147 )
+texture = ExtResource( 19 )
+
+[node name="Rubble9" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 10529.9, 777.898 )
+texture = ExtResource( 19 )
+
+[node name="Fallen_Book3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 7304.88, 788.577 )
+texture = ExtResource( 30 )
+
+[node name="Trash2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 7806.78, 655.093 )
+texture = ExtResource( 13 )
+
+[node name="Vending_Machine2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 10428.4, 334.731 )
+texture = ExtResource( 16 )
+
+[node name="Trash3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 12302.5, 601.699 )
+texture = ExtResource( 13 )
+
+[node name="Poster_2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -1926.89, 94.4599 )
+texture = ExtResource( 20 )
+
+[node name="Wires" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -4607.25, -257.938 )
+texture = ExtResource( 42 )
+
+[node name="Eyes" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( -4035.94, 147.853 )
+texture = ExtResource( 40 )
+
+[node name="Eyes2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 10834.2, 174.55 )
+texture = ExtResource( 40 )
+
+[node name="Eyes3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 5815.18, 398.803 )
+texture = ExtResource( 40 )
+
+[node name="Banner" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 9841.06, 9.03011 )
+texture = ExtResource( 41 )
+
+[node name="Box_3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 9558.07, 601.699 )
+texture = ExtResource( 27 )
+
+[node name="Box_4" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 9995.9, 623.057 )
+texture = ExtResource( 28 )
+
+[node name="Chair_6" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 9349.84, 500.251 )
+texture = ExtResource( 35 )
+
+[node name="Drawer3" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 8415.45, 510.93 )
+texture = ExtResource( 25 )
+
+[node name="Desk_2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 8944.05, 441.518 )
+texture = ExtResource( 14 )
+
+[node name="Rubble10" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 14662.5, 783.237 )
+texture = ExtResource( 19 )
+
+[node name="Rubble11" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 16178.9, 799.255 )
+texture = ExtResource( 19 )
+
+[node name="Vent2" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 15038.9, 518.056 )
+scale = Vector2( 0.788418, 0.788418 )
+texture = ExtResource( 21 )
+
+[node name="Rubble12" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 6979.17, 692.468 )
+texture = ExtResource( 19 )
+
+[node name="Eyes4" type="Sprite" parent="World/Environment/Props"]
+position = Vector2( 15805.1, 185.229 )
+texture = ExtResource( 40 )
+
+[node name="Hazards" type="Node2D" parent="World"]
+
+[node name="Interactables" type="Node2D" parent="World"]
+z_index = 10
+
+[node name="OfficePlant2" parent="World/Interactables" instance=ExtResource( 7 )]
+position = Vector2( -1037.22, 185.099 )
+
+[node name="OfficePlant" parent="World/Interactables" instance=ExtResource( 7 )]
+position = Vector2( 1548.46, 194.488 )
+
+[node name="Watercooler" parent="World/Interactables" instance=ExtResource( 12 )]
+position = Vector2( 3826.13, 234.283 )
+
+[node name="OfficePlant3" parent="World/Interactables" instance=ExtResource( 7 )]
+position = Vector2( 6477.88, 156.106 )
+
+[node name="Watercooler2" parent="World/Interactables" instance=ExtResource( 12 )]
+position = Vector2( 9095.55, 260.927 )
+
+[node name="DoorDown" parent="World/Interactables" instance=ExtResource( 10 )]
+position = Vector2( 16980.5, 110.486 )
+ConnectedLevel = "Floor3Boss"
+
+[node name="OfficePlant4" parent="World/Interactables" instance=ExtResource( 7 )]
+position = Vector2( 15700, 183.389 )
+
+[node name="OfficePlant5" parent="World/Interactables" instance=ExtResource( 7 )]
+position = Vector2( 12696.3, 189.796 )
+
+[node name="Player" parent="World" instance=ExtResource( 1 )]
+position = Vector2( -2811.48, 149.583 )
+z_index = 15
+
+[node name="Camera" type="Camera2D" parent="World/Player"]
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="Enemies" type="Node2D" parent="World"]
+z_index = 20
+
+[node name="Chimera01" parent="World/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 2585.02, -19.1539 )
+patrol_name = "Patrol01"
+
+[node name="Chimera02" parent="World/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 5107.73, -28.9899 )
+patrol_name = "Patrol02"
+
+[node name="Chimera03" parent="World/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 10708.3, -15.7909 )
+patrol_name = "Patrol03"
+
+[node name="Chimera04" parent="World/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 18213.2, -101.684 )
+patrol_name = "Patrol04"
+
+[node name="PatrolPaths" type="Node2D" parent="World"]
+
+[node name="Patrol01" type="Path2D" parent="World/PatrolPaths"]
+curve = SubResource( 3 )
+
+[node name="Patrol02" type="Path2D" parent="World/PatrolPaths"]
+curve = SubResource( 4 )
+
+[node name="Patrol03" type="Path2D" parent="World/PatrolPaths"]
+curve = SubResource( 5 )
+
+[node name="Patrol04" type="Path2D" parent="World/PatrolPaths"]
+curve = SubResource( 6 )
+
+[node name="Foreground" type="Node2D" parent="World"]
+z_index = 30
+
+[node name="Wires" type="Sprite" parent="."]
+position = Vector2( 6193.88, -466.032 )
+texture = ExtResource( 42 )
+
+[node name="bricks" type="Sprite" parent="."]
+position = Vector2( 8756.77, 425.641 )
+texture = ExtResource( 38 )
+
+[node name="Candle_1" type="Sprite" parent="."]
+position = Vector2( 9717.85, 452.338 )
+texture = ExtResource( 31 )
+
+[node name="Candle_2" type="Sprite" parent="."]
+position = Vector2( 10118.3, 457.677 )
+texture = ExtResource( 44 )
+
+[node name="Candle_3" type="Sprite" parent="."]
+position = Vector2( 9627.08, 420.302 )
+texture = ExtResource( 31 )
+
+[node name="Candle_4" type="Sprite" parent="."]
+position = Vector2( 16173.1, 414.962 )
+texture = ExtResource( 31 )
+
+[node name="Candle_0" type="Sprite" parent="."]
+position = Vector2( 16263.9, 441.659 )
+texture = ExtResource( 23 )
+
+[node name="bricks2" type="Sprite" parent="."]
+position = Vector2( 17502.6, 559.125 )
+texture = ExtResource( 38 )
+
+[node name="Poster_0" type="Sprite" parent="."]
+position = Vector2( 15041.2, -124.313 )
+texture = ExtResource( 20 )
+
+[node name="Poster_1" type="Sprite" parent="."]
+position = Vector2( 15244.1, -38.8832 )
+texture = ExtResource( 18 )
+
+[node name="Poster_2" type="Sprite" parent="."]
+position = Vector2( 8804.82, -92.2767 )
+texture = ExtResource( 18 )
+
+[node name="Poster_3" type="Sprite" parent="."]
+position = Vector2( 9466.9, -167.028 )
+texture = ExtResource( 20 )

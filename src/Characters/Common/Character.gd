@@ -26,8 +26,6 @@ var states_stack: Array = []
 var is_alive: bool = true
 var can_attack: bool = true
 var gravity_enable: bool = true
-var can_double_jump: bool = true
-var is_invincible: bool = false
 var has_set_next_attack: bool = false
 
 # velocity
@@ -57,10 +55,6 @@ func _initialize_state(initial_state: String = 'Idle'):
 	for state_node in $States.get_children():
 		states_map[state_node.get_name()] = state_node
 		state_node.connect('finished', self, '_change_state')
-		
-		# inactive damage zone by default since the are controller by the AnimationPlayer	
-		if state_node.has_node('DamageZone'):
-			state_node.get_node('DamageZone').set_monitoring(false)
 
 	# default states
 	states_stack.push_front(states_map[initial_state])

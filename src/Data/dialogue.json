@@ -3,11 +3,124 @@
     [
         {
             "portrait": "default",
-            "text": "\"We care for you\""
+            "text": "\"Live. Love. Laugh.\""
+        },
+        {
+            "portrait": "grin",
+            "text": "And I thought the decoration back home was bad."
+        }
+    ],
+    "intro":
+    [
+        {
+            "portrait": "default",
+            "text": "STATE THY BIDDING."
+        },
+        {
+            "portrait": "npc_smile",
+            "text": "Hi, hello, good evening. Um. Nice to see you… again."
         },
         {
             "portrait": "default",
-            "text": "Apparently not enough to stop summoning demons."
+            "text": "... WHAT IS IT THIS TIME"
+        },
+        {
+            "portrait": "npc_frown",
+            "text": "Well you know how it is with upper management, occult-oriented management strategies only go so far and well…"
+        },
+	{
+            "portrait": "npc_frown",
+            "text": "the VP is possessed and there’s demons everywhere. Pretty sure the photocopier is possessed too..."
+        },
+        {
+            "portrait": "default",
+            "text": "... And you expect me to fix this?"
+        },
+        {
+            "portrait": "npc_smile",
+            "text": "Um, yes... please?"
+        },
+        {
+            "portrait": "default",
+            "text": "Summoning me to correct your mistakes is an terrible waste of a ritual but very well."
+        },
+        {
+            "portrait": "npc_smile",
+            "text": "Thank you so much!"
+        },
+        {
+            "portrait": "default",
+            "text": "Spare me.\nNow..."
+        },
+        {
+            "portrait": "question",
+            "text": "Why am I the size of an imp?"
+        },
+        {
+            "portrait": "npc_smile",
+            "text": "Oh, well... I wasn’t able to get any blood or a live chicken to summon you, so I figured sharpies and a roast chicken would be good enough!"
+        },
+        {
+            "portrait": "default",
+            "text": "… You summoned me with a roast chicken?"
+        },
+        {
+            "portrait": "npc_frown",
+            "text": "Uh, yeah."
+        },
+        {
+            "portrait": "default",
+            "text": "..."
+        },
+        {
+            "portrait": "npc_frown",
+            "text": "..."
+        },
+        {
+            "portrait": "default",
+            "text": "I'm going to need more power to do what you're asking of me. This leaves you with two options..."
+        },
+        {
+            "portrait": "grin",
+            "text": "One, I take your soul, or two, I take some of your life essence."
+        },
+        {
+            "portrait": "npc_smile",
+            "text": "Um, option two?"
+        },
+        {
+            "portrait": "grin",
+            "text": "Very well, lay down."
+        }
+    ],
+    "intro2": 
+    [
+        {
+            "portrait": "default",
+            "text": "Hmm, I’ll have to make do with this for now."
+        },
+        {
+            "portrait": "question",
+            "text": "Are there other people in the building? And which way do I... Oh."
+        },
+        {
+            "portrait": "default",
+            "text": "..."
+        },
+        {
+            "portrait": "default",
+            "text": "...Right. Should've asked before I fucked her into a coma."
+        }
+    ],
+    "statues":
+    [
+        {
+            "portrait": "default",
+            "text": "Looks like these statues work like wards."
+        },
+        {
+            "portrait": "default",
+            "text": "I'll have to start at the far end and work my way backward."
         }
     ]
 }

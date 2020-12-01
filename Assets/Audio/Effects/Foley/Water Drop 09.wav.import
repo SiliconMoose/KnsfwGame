@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Water Drop 09.wav-75fe06a0af89b7f9d6f20fe90b8dabf2.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Effects/Foley/Water Drop 09.wav"
+dest_files=[ "res://.import/Water Drop 09.wav-75fe06a0af89b7f9d6f20fe90b8dabf2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
