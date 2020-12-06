@@ -19,8 +19,6 @@ var can_use_statue: bool = false
 
 func _ready() -> void:
 	# Signals
-	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
-	$CooldownBar.set_duration($CooldownTimer.wait_time)
 	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
 	var game = get_tree().get_root().get_node('Game')
@@ -49,11 +47,6 @@ func _input(event: InputEvent) -> void:
 			
 	
 	current_state.handle_input(self, event)
-
-
-func start_cooldown():
-	$CooldownTimer.start()
-	$CooldownBar.start()
 
 
 func _on_position_changed():

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lights--by-rafael-krux-from-filmmusic-io.ogg-91c27101f7c26017156f81fa1fa5ccbf.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/lights--by-rafael-krux-from-filmmusic-io.ogg"
+dest_files=[ "res://.import/lights--by-rafael-krux-from-filmmusic-io.ogg-91c27101f7c26017156f81fa1fa5ccbf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

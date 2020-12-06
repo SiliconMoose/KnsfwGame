@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Data/Triggers/InstructionTrigger.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Assets/Environments/Props/Rubble.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Environments/Props/Fallen_Book.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Environments/Props/Devil_Props/Wires.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Audio/Music/lights--by-rafael-krux-from-filmmusic-io.ogg" type="AudioStream" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3843.07, 35.3273 )
@@ -205,3 +206,7 @@ texture = ExtResource( 20 )
 [node name="Wires" type="Sprite" parent="."]
 position = Vector2( -2516.6, -454.996 )
 texture = ExtResource( 21 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+autoplay = true

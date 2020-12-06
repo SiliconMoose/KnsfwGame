@@ -47,7 +47,7 @@ func showNext():
 		$DialogueBox/AnimationPlayer.play("FadeInstruction")
 	
 	var dialogue = currentDialogue[index]
-	showDialogue(dialogue["text"], index < currentDialogue.size() - 1)
+	showDialogue(dialogue["text"])
 	showPortrait(dialogue["portrait"])
 	visible = true
 	index += 1
@@ -61,6 +61,8 @@ func showPortrait(name: String):
 	match (name):
 		"default":
 			$PortraitBox/PortraitNeutral.visible = true
+		"default_alt":
+			$PortraitBox/PortraitAlt.visible = true
 		"smile":
 			$PortraitBox/PortraitSmile.visible = true
 		"grin":
@@ -75,7 +77,7 @@ func showPortrait(name: String):
 			$PortraitBox/PortraitNeutral.visible = true
 
 
-func showDialogue(text: String, hasNext: bool):
+func showDialogue(text: String):
 	$DialogueBox/Label.text = text
 
 

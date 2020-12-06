@@ -7,7 +7,7 @@ var max_air_speed: float = 0
 
 func enter(host: Character) -> void:
 	host.gravity_enable = true
-	host.get_node('AnimatedSprite').play('Fall')
+	host.get_node('AnimatedSprite').play('Idle')
 	var current_velocity_x: float = abs(host.velocity.x)
 	max_air_speed = current_velocity_x if current_velocity_x > 0 else BASE_MAX_AIR_SPEED
 

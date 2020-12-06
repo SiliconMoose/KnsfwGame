@@ -1,9 +1,9 @@
 extends Node2D
 
 
-var statue1Active: bool
-var statue2Active: bool
-var statue3Active: bool
+var statue1Active: bool = false
+var statue2Active: bool = false
+var statue3Active: bool = false
 
 
 

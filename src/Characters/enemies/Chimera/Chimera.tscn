@@ -20,7 +20,6 @@
 [ext_resource path="res://Characters/enemies/Chimera/states/patrol.gd" type="Script" id=18]
 [ext_resource path="res://Characters/enemies/Chimera/states/idle.gd" type="Script" id=19]
 [ext_resource path="res://Characters/enemies/Chimera/states/catch.gd" type="Script" id=20]
-[ext_resource path="res://Characters/Player/gui/CooldownBar.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Assets/Audio/Effects/Footsteps/Chimera/chimera_footstep.tres" type="AudioStream" id=22]
 [ext_resource path="res://Assets/Audio/Effects/Foley/Hard_Hit.wav" type="AudioStream" id=23]
 [ext_resource path="res://engine/Physics2D.gd" type="Script" id=28]
@@ -61,11 +60,6 @@ frame = 3
 
 [node name="Physics2D" type="Node2D" parent="."]
 script = ExtResource( 28 )
-
-[node name="CooldownTimer" type="Timer" parent="."]
-
-[node name="CooldownBar" parent="." instance=ExtResource( 21 )]
-duration = 0.5
 
 [node name="Footsteps" type="Node2D" parent="."]
 

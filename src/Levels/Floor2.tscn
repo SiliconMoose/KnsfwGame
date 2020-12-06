@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interfaces/menu/Pause.tscn" type="PackedScene" id=2]
@@ -44,6 +44,8 @@
 [ext_resource path="res://Assets/Environments/Props/Devil_Props/Wires.png" type="Texture" id=42]
 [ext_resource path="res://Assets/Environments/Props/Coatrack_1.png" type="Texture" id=43]
 [ext_resource path="res://Assets/Environments/Props/Candle_2.png" type="Texture" id=44]
+[ext_resource path="res://Levels/PatrolPath.gd" type="Script" id=45]
+[ext_resource path="res://Assets/Audio/Music/lights--by-rafael-krux-from-filmmusic-io.ogg" type="AudioStream" id=46]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11648.2, 35.3273 )
@@ -126,7 +128,7 @@ texture = ExtResource( 9 )
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
-position = Vector2( 7688.26, 691.15 )
+position = Vector2( 7849.16, 603.109 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Environment/StaticBody2D"]
@@ -488,7 +490,7 @@ position = Vector2( 15700, 183.389 )
 position = Vector2( 12696.3, 189.796 )
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
-position = Vector2( -2811.48, 149.583 )
+position = Vector2( -2811.48, 217.291 )
 z_index = 15
 
 [node name="Camera" type="Camera2D" parent="World/Player"]
@@ -499,34 +501,38 @@ zoom = Vector2( 3, 3 )
 z_index = 20
 
 [node name="Chimera01" parent="World/Enemies" instance=ExtResource( 11 )]
-position = Vector2( 2585.02, -19.1539 )
+position = Vector2( 2585.02, 30.7365 )
 patrol_name = "Patrol01"
 
 [node name="Chimera02" parent="World/Enemies" instance=ExtResource( 11 )]
-position = Vector2( 5107.73, -28.9899 )
+position = Vector2( 5111.29, 38.7185 )
 patrol_name = "Patrol02"
 
 [node name="Chimera03" parent="World/Enemies" instance=ExtResource( 11 )]
-position = Vector2( 10708.3, -15.7909 )
+position = Vector2( 10705.3, 35.1516 )
 patrol_name = "Patrol03"
 
 [node name="Chimera04" parent="World/Enemies" instance=ExtResource( 11 )]
-position = Vector2( 18213.2, -101.684 )
+position = Vector2( 18225.2, 39.1568 )
 patrol_name = "Patrol04"
 
 [node name="PatrolPaths" type="Node2D" parent="World"]
 
 [node name="Patrol01" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 3 )
+script = ExtResource( 45 )
 
 [node name="Patrol02" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 4 )
+script = ExtResource( 45 )
 
 [node name="Patrol03" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 5 )
+script = ExtResource( 45 )
 
 [node name="Patrol04" type="Path2D" parent="World/PatrolPaths"]
 curve = SubResource( 6 )
+script = ExtResource( 45 )
 
 [node name="Foreground" type="Node2D" parent="World"]
 z_index = 30
@@ -578,3 +584,7 @@ texture = ExtResource( 18 )
 [node name="Poster_3" type="Sprite" parent="."]
 position = Vector2( 9466.9, -167.028 )
 texture = ExtResource( 20 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
+autoplay = true

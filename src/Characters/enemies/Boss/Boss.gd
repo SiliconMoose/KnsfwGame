@@ -22,13 +22,13 @@ export var phase_1_patrol: String
 export var phase_2_patrol: String
 export var phase_3_patrol: String
 
+var currentPhase: int = 1
 
 var patrol_path: Curve2D
+var patrol: Node2D
 
 func _ready() -> void:
 	# Signals
-	$CooldownTimer.connect('timeout', self, '_on_Cooldown_timeout')
-	$CooldownBar.set_duration($CooldownTimer.wait_time)
 	$States/Catch.connect("player_caught", self, "_on_player_caught")
 	$Footsteps/FootstepTimer.connect("timeout", self, "_on_footstep")
 	
@@ -37,10 +37,9 @@ func _ready() -> void:
 		player.connect('player_position_changed', self, '_on_player_position_changed')
 		player.connect('state_changed', self, '_on_player_state_changed')
 	
-	var path = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_1_patrol)
-	patrol_path = path.curve
+	set_phase(1)
 	
-	var startState = "Patrol" if path != null else "Idle"
+	var startState = "Patrol" if patrol_path != null else "Idle"
 	._initialize_state(startState)
 
 
@@ -50,9 +49,23 @@ func _physics_process(delta: float) -> void:
 	Physics2D.compute_gravity(self, delta)
 
 
-func start_cooldown():
-	$CooldownTimer.start()
-	$CooldownBar.start()
+func set_phase(phase: int):
+	currentPhase = phase
+	
+	if(phase == 1):
+		patrol = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_1_patrol)
+		patrol_path = patrol.curve
+	elif phase == 2:
+		patrol = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_2_patrol)
+		patrol_path = patrol.curve
+	elif phase == 3:
+		patrol = get_tree().get_root().get_node_or_null('Game/World/PatrolPaths/'+phase_3_patrol)
+		patrol_path = patrol.curve
+		
+	$States/Patrol.patrol_index = 0
+	$States/Patrol.elapsed = 1000;
+	$States/Patrol.targetPosition = $States/Patrol._get_next_patrol_point(self)
+
 
 
 func _on_player_position_changed(new_position: Vector2) -> void:

@@ -4,9 +4,6 @@ signal loaded()
 
 signal version_mismatch()
 
-const LOADED = "loaded"
-const VERSION_MISMATCH = "version_mismatch"
-
 var _path = "user://corp-hell-save.json" #Change this to user://data.dat after testing
 var _user_data = {}
 
@@ -17,9 +14,7 @@ func load_data(default_data, version):
 	if(not f.file_exists(_path)):
 		save_data()
 	f.open(_path, File.READ)
-	var path = f.get_path_absolute()
 	var loaded_data = {}
-	var text = f.get_as_text()
 	loaded_data =JSON.parse(f.get_as_text()).result
 	_parse_loaded_data(loaded_data)
 	f.close()
@@ -30,9 +25,9 @@ func _parse_loaded_data(loaded_data):
 	for key in loaded_data.data.keys():
 		_user_data["data"][key] = loaded_data["data"][key]
 	if(loaded_version != _user_data.version):
-		emit_signal(VERSION_MISMATCH,loaded_version,loaded_data.data)
+		emit_signal("version_mismatch",loaded_version,loaded_data.data)
 	else:
-		emit_signal(LOADED)
+		emit_signal("loaded")
 
 
 func save_corrected_data(corrected_user_data):

@@ -122,5 +122,16 @@
             "portrait": "default",
             "text": "I'll have to start at the far end and work my way backward."
         }
+    ],
+    "outtro": 
+    [
+        {
+            "portrait": "default_alt",
+            "text": "Well that should do it. With that ritual being so weak I think I'll stay a while longer."
+        },
+        {
+            "portrait": "default_alt",
+            "text": "Thanks for the meal!"
+        }
     ]
 }

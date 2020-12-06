@@ -1,17 +1,81 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://interfaces/menu/FadePanel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/GameOver/LossCutscene.gd" type="Script" id=2]
-[ext_resource path="res://Assets/CG/Enemy/Chimera_CG_Jizz.png" type="Texture" id=3]
-[ext_resource path="res://Assets/CG/Enemy/Chimera_CG.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/GameOver/BossVictory.gd" type="Script" id=2]
+[ext_resource path="res://Assets/CG/Boss/Halfling/1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/CG/Boss/Halfling/0.png" type="Texture" id=4]
 [ext_resource path="res://interfaces/menu/CumButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/UI/Next.png" type="Texture" id=6]
 [ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=7]
+[ext_resource path="res://Assets/CG/Boss/Halfling/2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/CG/Boss/Halfling/3.png" type="Texture" id=9]
+[ext_resource path="res://Assets/CG/Boss/Halfling/4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/CG/Boss/Halfling/5.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Show_01"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Images/Chimera_CG_Jizz:modulate")
+tracks/0/path = NodePath("Images/Boss_CG_Jizz1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Show_02"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Images/Boss_CG2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Show_03"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Images/Boss_CG_Jizz2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Show_04"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Images/Boss_CG3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Show_05"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Images/Boss_CG_Jizz3:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -31,6 +95,10 @@ volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Show_01 = SubResource( 1 )
+anims/Show_02 = SubResource( 2 )
+anims/Show_03 = SubResource( 3 )
+anims/Show_04 = SubResource( 4 )
+anims/Show_05 = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -51,7 +119,7 @@ margin_right = 258.589
 margin_bottom = 136.699
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.996078, 1, 0.909804, 1 )
-text = "Restart"
+text = "Next"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,13 +143,36 @@ mouse_filter = 2
 
 [node name="Images" type="Node2D" parent="."]
 
-[node name="Chimera_CG" type="Sprite" parent="Images"]
+[node name="Boss_CG1" type="Sprite" parent="Images"]
 scale = Vector2( 0.333333, 0.333333 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Chimera_CG_Jizz" type="Sprite" parent="Images"]
+[node name="Boss_CG_Jizz1" type="Sprite" parent="Images"]
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.333333, 0.333333 )
 texture = ExtResource( 3 )
+centered = false
+
+[node name="Boss_CG2" type="Sprite" parent="Images"]
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Boss_CG_Jizz2" type="Sprite" parent="Images"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="Boss_CG3" type="Sprite" parent="Images"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="Boss_CG_Jizz3" type="Sprite" parent="Images"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.333333, 0.333333 )
+texture = ExtResource( 11 )
 centered = false
