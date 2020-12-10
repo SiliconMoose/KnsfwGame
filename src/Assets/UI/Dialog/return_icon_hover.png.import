@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bonus_0.png-f7b10ed92583272246cd91dfc3f6bd6c.stex"
+path="res://.import/return_icon_hover.png-5a8be89daaa0d0997224ff283fd2a625.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CG/Bonus_NPC/Bonus_0.png"
-dest_files=[ "res://.import/Bonus_0.png-f7b10ed92583272246cd91dfc3f6bd6c.stex" ]
+source_file="res://Assets/UI/Dialog/return_icon_hover.png"
+dest_files=[ "res://.import/return_icon_hover.png-5a8be89daaa0d0997224ff283fd2a625.stex" ]
 
 [params]
 

@@ -8,6 +8,7 @@ func _ready() -> void:
 	$SideMenu/NewGameButton.connect('pressed', self, '_onNewPressed')
 	$SideMenu/ContinueButton.connect('pressed', self, '_onContinuePressed')
 	$SideMenu/TestLevelButton4.connect('pressed', self, '_onTestLevelPressed', ["ExitLevel"])
+	$SideMenu/GalleryButton.connect('pressed', self, '_onGalleryPressed')
 	$SideMenu/QuitButton.connect('pressed', self, '_onQuitPressed')
 	$FadePanel.connect("fade_complete", self, '_fadeComplete')
 	$FadePanel.visible = true
@@ -44,6 +45,10 @@ func _onContinuePressed() -> void:
 	
 func _onTestLevelPressed(level: String) -> void:
 	LevelManager.start_level(level)
+	
+	
+func _onGalleryPressed() -> void:
+	LevelManager.goto_scene("res://Scenes/Gallery.tscn")
 	
 	
 func _onQuitPressed() -> void:

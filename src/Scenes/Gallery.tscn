@@ -1,0 +1,399 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://Assets/UI/Themes/Menu.theme" type="Theme" id=1]
+[ext_resource path="res://Assets/CG/NPC/NPC_CG.png" type="Texture" id=2]
+[ext_resource path="res://Assets/CG/Boss/Boss_Defeat.png" type="Texture" id=3]
+[ext_resource path="res://Assets/CG/Bonus/Bonus_0.png" type="Texture" id=4]
+[ext_resource path="res://Assets/CG/Enemy/Chimera_CG.png" type="Texture" id=5]
+[ext_resource path="res://Assets/CG/Boss/Halfling/0.png" type="Texture" id=6]
+[ext_resource path="res://Assets/CG/Boss/Halfling/2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/CG/Boss/Halfling/4.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Gallery.gd" type="Script" id=9]
+[ext_resource path="res://Assets/UI/Dialog/arrow.png" type="Texture" id=10]
+[ext_resource path="res://Assets/UI/Dialog/arrow_press.png" type="Texture" id=11]
+[ext_resource path="res://Assets/UI/Dialog/arrow_hover.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI/Dialog/pause-icon_hover.png" type="Texture" id=13]
+[ext_resource path="res://Assets/UI/Dialog/pause-icon.png" type="Texture" id=14]
+[ext_resource path="res://Assets/UI/Dialog/pause-icon_press.png" type="Texture" id=15]
+[ext_resource path="res://Assets/UI/Dialog/forward_icon.png" type="Texture" id=16]
+[ext_resource path="res://Assets/UI/Dialog/forward_icon_hover.png" type="Texture" id=17]
+[ext_resource path="res://Assets/UI/Dialog/forward_icon_press.png" type="Texture" id=18]
+[ext_resource path="res://Assets/UI/Dialog/backward_icon_hover.png" type="Texture" id=19]
+[ext_resource path="res://Assets/UI/Dialog/backward_icon.png" type="Texture" id=20]
+[ext_resource path="res://Assets/UI/Dialog/backward_icon_press.png" type="Texture" id=21]
+[ext_resource path="res://Assets/CG/Bonus/Bonus_1.png" type="Texture" id=22]
+[ext_resource path="res://Assets/CG/Boss/Halfling/3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/CG/NPC/NPC_CG_cum.png" type="Texture" id=24]
+[ext_resource path="res://Assets/CG/Boss/Boss_Defeat_Jizz.png" type="Texture" id=25]
+[ext_resource path="res://Assets/CG/Boss/Halfling/5.png" type="Texture" id=26]
+[ext_resource path="res://Assets/CG/Enemy/Chimera_CG_Jizz.png" type="Texture" id=27]
+[ext_resource path="res://Assets/CG/Boss/Halfling/1.png" type="Texture" id=28]
+[ext_resource path="res://Assets/UI/Dialog/return_icon_press.png" type="Texture" id=29]
+[ext_resource path="res://Assets/UI/Dialog/return_icon_hover.png" type="Texture" id=30]
+[ext_resource path="res://Assets/UI/Dialog/return_icon.png" type="Texture" id=31]
+
+[node name="Gallery" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="Scenes" type="Node2D" parent="."]
+
+[node name="NPC_CG" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NPC_CG_cum" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bonus_0" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bonus_1" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 5
+
+[node name="Chimera_CG" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chimera_CG_Jizz" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Boss_Defeat" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="Boss_Defeat_Jizz" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 5
+
+[node name="Boss_Victory_0" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="Boss_Victory_1" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 5
+
+[node name="Boss_Victory_2" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="Boss_Victory_3" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 5
+
+[node name="Boss_Victory_4" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="Boss_Victory_5" type="TextureRect" parent="Scenes"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls"]
+margin_top = 639.0
+margin_right = 1280.0
+margin_bottom = 689.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Previous" type="TextureButton" parent="Controls/HBoxContainer"]
+margin_left = 507.0
+margin_right = 557.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 21 )
+expand = true
+stretch_mode = 5
+
+[node name="Return" type="TextureButton" parent="Controls/HBoxContainer"]
+margin_left = 561.0
+margin_right = 611.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 30 )
+expand = true
+stretch_mode = 5
+
+[node name="Play" type="TextureButton" parent="Controls/HBoxContainer"]
+margin_left = 615.0
+margin_right = 665.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
+[node name="Pause" type="TextureButton" parent="Controls/HBoxContainer"]
+margin_left = 669.0
+margin_right = 719.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
+[node name="Next" type="TextureButton" parent="Controls/HBoxContainer"]
+margin_left = 723.0
+margin_right = 773.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Interface"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Interface/Panel"]
+margin_right = 1280.0
+margin_bottom = 720.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NPCs" type="Tabs" parent="Interface/Panel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 76.0
+margin_right = -4.0
+margin_bottom = -4.0
+theme = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_bg = Color( 1, 1, 1, 1 )
+custom_colors/font_color_fg = Color( 1, 1, 1, 1 )
+custom_constants/label_valign_fg = 0
+
+[node name="GridContainer" type="GridContainer" parent="Interface/Panel/TabContainer/NPCs"]
+margin_left = 84.0
+margin_top = 21.0
+margin_right = 1260.0
+margin_bottom = 611.0
+theme = ExtResource( 1 )
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NPC" type="TextureButton" parent="Interface/Panel/TabContainer/NPCs/GridContainer"]
+margin_right = 578.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 320, 200 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+
+[node name="NPC_bonus" type="TextureButton" parent="Interface/Panel/TabContainer/NPCs/GridContainer"]
+margin_left = 598.0
+margin_right = 1176.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 320, 200 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+
+[node name="Chimera" type="TextureButton" parent="Interface/Panel/TabContainer/NPCs/GridContainer"]
+margin_top = 305.0
+margin_right = 578.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 320, 200 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+
+[node name="Boss" type="Tabs" parent="Interface/Panel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 76.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="GridContainer" parent="Interface/Panel/TabContainer/Boss"]
+margin_left = 84.0
+margin_top = 21.0
+margin_right = 1260.0
+margin_bottom = 611.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Boss1" type="TextureButton" parent="Interface/Panel/TabContainer/Boss/GridContainer"]
+margin_right = 578.0
+margin_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 320, 200 )
+focus_mode = 0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 4
+
+[node name="Boss2" type="TextureButton" parent="Interface/Panel/TabContainer/Boss/GridContainer"]
+margin_left = 598.0
+margin_right = 1176.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 320, 200 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+
+[node name="Boss3" type="TextureButton" parent="Interface/Panel/TabContainer/Boss/GridContainer"]
+margin_top = 305.0
+margin_right = 578.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 320, 200 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 4
+
+[node name="Boss4" type="TextureButton" parent="Interface/Panel/TabContainer/Boss/GridContainer"]
+margin_left = 598.0
+margin_top = 305.0
+margin_right = 1176.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 320, 200 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 4
+
+[node name="BackButton" type="ToolButton" parent="Interface/Panel"]
+margin_left = 24.0271
+margin_right = 142.027
+margin_bottom = 66.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdvanceTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="FadeTween" type="Tween" parent="."]
